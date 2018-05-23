@@ -1,4 +1,6 @@
 package baseCode;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import javafx.application.Application;
 import javafx.scene.Group;
@@ -12,6 +14,7 @@ import javafx.scene.layout.RowConstraints;
 import javafx.stage.Stage;
 
 public class Game extends Application{
+	Timer time = new Timer();
 	public static void main (String[] args) {
 		launch(args);
 		
@@ -48,6 +51,17 @@ public class Game extends Application{
 		canvas.setFocusTraversable(true);
 		primaryStage.setScene(scene);
 		primaryStage.show();
+		
+		time.schedule(new TimerTask() {
+
+			@Override
+			public void run() {
+				// TODO Auto-generated method stub
+			//Makes block drop one row every second.
+				
+			}
+			
+		}, 1000, 1000);
 	}
 	
 
