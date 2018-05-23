@@ -26,6 +26,7 @@ public class Game extends Application{
 		Canvas canvas = new Canvas(450, 600);
 		final GraphicsContext gc = canvas.getGraphicsContext2D();
 		
+		//Makes 2 buttons
 		Button start = new Button("Start");
 		Button instructions= new Button("Rules");
 		start.setLayoutX(200);
