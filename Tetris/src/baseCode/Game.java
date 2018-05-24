@@ -86,7 +86,9 @@ public class Game extends Application{
 		}
 	}
 	public void removeRows() {
-		
+		for(int i = 0; i< square.size(); i ++) {
+			
+		}
 	}
 	public void dropBlocks() {
 	for(int i = square.size()-5; i <square.size();i ++) {
