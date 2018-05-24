@@ -28,7 +28,6 @@ public class Game extends Application{
 	
 	@Override
 	public void start(Stage primaryStage) throws Exception {
-		// TODO Auto-generated method stub
 		
 		Group group = new Group();
 		Scene scene = new Scene(group, 450, 600);
