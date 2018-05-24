@@ -1,4 +1,5 @@
 package baseCode;
+import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -15,6 +16,8 @@ import javafx.stage.Stage;
 
 public class Game extends Application{
 	Timer time = new Timer();
+	ArrayList <Square> square = new ArrayList<Square>();
+	int shape = 0;
 	public static void main (String[] args) {
 		launch(args);
 		
@@ -63,6 +66,49 @@ public class Game extends Application{
 			
 		}, 1000, 1000);
 	}
-	
+	public void createBlocks(int shape) {
+		for(int i = 0; i <4; i ++) {
+			if(shape == 0) {
+				
+			}else if (shape == 1) {
+				
+			}else if (shape == 2) {
+				
+			}else if (shape == 3) {
+				
+			}else if (shape == 4) {
+				
+			}else if (shape == 5) {
+				
+			}else if (shape == 6) {
+				
+			}
+		}
+	}
+	public void removeRows() {
+		
+	}
+	public void dropBlocks() {
+	for(int i = square.size()-5; i <square.size();i ++) {
+		
+	}
+	}
+	public void rotateBlock(int shape) {
+		if(shape == 0) {
+			
+		}else if (shape == 1) {
+			
+		}else if (shape == 2) {
+			
+		}else if (shape == 3) {
+			
+		}else if (shape == 4) {
+			
+		}else if (shape == 5) {
+			
+		}else if (shape == 6) {
+			
+		}
+	}
 
 }
