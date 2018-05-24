@@ -54,6 +54,7 @@ public class Square extends MovingObject {
 		filledIn = true;
 	}
 
+
 	/**
 	 * Controls the animation parameters. (Called once every time the ball
 	 * position is updated.)

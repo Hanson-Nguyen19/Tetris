@@ -26,51 +26,51 @@ public class Game extends Application{
 	ArrayList<Square> square = new ArrayList<Square>();
 	public static void main (String[] args) {
 		launch(args);
-		
+
 	}
 	Image buffer;
-	
+
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		// TODO Auto-generated method stub
-		
+
 		Group group = new Group();
 		Scene scene = new Scene(group, 450, 600);
 		primaryStage.setTitle("Tetris");
 		Canvas canvas = new Canvas(450, 600);
 		final GraphicsContext gc = canvas.getGraphicsContext2D();
-		//square = new Square(20, 20, 0, (int) canvas.getWidth(), 0, (int) canvas.getHeight());
-		
-//		Button start = new Button("Start");
-//		Button instructions= new Button("Rules");
-//		start.setLayoutX(200);
-//		start.setLayoutY(270);
-//		instructions.setLayoutX(200);
-//		instructions.setLayoutY(295);
-//		group.getChildren().add(start);
-//		group.getChildren().add(instructions);
-		
-		 GridPane gridpane = new GridPane();
-	        for (int i = 0; i < 10; i++) {
-	            RowConstraints row = new RowConstraints(60);
-	            gridpane.getRowConstraints().add(row);
-	        }
-	    
-	        time.schedule(new TimerTask() {
 
-	    		@Override
-	    		public void run() {
-	    			// TODO Auto-generated method stub
-	    		//Makes block drop one row every second.
-	    			
-	    		}
-	    		
-	    	}, 1000, 1000);
-	        
-	        group.getChildren().add(gridpane);
+
+		//		Button start = new Button("Start");
+		//		Button instructions= new Button("Rules");
+		//		start.setLayoutX(200);
+		//		start.setLayoutY(270);
+		//		instructions.setLayoutX(200);
+		//		instructions.setLayoutY(295);
+		//		group.getChildren().add(start);
+		//		group.getChildren().add(instructions);
+
+		GridPane gridpane = new GridPane();
+		for (int i = 0; i < 10; i++) {
+			RowConstraints row = new RowConstraints(60);
+			gridpane.getRowConstraints().add(row);
+		}
+
+		time.schedule(new TimerTask() {
+
+			@Override
+			public void run() {
+				// TODO Auto-generated method stub
+				//Makes block drop one row every second.
+				dropBlocks();
+			}
+
+		}, 500, 500);
+
+		group.getChildren().add(gridpane);
 
 		canvas.setFocusTraversable(true);
-		
+
 		Thread game = new Thread(new Runnable() {
 			/**
 			 * Repaints the canvas periodically.
@@ -86,78 +86,164 @@ public class Game extends Application{
 				}
 			}
 		});
-		
+
 		primaryStage.setScene(scene);
 		primaryStage.show();
-		
+
 	}
 	public void draw(GraphicsContext gc) {
 		gc.setFill(Color.BLACK);
 		gc.fillRect(0, 0, gc.getCanvas().getWidth(), gc.getCanvas().getHeight());
-		
-			square.draw(gc);
-	
+
+		square.draw(gc);
+
 		gc.drawImage(buffer, 0, 0); // double buffering
 	}
-	
-public void createBlocks(int shape) {
-	for(int i = 0; i <4; i ++) {
+
+	public void createBlocks(int shape) {
+		double x = 200;
+		double y = 0;
+		if(shape == 0) {
+			//2x2 square
+			for(int i = 0; i < 4; i ++) {
+				if(i == 1) {
+					y = y +10;
+				}else {
+					if(i == 3) {
+						x = x +10;
+						y = y +10;
+					}
+					x = x +10;
+				}
+				Square s = new Square(x,y,10,10,10,10);
+				square.add(s);
+			}
+		}else if (shape == 1) {
+			//Line
+			for(int i = 0; i < 4; i ++) {
+				if(i <=1) {
+					if(i == 0) {
+						x= x-20;
+					}
+					x =x -10;
+				}else if (i == 3) {
+					x = x +10;
+				}
+				Square s = new Square(x,y,10,10,10,10);
+				square.add(s);
+			}
+		}else if (shape == 2) {
+			//s
+			for(int i = 0; i < 4; i ++) {
+				if(i ==1) {
+					x =x +10;
+				}else if (i == 2 ) {
+					y =y +10;
+				}else if (i == 3) {
+					x = x -10;
+					y =y +10;
+				}
+				Square s = new Square(x,y,10,10,10,10);
+				square.add(s);
+			}
+		}else if (shape == 3) {
+			//z
+			for(int i = 0; i < 4; i ++) {
+				if(i ==1) {
+					x =x -10;
+				}else if (i == 2 ) {
+					y =y +10;
+				}else if (i == 3) {
+					x = x +10;
+					y =y +10;
+				}
+				Square s = new Square(x,y,10,10,10,10);
+				square.add(s);
+			}
+		}else if (shape == 4) {
+			//upside-down t
+			for(int i = 0; i < 4; i ++) {
+				if(i >0) {
+					y = y +10;
+					if(i == 2) {
+						x = x +10;
+					}else if (i == 3) {
+						x = x -10;
+					}
+				}
+				Square s = new Square(x,y,10,10,10,10);
+				square.add(s);
+			}
+		}else if (shape == 5) {
+			//L
+			for(int i = 0; i < 4; i ++) {
+				if(i <2) {
+					x = x -10;
+					if (i ==1) {
+						y = y +10;
+					}
+				}else if (i == 2) {
+					y = y +10;
+				}else {
+					x = x + 10;
+					y = y + 10;
+				}
+				Square s = new Square(x,y,10,10,10,10);
+				square.add(s);
+			}
+		}else if (shape == 6) {
+			//inverted L
+			for(int i = 0; i < 4; i ++) {
+				if(i <2) {
+					x = x +10;
+					if (i ==1) {
+						y = y +10;
+					}
+				}else if (i == 2) {
+					y = y +10;
+				}else {
+					x = x - 10;
+					y = y + 10;
+				}
+				Square s = new Square(x,y,10,10,10,10);
+				square.add(s);
+			}
+		}
+
+	}
+	public void removeRows() {
+		for(int i = 0; i< square.size(); i ++) {
+
+		}
+	}
+	public void dropBlocks() {
+		for(int i = square.size()-5; i <square.size();i ++) {
+			square.get(i).setX((int)square.get(i).getX());
+			square.get(i).setY((int)square.get(i).getY());
+		}
+	}
+	public void rotateBlock(int shape) {
 		if(shape == 0) {
 			//2x2 square
 			
 		}else if (shape == 1) {
 			//Line
-			
+
 		}else if (shape == 2) {
 			//s
-			
+
 		}else if (shape == 3) {
 			//z
-			
+
 		}else if (shape == 4) {
 			//upside-down t
-			
+
 		}else if (shape == 5) {
 			//L
-			
+
 		}else if (shape == 6) {
 			//inverted L
-			
+
 		}
 	}
-}
-public void removeRows() {
-	for(int i = 0; i< square.size(); i ++) {
-		
-	}
-}
-public void dropBlocks() {
-for(int i = square.size()-5; i <square.size();i ++) {
-	
-}
-}
-public void rotateBlock(int shape) {
-	if(shape == 0) {
-		//2x2 square
-		
-	}else if (shape == 1) {
-		//Line
-		
-	}else if (shape == 2) {
-		//s
-		
-	}else if (shape == 3) {
-		//z
-		
-	}else if (shape == 4) {
-		//upside-down t
-		
-	}else if (shape == 5) {
-		//L
-		
-	}else if (shape == 6) {
-		//inverted L
-		
-	}
-}
 }
