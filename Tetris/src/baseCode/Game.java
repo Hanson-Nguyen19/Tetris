@@ -6,12 +6,15 @@ import java.util.TimerTask;
 
 import javafx.application.Application;
 import javafx.application.Platform;
+import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
@@ -21,46 +24,33 @@ import javafx.stage.Stage;
 
 
 public class Game extends Application{
-<<<<<<< HEAD
-	
-	
-	
-	
+
+
+
+
 	final int pauseDuration = 40;
 	static long numBlocks = 0;
-	
-=======
+
 	//Square square;
 	Timer time = new Timer();
 	int shape = 0;
 	ArrayList<Square> square = new ArrayList<Square>();
->>>>>>> refs/heads/master
 	public static void main (String[] args) {
 		launch(args);
 
 	}
-<<<<<<< HEAD
-	
-	
-=======
+
 	Image buffer;
 
->>>>>>> refs/heads/master
 	@Override
 	public void start(Stage primaryStage) throws Exception {
-<<<<<<< HEAD
-		
-=======
-		// TODO Auto-generated method stub
 
->>>>>>> refs/heads/master
 		Group group = new Group();
 		Scene scene = new Scene(group, 450, 600);
 		primaryStage.setTitle("Tetris");
 		Canvas canvas = new Canvas(450, 600);
 		final GraphicsContext gc = canvas.getGraphicsContext2D();
-<<<<<<< HEAD
-		
+
 		Button start = new Button("Start");
 		Button instructions= new Button("Rules");
 		start.setLayoutX(200);
@@ -69,19 +59,18 @@ public class Game extends Application{
 		instructions.setLayoutY(295);
 		group.getChildren().add(start);
 		group.getChildren().add(instructions);
-		
-		 GridPane gridpane = new GridPane();
-	        for (int i = 0; i < 10; i++) {
-	            RowConstraints row = new RowConstraints(60);
-	            gridpane.getRowConstraints().add(row);
-	        }
-	        for (int i = 0; i < 10; i++) {
-	            ColumnConstraints col = new ColumnConstraints(60);
-	            gridpane.getColumnConstraints().add(col);
-	        }
-	        
-	        group.getChildren().add(gridpane);
-=======
+
+		GridPane gridpane = new GridPane();
+		for (int i = 0; i < 10; i++) {
+			RowConstraints row = new RowConstraints(60);
+			gridpane.getRowConstraints().add(row);
+		}
+		for (int i = 0; i < 10; i++) {
+			ColumnConstraints col = new ColumnConstraints(60);
+			gridpane.getColumnConstraints().add(col);
+		}
+
+		group.getChildren().add(gridpane);
 
 
 		//		Button start = new Button("Start");
@@ -93,47 +82,16 @@ public class Game extends Application{
 		//		group.getChildren().add(start);
 		//		group.getChildren().add(instructions);
 
-		GridPane gridpane = new GridPane();
-		for (int i = 0; i < 10; i++) {
-			RowConstraints row = new RowConstraints(60);
-			gridpane.getRowConstraints().add(row);
-		}
 
 		time.schedule(new TimerTask() {
 
 			@Override
 			public void run() {
-				// TODO Auto-generated method stub
-				//Makes block drop one row every second.
 				dropBlocks();
 			}
 
 		}, 500, 500);
 
-		group.getChildren().add(gridpane);
->>>>>>> refs/heads/master
-
-	        Thread game = new Thread(new Runnable() {
-				
-				/**
-				 * Repaints the canvas periodically.
-				 */
-				@Override
-				public void run() {
-					while (true) {
-						for(int i = 0; i > numBlocks; i++) {
-							
-						}
-						draw(gc);
-						try {
-							Thread.sleep(pauseDuration);
-						} catch (InterruptedException e) {
-						}
-					}
-				}
-			});
-	        
-	        
 		canvas.setFocusTraversable(true);
 
 		Thread game = new Thread(new Runnable() {
@@ -143,6 +101,7 @@ public class Game extends Application{
 			@Override
 			public void run() {
 				while (true) {
+					dropBlocks();
 					draw(gc);
 					try {
 						Thread.sleep(40);
@@ -152,26 +111,81 @@ public class Game extends Application{
 			}
 		});
 
+		canvas.setOnKeyPressed(event -> {
+
+			if(event.getCode() == KeyCode.E) {
+				
+				//To Do Finish Rotation
+				
+				if (shape == 1) {
+					//Line
+					double x = square.get(2).getX();
+					double y =square.get(2).getY();
+					for(int i = 0; i <4;i ++) {
+						if(i == 2) {
+
+						}
+					}
+				}else if (shape == 2) {
+					//s
+
+				}else if (shape == 3) {
+					//z
+
+				}else if (shape == 4) {
+					//upside-down t
+
+				}else if (shape == 5) {
+					//L
+
+				}else if (shape == 6) {
+					//inverted L
+
+				}
+			}
+			if(event.getCode() == KeyCode.Q) {
+				
+				//To Do Inverse Rotation
+				
+				if (shape == 1) {
+					//Line
+					double x = square.get(2).getX();
+					double y =square.get(2).getY();
+					for(int i = 0; i <4;i ++) {
+						if(i == 2) {
+
+						}
+					}
+				}else if (shape == 2) {
+					//s
+
+				}else if (shape == 3) {
+					//z
+
+				}else if (shape == 4) {
+					//upside-down t
+
+				}else if (shape == 5) {
+					//L
+
+				}else if (shape == 6) {
+					//inverted L
+
+				}
+			}
+		});
+
 		primaryStage.setScene(scene);
 		primaryStage.show();
-<<<<<<< HEAD
 	}
-	
-	public void draw(GraphicsContext gc) {
-		
-		
-		
-	}
-=======
->>>>>>> refs/heads/master
 
-	}
+
 	public void draw(GraphicsContext gc) {
 		gc.setFill(Color.BLACK);
 		gc.fillRect(0, 0, gc.getCanvas().getWidth(), gc.getCanvas().getHeight());
-
-		square.draw(gc);
-
+		for(int i = 0; i < square.size() ;i++) {
+			square.get(i).draw(gc);
+		}
 		gc.drawImage(buffer, 0, 0); // double buffering
 	}
 
@@ -292,36 +306,15 @@ public class Game extends Application{
 		}
 	}
 	public void dropBlocks() {
-		for(int i = square.size()-5; i <square.size();i ++) {
-			square.get(i).setX((int)square.get(i).getX());
-			square.get(i).setY((int)square.get(i).getY());
-		}
-	}
-	public void rotateBlock(int shape) {
-		if (shape == 1) {
-			//Line
-			double x = square.get(2).getX();
-			double y =square.get(2).getY();
-			for(int i = 0; i <4;i ++) {
-				if(i == 2) {
+		for(int i = square.size()-4; i <square.size();i ++) {
+			for(int l = square.size()-4; l <square.size();l ++) {
+				
+				if(square.get(i).getY()+10 == square.get(l).getY()) {
 					
 				}
 			}
-		}else if (shape == 2) {
-			//s
-
-		}else if (shape == 3) {
-			//z
-
-		}else if (shape == 4) {
-			//upside-down t
-
-		}else if (shape == 5) {
-			//L
-
-		}else if (shape == 6) {
-			//inverted L
-
+			square.get(i).setY((int)square.get(i).getY()+10);
 		}
 	}
+
 }
