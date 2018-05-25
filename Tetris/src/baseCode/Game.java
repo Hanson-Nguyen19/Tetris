@@ -135,9 +135,9 @@ public class Game extends Application{
 		}else if (shape == 2) {
 			//s
 			for(int i = 0; i < 4; i ++) {
-				if(i ==1) {
+				if(i ==0) {
 					x =x +10;
-				}else if (i == 2 ) {
+				}else if (i == 1 ) {
 					y =y +10;
 				}else if (i == 3) {
 					x = x -10;
@@ -149,9 +149,9 @@ public class Game extends Application{
 		}else if (shape == 3) {
 			//z
 			for(int i = 0; i < 4; i ++) {
-				if(i ==1) {
+				if(i ==0) {
 					x =x -10;
-				}else if (i == 2 ) {
+				}else if (i == 1 ) {
 					y =y +10;
 				}else if (i == 3) {
 					x = x +10;
@@ -163,9 +163,9 @@ public class Game extends Application{
 		}else if (shape == 4) {
 			//upside-down t
 			for(int i = 0; i < 4; i ++) {
-				if(i >0) {
+				if(i != 2) {
 					y = y +10;
-					if(i == 2) {
+					if(i == 0) {
 						x = x +10;
 					}else if (i == 3) {
 						x = x -10;
@@ -177,16 +177,15 @@ public class Game extends Application{
 		}else if (shape == 5) {
 			//L
 			for(int i = 0; i < 4; i ++) {
-				if(i <2) {
-					x = x -10;
-					if (i ==1) {
+				if(i < 3) {
+					if(i == 1) {
+						y = y +20;
+					}else if(i ==2) {
 						y = y +10;
-					}
-				}else if (i == 2) {
-					y = y +10;
-				}else {
-					x = x + 10;
-					y = y + 10;
+					} 
+				}else if (i ==3) {
+					x = x +10;
+					y = y +20;
 				}
 				Square s = new Square(x,y,10,10,10,10);
 				square.add(s);
@@ -194,16 +193,15 @@ public class Game extends Application{
 		}else if (shape == 6) {
 			//inverted L
 			for(int i = 0; i < 4; i ++) {
-				if(i <2) {
-					x = x +10;
-					if (i ==1) {
+				if(i < 3) {
+					if(i == 1) {
+						y = y +20;
+					}else if(i ==2) {
 						y = y +10;
-					}
-				}else if (i == 2) {
-					y = y +10;
-				}else {
-					x = x - 10;
-					y = y + 10;
+					} 
+				}else if (i ==3) {
+					x = x -10;
+					y = y +20;
 				}
 				Square s = new Square(x,y,10,10,10,10);
 				square.add(s);
@@ -213,6 +211,8 @@ public class Game extends Application{
 	}
 	public void removeRows() {
 		for(int i = 0; i< square.size(); i ++) {
+			square.get(i).getX();
+			square.get(i).getY();
 
 		}
 	}
@@ -223,12 +223,15 @@ public class Game extends Application{
 		}
 	}
 	public void rotateBlock(int shape) {
-		if(shape == 0) {
-			//2x2 square
-			
-		}else if (shape == 1) {
+		if (shape == 1) {
 			//Line
-
+			double x = square.get(2).getX();
+			double y =square.get(2).getY();
+			for(int i = 0; i <4;i ++) {
+				if(i == 2) {
+					
+				}
+			}
 		}else if (shape == 2) {
 			//s
 
