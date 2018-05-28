@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
 
+
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.scene.Group;
@@ -24,11 +25,14 @@ public class Game extends Application{
 	Timer time = new Timer();
 	int shape = 0;
 	ArrayList<Square> square = new ArrayList<Square>();
+	
 	public static void main (String[] args) {
 		launch(args);
 
 	}
 	Image buffer;
+	
+ 
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
@@ -39,6 +43,15 @@ public class Game extends Application{
 		primaryStage.setTitle("Tetris");
 		Canvas canvas = new Canvas(450, 600);
 		final GraphicsContext gc = canvas.getGraphicsContext2D();
+	
+		
+//		for (int i = 0; i < square.size(); i++) {
+		for (int i = 0; i < 20; i++) {
+			square.add(new Square(50, 50, 0, (int)canvas.getWidth(), 0, (int)canvas.getHeight()));
+			square.get(i).setXSpeed(0);
+			square.get(i).setYSpeed(0);
+			square.get(i).setColor(Color.WHITE);
+		}
 
 
 		//		Button start = new Button("Start");
@@ -62,7 +75,7 @@ public class Game extends Application{
 			public void run() {
 				// TODO Auto-generated method stub
 				//Makes block drop one row every second.
-				dropBlocks();
+				//dropBlocks();
 			}
 
 		}, 500, 500);
@@ -86,18 +99,18 @@ public class Game extends Application{
 				}
 			}
 		});
-
+		group.getChildren().add(canvas);
 		primaryStage.setScene(scene);
+		game.start();
 		primaryStage.show();
 
 	}
 	public void draw(GraphicsContext gc) {
 		gc.setFill(Color.BLACK);
 		gc.fillRect(0, 0, gc.getCanvas().getWidth(), gc.getCanvas().getHeight());
-
-		square.draw(gc);
-
-		gc.drawImage(buffer, 0, 0); // double buffering
+		for (int i = 0; i < square.size(); i++) {
+			square.get(i).draw(gc);
+		}
 	}
 
 	public void createBlocks(int shape) {
