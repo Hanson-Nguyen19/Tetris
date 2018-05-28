@@ -210,12 +210,37 @@ public class Game extends Application{
 
 	}
 	public void removeRows() {
+		int count = 0;
+		for (int y = 0; y<=600; y =y+50) {
+			for(int x =0; x< 450;x = x + 50) {
 		for(int i = 0; i< square.size(); i ++) {
-			square.get(i).getX();
-			square.get(i).getY();
-
+			if(square.get(i).getX()== x) {
+				if(square.get(i).getY()== y) {
+					count ++;
+				}
+				if () {
+			
+			}
+			
+			
+			
+//		Object rowCount;
+//		for (int i=0; i < (rowCount).Lenght(); i++) {
+//			Object blocks;
+//			if (rowCount[i] >= 10) {
+//				for (int j=0; j < blocks.count; j++)
+//				{			
+//
+//					if (blocks[j].Row == i) {
+//						blocks.removeWhen(j);
+//					rowCount[i]--;
+//
+//				}
+//				}
+			}
 		}
 	}
+			}
 	public void dropBlocks() {
 		for(int i = square.size()-5; i <square.size();i ++) {
 			square.get(i).setX((int)square.get(i).getX());
