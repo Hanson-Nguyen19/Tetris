@@ -18,14 +18,6 @@ public abstract class MovingObject implements Runnable {
 	 */
 	double y;
 	/**
-	 * The x speed of the object.
-	 */
-	double xSpeed;
-	/**
-	 * The y speed of the object.
-	 */
-	double ySpeed;
-	/**
 	 * The left edge for bouncing.
 	 */
 	int left;
@@ -75,8 +67,6 @@ public abstract class MovingObject implements Runnable {
 	public MovingObject(double x, double y, int left, int right, int top,
 			int bottom) {
 		this.pauseDuration = 30;
-		this.xSpeed = 0;
-		this.ySpeed = 0;
 		this.color = Color.BLACK;
 		this.x = x;
 		this.y = y;
@@ -109,13 +99,6 @@ public abstract class MovingObject implements Runnable {
 	 */
 	public void run() {
 		while (moving) {
-			animateOneStep();
-			x += xSpeed;
-			y += ySpeed;
-			if (x >= right | x <= left)
-				xSpeed *= -1;
-			if (y >= bottom | y <= top)
-				ySpeed *= -1;
 			try {
 				Thread.sleep(pauseDuration);
 			} catch (InterruptedException e) {
@@ -130,31 +113,6 @@ public abstract class MovingObject implements Runnable {
 	 *            The graphics context
 	 */
 	abstract public void draw(GraphicsContext gc);
-
-	/**
-	 * Performs one step of animation.
-	 */
-	abstract public void animateOneStep();
-	
-	/**
-	 * Sets the x speed.
-	 * 
-	 * @param xSpeed
-	 *            New x speed.
-	 */
-	public void setXSpeed(double xSpeed) {
-		this.xSpeed = xSpeed;
-	}
-
-	/**
-	 * Sets the y speed.
-	 * 
-	 * @param ySpeed
-	 *            New y speed.
-	 */
-	public void setYSpeed(double ySpeed) {
-		this.ySpeed = ySpeed;
-	}
 
 	/**
 	 * Sets the x location.

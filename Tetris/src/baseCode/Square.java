@@ -53,23 +53,6 @@ public class Square extends MovingObject {
 		flashSpeed = (int) (Math.random() * 5 + 5);
 		filledIn = true;
 	}
-
-
-	/**
-	 * Controls the animation parameters. (Called once every time the ball
-	 * position is updated.)
-	 */
-	public void animateOneStep() {
-		counter++;
-		if (counter == flashSpeed) {
-			counter = 0;
-			if (filledIn)
-				filledIn = false;
-			else
-				filledIn = true;
-		}
-	}
-
 	/**
 	 * Draws the Squares
 	 * 
