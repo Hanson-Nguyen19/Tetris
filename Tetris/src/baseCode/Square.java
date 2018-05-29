@@ -1,3 +1,4 @@
+
 package baseCode;
 import javafx.scene.paint.Color;
 
@@ -44,7 +45,7 @@ public class Square extends MovingObject {
 	public Square(double x, double y, int left, int right, int top, int bottom) {
 		super(x, y, left + 10, right - 10, top + 10, bottom - 10);
 		// numbers above must match the radius
-		size = 30;
+		size = 25;
 		counter = 0;
 		flashSpeed = (int) (Math.random() * 5 + 5);
 	}
@@ -85,3 +86,4 @@ public class Square extends MovingObject {
 	return size;
 	}
 	}
+
