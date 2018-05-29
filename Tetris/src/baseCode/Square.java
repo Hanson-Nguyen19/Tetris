@@ -14,7 +14,7 @@ public class Square extends MovingObject {
 	/**
 	 * The radius of the ball.
 	 */
-	int radius;
+	int size;
 	/**
 	 * Counts the frames between flash on/off.
 	 */
@@ -23,11 +23,7 @@ public class Square extends MovingObject {
 	 * The number of frames to wait before toggling the flash.
 	 */
 	int flashSpeed;
-	/**
-	 * Controls the flash - true if the ball is filled in, false if it is an
-	 * outline.
-	 */
-	boolean filledIn;
+
 
 	/**
 	 * Calls the superclass constructor, plus sets radius, and flash parameters.
@@ -48,10 +44,9 @@ public class Square extends MovingObject {
 	public Square(double x, double y, int left, int right, int top, int bottom) {
 		super(x, y, left + 10, right - 10, top + 10, bottom - 10);
 		// numbers above must match the radius
-		radius = 10;
+		size = 25;
 		counter = 0;
 		flashSpeed = (int) (Math.random() * 5 + 5);
-		filledIn = true;
 	}
 
 
@@ -63,10 +58,6 @@ public class Square extends MovingObject {
 		counter++;
 		if (counter == flashSpeed) {
 			counter = 0;
-			if (filledIn)
-				filledIn = false;
-			else
-				filledIn = true;
 		}
 	}
 
@@ -77,17 +68,12 @@ public class Square extends MovingObject {
 	 *            The graphics context.
 	 */
 	public void draw(GraphicsContext gc) {
-		int drawX = (int) x;
-		int drawY = (int) y;
+		int drawX = (int) x - size;
+		int drawY = (int) y - size;
 
 		gc.setFill(color);
-		gc.fillRect(drawX, drawY, radius, radius);
+		gc.fillRect(drawX, drawY, size, size);
 		
-		if (!filledIn) {
-			gc.setFill(Color.PURPLE);
-			gc.fillRect(drawX + radius, drawY + radius, radius, radius);
-			
-		}
 	}
 	public double getX() {
 	return x;
@@ -96,6 +82,6 @@ public class Square extends MovingObject {
 	return y;
 	}
 	public double getRadius() {
-	return radius;
+	return size;
 	}
 	}
