@@ -27,7 +27,7 @@ public class Game extends Application{
 	int shape = (int) (Math.random() * 7)-1;
 	ArrayList<Square> square = new ArrayList<Square>();
 	final int squareSize = 25;
-	int song = 3;//(int) (Math.random() * 7)-1;
+	int song = (int) (Math.random() * 6)-1;
 
 	public static void main (String[] args) {
 
@@ -54,9 +54,9 @@ public class Game extends Application{
 		final GraphicsContext gc = canvas.getGraphicsContext2D();
 
 
-	//	Clip song1 = AudioSystem.getClip();
+		Clip song1 = AudioSystem.getClip();
 
-		//song1.open(AudioSystem.getAudioInputStream(new File("src/Resources/TypeA.wav")));
+		song1.open(AudioSystem.getAudioInputStream(new File("src/Resources/Castle Rock.wav")));
 
 		Clip song2 = AudioSystem.getClip();
 
@@ -82,11 +82,11 @@ public class Game extends Application{
 
 		//song7.open(AudioSystem.getAudioInputStream(new File("src/Resources/BalrogSF.wav")));
 
-		//if(song == 1) {
+		if(song == 1) {
 
-		//	song1.start();
+			song1.start();
 
-		/*}else*/ if (song ==2) {
+		}else if (song ==2) {
 
 			song2.start();
 
