@@ -22,38 +22,27 @@ import javafx.scene.layout.RowConstraints;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
-
 public class Game extends Application{
 	Timer time = new Timer();
 	int shape = (int) (Math.random() * 7);
 	ArrayList<Square> square = new ArrayList<Square>();
 	final int squareSize = 25;
-	int song = (int) (Math.random() * 12)+1;
+	int song = (int) (Math.random() * 14)+1;
 
 	public static void main (String[] args) {
-
 		launch(args);
-
 	}
-
 	Image buffer;
 
 	@Override
 
 	public void start(Stage primaryStage) throws Exception {
-
 		// TODO Auto-generated method stub
-
 		Group group = new Group();
-
 		Scene scene = new Scene(group, 450, 600);
-
 		primaryStage.setTitle("Tetris");
-
 		Canvas canvas = new Canvas(450, 600);
-
 		final GraphicsContext gc = canvas.getGraphicsContext2D();
-
 
 		Clip song1 = AudioSystem.getClip();
 		song1.open(AudioSystem.getAudioInputStream(new File("src/Resources/Castle Rock.wav")));
@@ -77,6 +66,10 @@ public class Game extends Application{
 		song10.open(AudioSystem.getAudioInputStream(new File("src/Resources/Balrog.wav")));
 		Clip song11 = AudioSystem.getClip();
 		song11.open(AudioSystem.getAudioInputStream(new File("src/Resources/DuckTales.wav")));
+		Clip song12 = AudioSystem.getClip();
+		song12.open(AudioSystem.getAudioInputStream(new File("src/Resources/BubbleBobble.wav")));
+		Clip song13 = AudioSystem.getClip();
+		song13.open(AudioSystem.getAudioInputStream(new File("src/Resources/SuperMarioBrosUnderground.wav")));
 		Clip title = AudioSystem.getClip();
 		title.open(AudioSystem.getAudioInputStream(new File("src/Resources/Super Mario Bros. 3.wav")));
 
@@ -127,11 +120,17 @@ public class Game extends Application{
 
 		}else if (song ==12) {
 
+			song12.start();
+
+		}else if (song ==13) {
+
+			song13.start();
+
+		}else if (song ==14) {
+
 			title.start();
 
 		}
-
-
 
 		//	for (int i = 0; i < square.size(); i++) {
 
@@ -149,10 +148,6 @@ public class Game extends Application{
 
 		createBlocks(shape);
 
-
-
-
-
 		//	Button start = new Button("Start");
 
 		//	Button instructions= new Button("Rules");
@@ -169,8 +164,6 @@ public class Game extends Application{
 
 		//	group.getChildren().add(instructions);
 
-
-
 		GridPane gridpane = new GridPane();
 
 		for (int i = 0; i < squareSize; i++) {
@@ -180,8 +173,6 @@ public class Game extends Application{
 			gridpane.getRowConstraints().add(row);
 
 		}
-
-
 
 		canvas.setOnKeyPressed(event -> {
 
@@ -203,90 +194,39 @@ public class Game extends Application{
 
 		});
 
-		canvas.setOnKeyReleased(event -> {
-
-			if(event.getCode() == KeyCode.A) {
-
-
-
-			}else if(event.getCode() == KeyCode.D) {
-
-
-
-			}
-
-		});
-
-
-
 		time.schedule(new TimerTask() {
-
-
-
 			@Override
-
 			public void run() {
-
 				//Makes block drop one row every second.
-
 				dropBlocks();
-
 			}
-
-
-
 		}, 750, 750);
 
-
-
 		group.getChildren().add(gridpane);
-
-
-
 		canvas.setFocusTraversable(true);
-
-
 
 		Thread game = new Thread(new Runnable() {
 
 			/**
-
 			 * Repaints the canvas periodically.
-
 			 */
 
 			@Override
-
 			public void run() {
-
 				while (true) {
-
 					draw(gc);
-
 					try {
-
 						Thread.sleep(40);
-
 					} catch (InterruptedException e) {
-
 					}
-
 				}
-
 			}
-
 		});
 
 		group.getChildren().add(canvas);
-
 		primaryStage.setScene(scene);
-
 		game.start();
-
 		primaryStage.show();
-
-
-		
 	}
 
 	public void draw(GraphicsContext gc) {
@@ -304,296 +244,150 @@ public class Game extends Application{
 	}
 
 	public void moveBlocks(String direction) {
-
 		if (direction =="Left"){
-
 			for(int i = square.size()-4; i <square.size();i ++) {
-
 				square.get(i).setX((int)(square.get(i).getX()- squareSize));
-
 			}
 
 		}else if (direction == "Right") {
-
 			for(int i = square.size()-4; i <square.size();i ++) {
-
 				square.get(i).setX((int)(square.get(i).getX()+ squareSize));
-
 			}
-
 		}
-
 	}
 
 	public void createBlocks(int shape) {
-
 		double x = 250;
-
 		double y = 25;
 
 		if(shape == 0) {
-
 			//2x2 square
-
 			for(int i = 0; i < 4; i ++) {
-
 				if(i==0) {
-
 					x=x+squareSize;
-
 				}else if(i==1) {
-
 					y=y+squareSize;
-
 				}else if(i ==3) {
-
 					y = y+squareSize;
-
 					x=x + squareSize;
-
 				}
-
 				Square s = new Square(x,y,squareSize,squareSize,squareSize,squareSize);
-
 				square.add(s);
-
 				square.get(i).setColor(Color.RED);
-
 				x = 250;
-
 				y=25;
-
 			}
-
 		}else if (shape == 1) {
-
 			//Line
-
 			for(int i = 0; i < 4; i ++) {
-
 				if(i <=1) {
-
 					x =x -squareSize;
-
 					if(i == 0) {
-
 						x= x-squareSize;
-
 					}
-
 				}else if (i == 3) {
-
 					x = x +squareSize;
-
 				}
-
 				Square s = new Square(x,y,squareSize,squareSize,squareSize,squareSize);
-
 				square.add(s);
-
 				square.get(i).setColor(Color.BLACK);
-
 				x=250;
-
 				y=25;
-
 			}
-
 		}else if (shape == 2) {
-
 			//s
-
 			for(int i = 0; i < 4; i ++) {
-
 				if(i ==0) {
-
 					x =x +squareSize;
-
 				}else if (i == 1 ) {
-
 					y =y +squareSize;
-
 				}else if (i == 3) {
-
 					x = x -squareSize;
-
 					y =y +squareSize;
-
 				}
-
 				Square s = new Square(x,y,squareSize,squareSize,squareSize,squareSize);
-
 				square.add(s);
-
 				square.get(i).setColor(Color.GREEN);
-
 				x =250;
-
 				y=25;
-
 			}
-
 		}else if (shape == 3) {
-
 			//z
-
 			for(int i = 0; i < 4; i ++) {
-
 				if(i<2){
-
 					if(i ==0) {
-
 						y=y+squareSize;
-
 					}else if(i==1) {
-
 						x=x-squareSize;
-
 					}
-
-
-
 				}else if (i == 3) {
-
 					x = x +squareSize;
-
 					y =y +squareSize;
-
 				}
-
 				Square s = new Square(x,y,squareSize,squareSize,squareSize,squareSize);
-
 				square.add(s);
-
 				square.get(i).setColor(Color.ORANGE);
-
 				x=250;
-
 				y=25;
-
 			}
-
 		}else if (shape == 4) {
-
 			//upside-down t
-
 			for(int i = 0; i < 4; i ++) {
-
 				if(i != 2) {
-
 					y= y+squareSize;
-
 					if(i==0) {
-
 						x=x-squareSize;
-
 					}else if(i == 1) {
-
 						x=x +squareSize;
-
 					}
-
 				}else if(i==2) {
-
-
-
+					
 				}
-
 				Square s = new Square(x,y,squareSize,squareSize,squareSize,squareSize);
-
 				square.add(s);
-
 				square.get(i).setColor(Color.PURPLE);
-
 				x=250;
-
 				y=25;
-
 			}
-
 		}else if (shape == 5) {
-
 			//L
-
 			for(int i = 0; i < 4; i ++) {
-
 				if(i != 2) {
-
 					if(i==0) {
-
 						y=y+ squareSize;
-
 					}else if(i==1) {
-
 						x=x + squareSize;
-
 						y=y+(2*squareSize);
-
 					}else if(i==3) {
-
 						y=y+(2*squareSize);
-
 					}
-
 				}
-
 				Square s = new Square(x,y,squareSize,squareSize,squareSize,squareSize);
-
 				square.add(s);
-
 				square.get(i).setColor(Color.BLUE);
-
 				x=250;
-
 				y=25;
-
 			}
-
-
-
-
 		}else if (shape == 6) {
-
 			//inverted L
-
 			for(int i = 0; i < 4; i ++) {
-
 				if(i != 2) {
-
 					if(i==0) {
-
 						y=y+ squareSize;
-
 					}else if(i==1) {
-
 						x=x -squareSize;
-
 						y=y+(2*squareSize);
-
 					}else if(i==3) {
-
 						y=y+(2*squareSize);
-
 					}
-
 				}
-
 				Square s = new Square(x,y,squareSize,squareSize,squareSize,squareSize);
-
 				square.add(s);
-
 				square.get(i).setColor(Color.GOLD);
-
 				x=250;
-
 				y=25;
-
 			}
-
 		}
-
-
-
 	}
 
 	public void removeRows() {
