@@ -25,10 +25,10 @@ import javafx.stage.Stage;
 
 public class Game extends Application{
 	Timer time = new Timer();
-	int shape = (int) (Math.random() * 7)-1;
+	int shape = (int) (Math.random() * 7);
 	ArrayList<Square> square = new ArrayList<Square>();
 	final int squareSize = 25;
-	int song = (int) (Math.random() * 6)-1;
+	int song = 10;//(int) (Math.random() * 11)+1;
 
 	public static void main (String[] args) {
 
@@ -56,33 +56,29 @@ public class Game extends Application{
 
 
 		Clip song1 = AudioSystem.getClip();
-
 		song1.open(AudioSystem.getAudioInputStream(new File("src/Resources/Castle Rock.wav")));
-
 		Clip song2 = AudioSystem.getClip();
-
 		song2.open(AudioSystem.getAudioInputStream(new File("src/Resources/TetrisDance.wav")));
-
 		Clip song3 = AudioSystem.getClip();
-
 		song3.open(AudioSystem.getAudioInputStream(new File("src/Resources/Fever Dr. Mario.wav")));
-
 		Clip song4 = AudioSystem.getClip();
-
 		song4.open(AudioSystem.getAudioInputStream(new File("src/Resources/Paper Mario.wav")));
-
 		Clip song5 = AudioSystem.getClip();
-
 		song5.open(AudioSystem.getAudioInputStream(new File("src/Resources/Snow Bros.wav")));
-
 		Clip song6 = AudioSystem.getClip();
-
 		song6.open(AudioSystem.getAudioInputStream(new File("src/Resources/Super Mario Bros.wav")));
+		Clip song7 = AudioSystem.getClip();
+		song7.open(AudioSystem.getAudioInputStream(new File("src/Resources/Battletoads.wav")));
+		Clip song8 = AudioSystem.getClip();
+		song8.open(AudioSystem.getAudioInputStream(new File("src/Resources/FlashManStage.wav")));
+		Clip song9 = AudioSystem.getClip();
+		song9.open(AudioSystem.getAudioInputStream(new File("src/Resources/TheManWithTheMachineGun.wav")));
+		Clip song10 = AudioSystem.getClip();
+		song10.open(AudioSystem.getAudioInputStream(new File("src/Resources/Balrog.wav")));
+		Clip title = AudioSystem.getClip();
+		title.open(AudioSystem.getAudioInputStream(new File("src/Resources/Super Mario Bros. 3.wav")));
 
-		//Clip song7 = AudioSystem.getClip();
-
-		//song7.open(AudioSystem.getAudioInputStream(new File("src/Resources/BalrogSF.wav")));
-
+		
 		if(song == 1) {
 
 			song1.start();
@@ -107,11 +103,27 @@ public class Game extends Application{
 
 			song6.start();
 
-		}//else if (song ==7) {
+		}else if (song ==7) {
 
-	//		song7.start();
+			song7.start();
 
-	//	}
+		}else if (song ==8) {
+
+			song8.start();
+
+		}else if (song ==9) {
+
+			song9.start();
+
+		}else if (song ==10) {
+
+			song10.start();
+
+		}else if (song ==11) {
+
+			title.start();
+
+		}
 
 
 
@@ -217,7 +229,7 @@ public class Game extends Application{
 
 
 
-		}, 1000, 1000);
+		}, 750, 750);
 
 
 
