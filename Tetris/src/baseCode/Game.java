@@ -28,7 +28,7 @@ public class Game extends Application{
 	int shape = (int) (Math.random() * 7);
 	ArrayList<Square> square = new ArrayList<Square>();
 	final int squareSize = 25;
-	int song = 10;//(int) (Math.random() * 11)+1;
+	int song = (int) (Math.random() * 12)+1;
 
 	public static void main (String[] args) {
 
@@ -75,6 +75,8 @@ public class Game extends Application{
 		song9.open(AudioSystem.getAudioInputStream(new File("src/Resources/TheManWithTheMachineGun.wav")));
 		Clip song10 = AudioSystem.getClip();
 		song10.open(AudioSystem.getAudioInputStream(new File("src/Resources/Balrog.wav")));
+		Clip song11 = AudioSystem.getClip();
+		song11.open(AudioSystem.getAudioInputStream(new File("src/Resources/DuckTales.wav")));
 		Clip title = AudioSystem.getClip();
 		title.open(AudioSystem.getAudioInputStream(new File("src/Resources/Super Mario Bros. 3.wav")));
 
@@ -120,6 +122,10 @@ public class Game extends Application{
 			song10.start();
 
 		}else if (song ==11) {
+
+			song11.start();
+
+		}else if (song ==12) {
 
 			title.start();
 
