@@ -20,6 +20,8 @@ public class Square extends MovingObject {
 	 * The number of frames to wait before toggling the flash.
 	 */
 	int flashSpeed;
+	
+	Color tcolor;
 	/**
 	 * Calls the superclass constructor, plus sets radius, and flash parameters.
 	 * @param x
@@ -35,12 +37,13 @@ public class Square extends MovingObject {
 	 * @param bottom
 	 * The bottom edge.
 	 */
-	public Square(double x, double y, int left, int right, int top, int bottom) {
+	public Square(double x, double y, int left, int right, int top, int bottom ,Color ncolor) {
 		super(x, y, left + 10, right - 10, top + 10, bottom - 10);
 		// numbers above must match the radius
 		size = 25;
 		counter = 0;
 		flashSpeed = (int) (Math.random() * 5 + 5);
+		tcolor = ncolor;
 	}
 	/**
 	 * Controls the animation parameters. (Called once every time the ball
@@ -60,7 +63,7 @@ public class Square extends MovingObject {
 	public void draw(GraphicsContext gc) {
 		int drawX = (int) x - size;
 		int drawY = (int) y - size;
-		gc.setFill(color);
+		gc.setFill(tcolor);
 		gc.fillRect(drawX, drawY, size, size);
 	}
 	public double getX() {
