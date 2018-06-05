@@ -27,15 +27,15 @@ public class Game extends Application{
 	int shape = (int) (Math.random() * 7);
 	ArrayList<Square> square = new ArrayList<Square>();
 	final int squareSize = 25;
-	int song = (int) (Math.random() * 14)+1;
-
+	int song = (int) (Math.random() * 16)+1;
+	int dropSpeed = 1000;
+	int count = 0;
 	public static void main (String[] args) {
 		launch(args);
 	}
 	Image buffer;
 
 	@Override
-
 	public void start(Stage primaryStage) throws Exception {
 		// TODO Auto-generated method stub
 		Group group = new Group();
@@ -70,10 +70,14 @@ public class Game extends Application{
 		song12.open(AudioSystem.getAudioInputStream(new File("src/Resources/BubbleBobble.wav")));
 		Clip song13 = AudioSystem.getClip();
 		song13.open(AudioSystem.getAudioInputStream(new File("src/Resources/SuperMarioBrosUnderground.wav")));
+		Clip song14 = AudioSystem.getClip();
+		song14.open(AudioSystem.getAudioInputStream(new File("src/Resources/Super Mario Bros. 3.wav")));
+		Clip song15 = AudioSystem.getClip();
+		song15.open(AudioSystem.getAudioInputStream(new File("src/Resources/Dudley.wav")));
 		Clip title = AudioSystem.getClip();
-		title.open(AudioSystem.getAudioInputStream(new File("src/Resources/Super Mario Bros. 3.wav")));
+		title.open(AudioSystem.getAudioInputStream(new File("src/Resources/Spaceball.wav")));
 
-		
+
 		if(song == 1) {
 
 			song1.start();
@@ -128,8 +132,14 @@ public class Game extends Application{
 
 		}else if (song ==14) {
 
-			title.start();
+			song14.start();
 
+		}else if (song ==15) {
+
+			song15.start();
+
+		}else if (song == 16) {
+			title.start();
 		}
 
 		//	for (int i = 0; i < square.size(); i++) {
@@ -142,27 +152,22 @@ public class Game extends Application{
 
 		//	square.get(i).setYSpeed(0);
 
-		//	square.get(i).setColor(Color.BLACK);
-
 		//	}
 
-		createBlocks(shape);
-
-		//	Button start = new Button("Start");
-
-		//	Button instructions= new Button("Rules");
-
-		//	start.setLayoutX((squareSize*2)0);
-
-		//	start.setLayoutY(270);
-
-		//	instructions.setLayoutX((squareSize*2)0);
-
-		//	instructions.setLayoutY(295);
-
-		//	group.getChildren().add(start);
-
-		//	group.getChildren().add(instructions);
+		//	createBlocks(shape);
+		/**boolean startPressed= false;
+			title.start();
+			do {
+			Button start = new Button("Start");
+			Button instructions= new Button("Rules");
+			start.setLayoutX(200);
+			start.setLayoutY(270);
+			instructions.setLayoutX(200);
+			instructions.setLayoutY(295);
+			group.getChildren().add(start);
+			group.getChildren().add(instructions);
+			startPressed = start.isPressed();
+	}while(startPressed = false);**/
 
 		GridPane gridpane = new GridPane();
 
@@ -193,14 +198,31 @@ public class Game extends Application{
 			}
 
 		});
-
+		//Makes block drop one row every second.
 		time.schedule(new TimerTask() {
 			@Override
 			public void run() {
-				//Makes block drop one row every second.
 				dropBlocks();
 			}
-		}, 750, 750);
+		}, dropSpeed, dropSpeed);
+
+		//Creates a random shape every 4 seconds
+		time.schedule(new TimerTask() {
+			@Override
+			public void run() {
+				createBlocks(randomShape());
+			}
+		}, 0,4000);
+
+		//		time.schedule(new TimerTask() {
+		//			@Override
+		//			public void run() {
+		//			
+		//				rowCheck();
+		//			
+		//
+		//			}
+		//		}, 0,10);
 
 		group.getChildren().add(gridpane);
 		canvas.setFocusTraversable(true);
@@ -290,7 +312,7 @@ public class Game extends Application{
 				}
 				Square s = new Square(x,y,squareSize,squareSize,squareSize,squareSize);
 				square.add(s);
-				square.get(i).setColor(Color.BLACK);
+				square.get(i).setColor(Color.LIGHTGREEN);
 				x=250;
 				y=25;
 			}
@@ -341,7 +363,7 @@ public class Game extends Application{
 						x=x +squareSize;
 					}
 				}else if(i==2) {
-					
+
 				}
 				Square s = new Square(x,y,squareSize,squareSize,squareSize,squareSize);
 				square.add(s);
@@ -389,16 +411,18 @@ public class Game extends Application{
 			}
 		}
 	}
+	public int randomShape() {
+		return (int) (Math.random() * 7);
+	}
+	public void removeRows(int y) {	
+		for (int x = 0; x<425;x=x+25) {
+			for(int i =0;i <square.size();i ++) {
+				if(square.get(i).getX() == x && y == square.get(i).getY()) {
+					square.remove(i);
+				}
 
-	public void removeRows() {
-
-		for(int i = 0; i< square.size(); i ++) {
-
-			square.get(i).getX();
-
-			square.get(i).getY();
+			}
 		}
-
 	}
 
 	public void dropBlocks() {
@@ -410,7 +434,25 @@ public class Game extends Application{
 		}
 
 	}
+	public void rowCheck() {
 
+	
+		for(int y=0; y<575;y=y+squareSize) {
+			for (int x = 0; x<425;x=x+squareSize) {
+				for(int i =0;i <square.size();i ++) {
+					if(square.get(i).getX() == x && y == square.get(i).getY()) {
+						count ++;
+					}
+
+				}
+			}
+			if(count == 18) {
+
+				removeRows(y);
+			}
+			count = 0;
+		}
+	}
 	public void rotateBlock(int shape) {
 
 		if (shape == 1) {
@@ -418,7 +460,6 @@ public class Game extends Application{
 			//Line
 
 			double x = square.get(2).getX();
-
 			double y =square.get(2).getY();
 
 			for(int i = 0; i <4;i ++) {
