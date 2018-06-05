@@ -26,8 +26,9 @@ public class Game extends Application{
 	int shape = (int) (Math.random() * 7);
 	ArrayList<Square> square = new ArrayList<Square>();
 	final int squareSize = 25;
-	int song = (int) (Math.random() * 15)+1;
+	int song = (int) (Math.random() * 16)+1;
 	int dropSpeed = 1000;
+	int count = 0;
 	public static void main (String[] args) {
 		launch(args);
 	}
@@ -70,6 +71,8 @@ public class Game extends Application{
 		song13.open(AudioSystem.getAudioInputStream(new File("src/Resources/SuperMarioBrosUnderground.wav")));
 		Clip song14 = AudioSystem.getClip();
 		song14.open(AudioSystem.getAudioInputStream(new File("src/Resources/Super Mario Bros. 3.wav")));
+		Clip song15 = AudioSystem.getClip();
+		song15.open(AudioSystem.getAudioInputStream(new File("src/Resources/Dudley.wav")));
 		Clip title = AudioSystem.getClip();
 		title.open(AudioSystem.getAudioInputStream(new File("src/Resources/Spaceball.wav")));
 
@@ -128,9 +131,13 @@ public class Game extends Application{
 
 		}else if (song ==14) {
 
-			song13.start();
+			song14.start();
 
-		}else if (song == 15) {
+		}else if (song ==15) {
+
+			song15.start();
+
+		}else if (song == 16) {
 			title.start();
 		}
 
@@ -146,10 +153,10 @@ public class Game extends Application{
 
 		//	}
 
-	//	createBlocks(shape);
+		//	createBlocks(shape);
 		/**boolean startPressed= false;
-title.start();
-do {
+			title.start();
+			do {
 			Button start = new Button("Start");
 			Button instructions= new Button("Rules");
 			start.setLayoutX(200);
@@ -205,16 +212,16 @@ do {
 				createBlocks(randomShape());
 			}
 		}, 0,4000);
-		
-		time.schedule(new TimerTask() {
-			@Override
-			public void run() {
-			if(rowCheck()== true) {
-				removeRows();
-			}
 
-			}
-		}, 0,4000);
+		//		time.schedule(new TimerTask() {
+		//			@Override
+		//			public void run() {
+		//			
+		//				rowCheck();
+		//			
+		//
+		//			}
+		//		}, 0,10);
 
 		group.getChildren().add(gridpane);
 		canvas.setFocusTraversable(true);
@@ -304,7 +311,7 @@ do {
 				}
 				Square s = new Square(x,y,squareSize,squareSize,squareSize,squareSize);
 				square.add(s);
-				square.get(i).setColor(Color.BLACK);
+				square.get(i).setColor(Color.LIGHTGREEN);
 				x=250;
 				y=25;
 			}
@@ -406,15 +413,15 @@ do {
 	public int randomShape() {
 		return (int) (Math.random() * 7);
 	}
-	public void removeRows() {
+	public void removeRows(int y) {	
+		for (int x = 0; x<425;x=x+25) {
+			for(int i =0;i <square.size();i ++) {
+				if(square.get(i).getX() == x && y == square.get(i).getY()) {
+					square.remove(i);
+				}
 
-		for(int i = 0; i< square.size(); i ++) {
-
-			square.get(i).getX();
-
-			square.get(i).getY();
+			}
 		}
-
 	}
 
 	public void dropBlocks() {
@@ -426,24 +433,25 @@ do {
 		}
 
 	}
-public boolean rowCheck() {
-	boolean rowFilled= false;
-	int count = 0;
-	for(int y=0; y<575;y=y+25) {
-		for (int x = 0; x<425;x=x+25) {
-			for(int i =0;i <square.size();i ++) {
-				if(square.get(i).getX() == x && y == square.get(i).getY()) {
-					count ++;
+	public void rowCheck() {
+
+	
+		for(int y=0; y<575;y=y+squareSize) {
+			for (int x = 0; x<425;x=x+squareSize) {
+				for(int i =0;i <square.size();i ++) {
+					if(square.get(i).getX() == x && y == square.get(i).getY()) {
+						count ++;
+					}
+
 				}
-				
 			}
+			if(count == 18) {
+
+				removeRows(y);
+			}
+			count = 0;
 		}
 	}
-	if(count == 18) {
-		rowFilled = true;
-	}
-	return rowFilled;
-}
 	public void rotateBlock(int shape) {
 
 		if (shape == 1) {
