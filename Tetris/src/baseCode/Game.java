@@ -26,7 +26,7 @@ public class Game extends Application{
 	int shape = (int) (Math.random() * 7);
 	ArrayList<Square> square = new ArrayList<Square>();
 	final int squareSize = 25;
-	int song = (int) (Math.random() * 16)+1;
+	int songNum = 15;//(int) (Math.random() * 16)+1;
 	int dropSpeed = 1000;
 	int count = 0;
 	public static void main (String[] args) {
@@ -77,67 +77,65 @@ public class Game extends Application{
 		title.open(AudioSystem.getAudioInputStream(new File("src/Resources/Spaceball.wav")));
 
 
-		if(song == 1) {
+		if(songNum == 1) {
 
 			song1.start();
 
-		}else if (song ==2) {
+		}else if (songNum ==2) {
 
 			song2.start();
 
-		}else if (song ==3) {
+		}else if (songNum ==3) {
 
 			song3.start();
 
-		}else if (song ==4) {
+		}else if (songNum ==4) {
 
 			song4.start();
 
-		}else if (song ==5) {
+		}else if (songNum ==5) {
 
 			song5.start();
 
-		}else if (song ==6) {
+		}else if (songNum ==6) {
 
 			song6.start();
 
-		}else if (song ==7) {
+		}else if (songNum ==7) {
 
 			song7.start();
 
-		}else if (song ==8) {
+		}else if (songNum ==8) {
 
 			song8.start();
 
-		}else if (song ==9) {
+		}else if (songNum ==9) {
 
 			song9.start();
 
-		}else if (song ==10) {
+		}else if (songNum ==10) {
 
 			song10.start();
 
-		}else if (song ==11) {
-
+		}else if (songNum ==11) {
 			song11.start();
-
-		}else if (song ==12) {
+		}else if (songNum ==12) {
 
 			song12.start();
 
-		}else if (song ==13) {
+		}else if (songNum ==13) {
 
 			song13.start();
 
-		}else if (song ==14) {
+		}else if (songNum ==14) {
 
 			song14.start();
 
-		}else if (song ==15) {
+		}else if (songNum ==15) {
 
 			song15.start();
 
-		}else if (song == 16) {
+		}else if (songNum == 16) {
 			title.start();
 		}
 
@@ -153,20 +151,19 @@ public class Game extends Application{
 
 		//	}
 
-		//	createBlocks(shape);
-		/**boolean startPressed= false;
-			title.start();
-			do {
-			Button start = new Button("Start");
-			Button instructions= new Button("Rules");
-			start.setLayoutX(200);
-			start.setLayoutY(270);
-			instructions.setLayoutX(200);
-			instructions.setLayoutY(295);
-			group.getChildren().add(start);
-			group.getChildren().add(instructions);
-			startPressed = start.isPressed();
-	}while(startPressed = false);**/
+//		boolean startPressed= false;
+//			title.start();
+//			do {
+//			Button start = new Button("Start");
+//			Button instructions= new Button("Rules");
+//			start.setLayoutX(200);
+//			start.setLayoutY(270);
+//			instructions.setLayoutX(200);
+//			instructions.setLayoutY(295);
+//			group.getChildren().add(start);
+//			group.getChildren().add(instructions);
+//			startPressed = start.isPressed();
+//	}while(startPressed = false);
 
 		GridPane gridpane = new GridPane();
 
@@ -194,9 +191,15 @@ public class Game extends Application{
 
 				moveBlocks(direction);
 
+			}else if(event.getCode() == KeyCode.S) {
+				direction = "Down";
+				moveBlocks(direction);
+
 			}
 
 		});
+		
+	
 		//Makes block drop one row every second.
 		time.schedule(new TimerTask() {
 			@Override
@@ -211,17 +214,14 @@ public class Game extends Application{
 			public void run() {
 				createBlocks(randomShape());
 			}
-		}, 0,4000);
+		}, 0,3000);
 
-		//		time.schedule(new TimerTask() {
-		//			@Override
-		//			public void run() {
-		//			
-		//				rowCheck();
-		//			
-		//
-		//			}
-		//		}, 0,10);
+				time.schedule(new TimerTask() {
+					@Override
+					public void run() {
+						rowCheck();
+					}
+				}, 0,1);
 
 		group.getChildren().add(gridpane);
 		canvas.setFocusTraversable(true);
@@ -274,7 +274,11 @@ public class Game extends Application{
 			for(int i = square.size()-4; i <square.size();i ++) {
 				square.get(i).setX((int)(square.get(i).getX()+ squareSize));
 			}
+		}else if (direction == "Down") {
+	
+			dropBlocks();
 		}
+		
 	}
 
 	public void createBlocks(int shape) {
@@ -412,17 +416,12 @@ public class Game extends Application{
 				if(square.get(i).getX() == x && y == square.get(i).getY()) {
 					square.remove(i);
 				}
-
 			}
 		}
 	}
-
 	public void dropBlocks() {
-
 		for(int i = square.size()-4; i <square.size();i ++) {
-
 			square.get(i).setY((int)(square.get(i).getY()+ squareSize));
-
 		}
 
 	}
@@ -487,5 +486,6 @@ public class Game extends Application{
 		}
 
 	}
+	
 
 }
