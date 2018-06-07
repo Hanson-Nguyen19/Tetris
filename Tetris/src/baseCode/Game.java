@@ -23,6 +23,7 @@ import javafx.stage.Stage;
 
 public class Game extends Application{
 	Timer time = new Timer();
+	int delay = 0;
 	int shape = (int) (Math.random() * 7);
 	ArrayList<Square> square = new ArrayList<Square>();
 	final int squareSize = 25;
@@ -155,6 +156,28 @@ public class Game extends Application{
 			credit.start();
 		}
 
+		
+		boolean startPressed= false;
+//		title.start();
+		Button start = new Button("Start");
+		Button instructions= new Button("Rules");
+		start.setLayoutX(200);
+		start.setLayoutY(270);
+		instructions.setLayoutX(200);
+		instructions.setLayoutY(295);
+		group.getChildren().add(start);
+		group.getChildren().add(instructions);
+		group.getChildren().add(canvas);
+		do {
+	
+		if(start.isPressed()) {
+			startPressed = true;
+		}else if(instructions.isPressed()) {
+			System.out.println("You");
+		}
+}while(startPressed == false);	
+
+
 		//	for (int i = 0; i < square.size(); i++) {
 
 		//	for (int i = 0; i < (squareSize*2); i++) {
@@ -166,6 +189,7 @@ public class Game extends Application{
 		//	square.get(i).setYSpeed(0);
 
 		//	}
+
 
 
 
@@ -210,17 +234,26 @@ public class Game extends Application{
 			@Override
 			public void run() {
 				//Makes block drop one row every second.
-				System.out.println(hit(square.size()-4));
-				//TODO find out why hit does not trigger when blocks collide
-				if(hit(square.size()-4)) {
-					createBlocks(randomShape());
-				}
-				else {
 					dropBlocks();
-				}
+
 			}	
 
 		}, dropSpeed, dropSpeed);
+		
+				//TODO fix multiplying bug when spawning blocks on hit
+				time.schedule(new TimerTask() {
+
+					@Override
+					public void run() {
+						
+						if(square.size() ==0 || hit() == true) {
+							
+							createBlocks(randomShape());
+						}
+						
+					}
+					
+				}, 900, 100);
 
 		time.schedule(new TimerTask() {
 			@Override
@@ -492,10 +525,10 @@ public class Game extends Application{
 
 	}
 
-	public boolean hit(int i) {
+	public boolean hit() {
 
 
-		if(square.get(i).getY()+squareSize == 625 || square.get(i+1).getY()+squareSize == 625 || square.get(i+2).getY()+squareSize == 625 || square.get(i+3).getY()+squareSize == 625) {
+		if(square.get(square.size()-4).getY()+squareSize == 625 || square.get(square.size()-3).getY()+squareSize == 625 || square.get(square.size()-2).getY()+squareSize == 625 || square.get(square.size()-1).getY()+squareSize == 625) {
 			return true;
 		}
 
@@ -504,9 +537,14 @@ public class Game extends Application{
 			for(int l =square.size()-5;l<square.size();l++) {
 
 				if(square.get(l).getY()+squareSize == square.get(t).getY()) {
+					
+					for(double i = square.get(t).getX(); i < square.get(t).getX() + squareSize; i+=0.1) {
+						
+						if(i == square.get(l).getX()) {
+							System.out.println("Block: " + t + " is coliding with Block: " + l);
+							return true;
+						}
 
-					if(square.get(l).getX() <= square.get(t).getX() && square.get(l).getX()+squareSize <= square.get(t).getX()) {
-						return true;
 					}
 				}
 			}
