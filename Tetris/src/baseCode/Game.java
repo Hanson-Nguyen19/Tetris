@@ -27,7 +27,7 @@ public class Game extends Application{
 	int shape = (int) (Math.random() * 7);
 	ArrayList<Square> square = new ArrayList<Square>();
 	final int squareSize = 25;
-	int songNum = (int) (Math.random() * 19)+1;
+	int songNum = 18;//(int) (Math.random() * 20)+1;
 	int dropSpeed = 1000;
 	int count = 0;
 	public static void main (String[] args) {
@@ -76,34 +76,36 @@ public class Game extends Application{
 		song16.open(AudioSystem.getAudioInputStream(new File("src/Resources/Spider Dance.wav")));
 		Clip song17 = AudioSystem.getClip();
 		song17.open(AudioSystem.getAudioInputStream(new File("src/Resources/Spaceball.wav")));
+		Clip song18 = AudioSystem.getClip();
+		song18.open(AudioSystem.getAudioInputStream(new File("src/Resources/PAC-MAN.wav")));
 		Clip title = AudioSystem.getClip();
 		title.open(AudioSystem.getAudioInputStream(new File("src/Resources/Excitebike Arena.wav")));
 		Clip credit = AudioSystem.getClip();
 		credit.open(AudioSystem.getAudioInputStream(new File("src/Resources/AssassinsCreed III.wav")));
 
-//		boolean startPressed= true;
-//		title.start();
-//		Button start = new Button("Start");
-//		Button instructions= new Button("Rules");
-//		start.setLayoutX(200);
-//		start.setLayoutY(270);
-//		instructions.setLayoutX(200);
-//		instructions.setLayoutY(295);
-//		group.getChildren().add(start);
-//		group.getChildren().add(instructions);
-//		group.getChildren().add(canvas);
-//		primaryStage.setScene(scene);
-//		primaryStage.show();
-//
-//		do {
-//			if(start.isPressed()) {
-//				startPressed = true;
-//			}else if(instructions.isPressed()) {
-//				System.out.println("Rotate Blocks with a mouse click, move left or right with the 'A' and 'D' keys,");
-//				System.out.println("Ad");
-//			}
-//		}while(startPressed == false);	
-//		title.stop();
+		//		boolean startPressed= true;
+		//		title.start();
+		//		Button start = new Button("Start");
+		//		Button instructions= new Button("Rules");
+		//		start.setLayoutX(200);
+		//		start.setLayoutY(270);
+		//		instructions.setLayoutX(200);
+		//		instructions.setLayoutY(295);
+		//		group.getChildren().add(start);
+		//		group.getChildren().add(instructions);
+		//		group.getChildren().add(canvas);
+		//		primaryStage.setScene(scene);
+		//		primaryStage.show();
+		//
+		//		do {
+		//			if(start.isPressed()) {
+		//				startPressed = true;
+		//			}else if(instructions.isPressed()) {
+		//				System.out.println("Rotate Blocks with a mouse click, move left or right with the 'A' and 'D' keys,");
+		//				System.out.println("Ad");
+		//			}
+		//		}while(startPressed == false);	
+		//		title.stop();
 		if(songNum == 1) {
 			song1.start();
 		}else if (songNum ==2) {
@@ -134,30 +136,36 @@ public class Game extends Application{
 			song14.start();
 		}else if (songNum ==15) {
 			song15.start();
-		}else if (songNum == 16) {
+		}else if (songNum ==16) {
+			song16.start();
+		}else if (songNum ==17) {
+			song17.start();
+		}else if (songNum ==18) {
+			song18.start();
+		}else if (songNum == 19) {
 			title.start();
-		}else if (songNum == 16) {
+		}else if (songNum == 20) {
 			credit.start();
 		}
 
-//		boolean startPressed= false;
-//		//		title.start();
-//		Button start = new Button("Start");
-//		Button instructions= new Button("Rules");
-//		start.setLayoutX(200);
-//		start.setLayoutY(270);
-//		instructions.setLayoutX(200);
-//		instructions.setLayoutY(295);
-//		group.getChildren().add(start);
-//		group.getChildren().add(instructions);
-//		group.getChildren().add(canvas);
-//		do {
-//			if(start.isPressed()) {
-//				startPressed = true;
-//			}else if(instructions.isPressed()) {
-//				System.out.println("You");
-//			}
-//	
+		//		boolean startPressed= false;
+		//		//		title.start();
+		//		Button start = new Button("Start");
+		//		Button instructions= new Button("Rules");
+		//		start.setLayoutX(200);
+		//		start.setLayoutY(270);
+		//		instructions.setLayoutX(200);
+		//		instructions.setLayoutY(295);
+		//		group.getChildren().add(start);
+		//		group.getChildren().add(instructions);
+		//		group.getChildren().add(canvas);
+		//		do {
+		//			if(start.isPressed()) {
+		//				startPressed = true;
+		//			}else if(instructions.isPressed()) {
+		//				System.out.println("You");
+		//			}
+		//	
 
 		//		title.stop();
 
@@ -193,21 +201,21 @@ public class Game extends Application{
 			}	
 
 		}, dropSpeed, dropSpeed);
-		
-				//TODO fix multiplying bug when spawning blocks on hit
-				time.schedule(new TimerTask() {
 
-					@Override
-					public void run() {
-						
-						if(square.size() ==0 || hit() == true) {
-							
-							createBlocks(randomShape());
-						}
-						
-					}
-					
-				}, 900, 100);
+		//TODO fix multiplying bug when spawning blocks on hit
+		time.schedule(new TimerTask() {
+
+			@Override
+			public void run() {
+
+				if(square.size() ==0 || hit() == true) {
+
+					createBlocks(randomShape());
+				}
+
+			}
+
+		}, 900, 100);
 
 		time.schedule(new TimerTask() {
 			@Override
@@ -217,7 +225,7 @@ public class Game extends Application{
 			}
 		}, 0,1);
 		//TODO fix multiplying bug when spawning blocks on hit
-		
+
 		canvas.setFocusTraversable(true);
 		Thread game = new Thread(new Runnable() {
 			/**
@@ -423,7 +431,7 @@ public class Game extends Application{
 		}
 	}
 	/**
-	 * Checks if a row has been completed inorder to delete it
+	 * Checks if a row has been completed in order to delete it
 	 */
 	public void rowCheck() {
 		for(int y=0; y<575;y=y+squareSize) {
@@ -472,27 +480,22 @@ public class Game extends Application{
 	 */
 	public boolean hit() {
 		if(square.get(square.size()-4).getY()+squareSize == 625 || square.get(square.size()-3).getY()+squareSize == 625 || square.get(square.size()-2).getY()+squareSize == 625 || square.get(square.size()-1).getY()+squareSize == 625) {
-
 			return true;
 		}
 		for(int t = 0; t<square.size()-4; t++) {
 			for(int l =square.size()-5;l<square.size();l++) {
 				if(square.get(l).getY()+squareSize == square.get(t).getY()) {
 
-					if(square.get(l).getX() <= square.get(t).getX() && square.get(l).getX()+squareSize <= square.get(t).getX()) {
-						return true;
-					}
+					for(double i = square.get(l).getX(); i < square.get(l).getX() + squareSize; i+=0.1) {
 
-					for(double i = square.get(t).getX(); i < square.get(t).getX() + squareSize; i+=0.1) {
-
-						if(i == square.get(l).getX()) {
-							System.out.println("Block: " + t + " is coliding with Block: " + l);
+						if(i == square.get(t).getX()) {
+							System.out.println("Block: " + l + " is coliding with Block: " + t);
 							return true;
 						}
 
 					}
-				}
-			}
+				} 	
+			}	
 		}
 		return false;
 	}
