@@ -26,7 +26,7 @@ public class Game extends Application{
 	int shape = (int) (Math.random() * 7);
 	ArrayList<Square> square = new ArrayList<Square>();
 	final int squareSize = 25;
-	int songNum = (int) (Math.random() * 17)+1;
+	int songNum = (int) (Math.random() * 18)+1;
 	int dropSpeed = 1000;
 	int count = 0;
 	public static void main (String[] args) {
@@ -36,7 +36,6 @@ public class Game extends Application{
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
-		// TODO Auto-generated method stub
 		Group group = new Group();
 		Scene scene = new Scene(group, 450, 600);
 		primaryStage.setTitle("Tetris");
@@ -73,12 +72,35 @@ public class Game extends Application{
 		song14.open(AudioSystem.getAudioInputStream(new File("src/Resources/Super Mario Bros. 3.wav")));
 		Clip song15 = AudioSystem.getClip();
 		song15.open(AudioSystem.getAudioInputStream(new File("src/Resources/Dudley.wav")));
+		Clip song16 = AudioSystem.getClip();
+		song16.open(AudioSystem.getAudioInputStream(new File("src/Resources/Spider Dance.wav")));
 		Clip title = AudioSystem.getClip();
 		title.open(AudioSystem.getAudioInputStream(new File("src/Resources/Spaceball.wav")));
 		Clip credit = AudioSystem.getClip();
-		credit.open(AudioSystem.getAudioInputStream(new File("src/Resources/Dudley.wav")));
+		credit.open(AudioSystem.getAudioInputStream(new File("src/Resources/AssassinsCreed III.wav")));
 
-
+		
+		boolean startPressed= false;
+		title.start();
+		Button start = new Button("Start");
+		Button instructions= new Button("Rules");
+		start.setLayoutX(200);
+		start.setLayoutY(270);
+		instructions.setLayoutX(200);
+		instructions.setLayoutY(295);
+		group.getChildren().add(start);
+		group.getChildren().add(instructions);
+		group.getChildren().add(canvas);
+		do {
+	
+		if(start.isPressed()) {
+			startPressed = true;
+		}else if(instructions.isPressed()) {
+			System.out.println("You");
+		}
+}while(startPressed == false);	
+		title.stop();
+		
 		if(songNum == 1) {
 
 			song1.start();
@@ -124,9 +146,11 @@ public class Game extends Application{
 			song14.start();
 		}else if (songNum ==15) {
 			song15.start();
-		}else if (songNum == 16) {
+		}else if (songNum ==16) {
+			song16.start();
+		}else if (songNum == 17) {
 			title.start();
-		}else if (songNum == 16) {
+		}else if (songNum == 18) {
 			credit.start();
 		}
 
@@ -143,19 +167,7 @@ public class Game extends Application{
 		//	}
 
 
-		//		boolean startPressed= false;
-		//			title.start();
-		//			do {
-		//			Button start = new Button("Start");
-		//			Button instructions= new Button("Rules");
-		//			start.setLayoutX(200);
-		//			start.setLayoutY(270);
-		//			instructions.setLayoutX(200);
-		//			instructions.setLayoutY(295);
-		//			group.getChildren().add(start);
-		//			group.getChildren().add(instructions);
-		//			startPressed = start.isPressed();
-		//	}while(startPressed = false);
+				
 
 		GridPane gridpane = new GridPane();
 
@@ -236,11 +248,10 @@ public class Game extends Application{
 				}
 			}
 		});
-
-		group.getChildren().add(canvas);
+		
 		primaryStage.setScene(scene);
-		game.start();
 		primaryStage.show();
+		game.start();
 	}
 
 	public void draw(GraphicsContext gc) {
