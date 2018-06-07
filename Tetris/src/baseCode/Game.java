@@ -23,10 +23,11 @@ import javafx.stage.Stage;
 
 public class Game extends Application{
 	Timer time = new Timer();
+	int delay = 0;
 	int shape = (int) (Math.random() * 7);
 	ArrayList<Square> square = new ArrayList<Square>();
 	final int squareSize = 25;
-	int songNum = (int) (Math.random() * 17)+1;
+	int songNum = 8;//(int) (Math.random() * 18)+1;
 	int dropSpeed = 1000;
 	int count = 0;
 	public static void main (String[] args) {
@@ -35,12 +36,12 @@ public class Game extends Application{
 	Image buffer;
 	@Override
 	public void start(Stage primaryStage) throws Exception {
-		// TODO Auto-generated method stub
 		Group group = new Group();
 		Scene scene = new Scene(group, 450, 600);
 		primaryStage.setTitle("Tetris");
 		Canvas canvas = new Canvas(450, 600);
 		final GraphicsContext gc = canvas.getGraphicsContext2D();
+
 		Clip song1 = AudioSystem.getClip();
 		song1.open(AudioSystem.getAudioInputStream(new File("src/Resources/Castle Rock.wav")));
 		Clip song2 = AudioSystem.getClip();
@@ -110,25 +111,37 @@ public class Game extends Application{
 		}else if (songNum == 16) {
 			credit.start();
 		}
+
+		boolean startPressed= false;
+		//		title.start();
+		Button start = new Button("Start");
+		Button instructions= new Button("Rules");
+		start.setLayoutX(200);
+		start.setLayoutY(270);
+		instructions.setLayoutX(200);
+		instructions.setLayoutY(295);
+		group.getChildren().add(start);
+		group.getChildren().add(instructions);
+		group.getChildren().add(canvas);
+		do {
+			if(start.isPressed()) {
+				startPressed = true;
+			}else if(instructions.isPressed()) {
+				System.out.println("You");
+			}
+
+		}while(startPressed == false);	
+
+		//		title.stop();
+
+
 		//	for (int i = 0; i < square.size(); i++) {
 		//	for (int i = 0; i < (squareSize*2); i++) {
 		//	square.add(new Square(squareSize, squareSize, 0, (int)canvas.getWidth(), 0, (int)canvas.getHeight()));
 		//	square.get(i).setXSpeed(0);
 		//	square.get(i).setYSpeed(0);
 		//	}
-		//		boolean startPressed= false;
-		//			title.start();
-		//			do {
-		//			Button start = new Button("Start");
-		//			Button instructions= new Button("Rules");
-		//			start.setLayoutX(200);
-		//			start.setLayoutY(270);
-		//			instructions.setLayoutX(200);
-		//			instructions.setLayoutY(295);
-		//			group.getChildren().add(start);
-		//			group.getChildren().add(instructions);
-		//			startPressed = start.isPressed();
-		//	}while(startPressed = false);
+
 		GridPane gridpane = new GridPane();
 		for (int i = 0; i < squareSize; i++) {
 			RowConstraints row = new RowConstraints(60);
@@ -152,23 +165,34 @@ public class Game extends Application{
 			@Override
 			public void run() {
 				//Makes block drop one row every second.
-				System.out.println(hit(square.size()-4));
-				//TODO find out why hit does not trigger when blocks collide
-				if(hit(square.size()-4)) {
-					createBlocks(randomShape());
-				}
-				else {
-					dropBlocks();
-				}
+				dropBlocks();
+
 			}	
 
 		}, dropSpeed, dropSpeed);
+
 		time.schedule(new TimerTask() {
 			@Override
 			public void run() {
+
 				rowCheck();
 			}
 		}, 0,1);
+		//TODO fix multiplying bug when spawning blocks on hit
+		time.schedule(new TimerTask() {
+
+			@Override
+			public void run() {
+
+				if(square.size() ==0 || hit() == true) {
+
+					createBlocks(randomShape());
+				}
+
+			}
+
+		}, 900, 100);
+
 		group.getChildren().add(gridpane);
 		canvas.setFocusTraversable(true);
 		Thread game = new Thread(new Runnable() {
@@ -186,10 +210,11 @@ public class Game extends Application{
 				}
 			}
 		});
+
 		group.getChildren().add(canvas);
 		primaryStage.setScene(scene);
-		game.start();
 		primaryStage.show();
+		game.start();
 	}
 	public void draw(GraphicsContext gc) {
 		gc.setFill(Color.WHITE);
@@ -415,20 +440,31 @@ public class Game extends Application{
 			//inverted L
 		}
 	}
+
 	/**
 	 * Hit Detection to determine if the random blocks can stack on top of each other
-	 * @param i
 	 * @return
 	 */
-	public boolean hit(int i) {
-		if(square.get(i).getY()+squareSize == 625 || square.get(i+1).getY()+squareSize == 625 || square.get(i+2).getY()+squareSize == 625 || square.get(i+3).getY()+squareSize == 625) {
+	public boolean hit() {
+		if(square.get(square.size()-4).getY()+squareSize == 625 || square.get(square.size()-3).getY()+squareSize == 625 || square.get(square.size()-2).getY()+squareSize == 625 || square.get(square.size()-1).getY()+squareSize == 625) {
+
 			return true;
 		}
 		for(int t = 0; t<square.size()-4; t++) {
 			for(int l =square.size()-5;l<square.size();l++) {
 				if(square.get(l).getY()+squareSize == square.get(t).getY()) {
+
 					if(square.get(l).getX() <= square.get(t).getX() && square.get(l).getX()+squareSize <= square.get(t).getX()) {
 						return true;
+					}
+
+					for(double i = square.get(t).getX(); i < square.get(t).getX() + squareSize; i+=0.1) {
+
+						if(i == square.get(l).getX()) {
+							System.out.println("Block: " + t + " is coliding with Block: " + l);
+							return true;
+						}
+
 					}
 				}
 			}
