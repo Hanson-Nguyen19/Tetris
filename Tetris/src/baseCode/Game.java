@@ -140,25 +140,24 @@ public class Game extends Application{
 			credit.start();
 		}
 
-		boolean startPressed= false;
-		//		title.start();
-		Button start = new Button("Start");
-		Button instructions= new Button("Rules");
-		start.setLayoutX(200);
-		start.setLayoutY(270);
-		instructions.setLayoutX(200);
-		instructions.setLayoutY(295);
-		group.getChildren().add(start);
-		group.getChildren().add(instructions);
-		group.getChildren().add(canvas);
-		do {
-			if(start.isPressed()) {
-				startPressed = true;
-			}else if(instructions.isPressed()) {
-				System.out.println("You");
-			}
-
-		}while(startPressed == false);	
+//		boolean startPressed= false;
+//		//		title.start();
+//		Button start = new Button("Start");
+//		Button instructions= new Button("Rules");
+//		start.setLayoutX(200);
+//		start.setLayoutY(270);
+//		instructions.setLayoutX(200);
+//		instructions.setLayoutY(295);
+//		group.getChildren().add(start);
+//		group.getChildren().add(instructions);
+//		group.getChildren().add(canvas);
+//		do {
+//			if(start.isPressed()) {
+//				startPressed = true;
+//			}else if(instructions.isPressed()) {
+//				System.out.println("You");
+//			}
+//	
 
 		//		title.stop();
 
@@ -171,11 +170,6 @@ public class Game extends Application{
 		//	square.get(i).setYSpeed(0);
 		//	}
 
-		GridPane gridpane = new GridPane();
-		for (int i = 0; i < squareSize; i++) {
-			RowConstraints row = new RowConstraints(60);
-			gridpane.getRowConstraints().add(row);
-		}
 		canvas.setOnKeyPressed(event -> {
 			String direction = " " ;
 			if(event.getCode() == KeyCode.A) {
@@ -224,8 +218,6 @@ public class Game extends Application{
 		}, 0,1);
 		//TODO fix multiplying bug when spawning blocks on hit
 		
-
-		group.getChildren().add(gridpane);
 		canvas.setFocusTraversable(true);
 		Thread game = new Thread(new Runnable() {
 			/**
