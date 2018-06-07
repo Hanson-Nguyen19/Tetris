@@ -33,7 +33,6 @@ public class Game extends Application{
 		launch(args);
 	}
 	Image buffer;
-
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		// TODO Auto-generated method stub
@@ -42,7 +41,6 @@ public class Game extends Application{
 		primaryStage.setTitle("Tetris");
 		Canvas canvas = new Canvas(450, 600);
 		final GraphicsContext gc = canvas.getGraphicsContext2D();
-
 		Clip song1 = AudioSystem.getClip();
 		song1.open(AudioSystem.getAudioInputStream(new File("src/Resources/Castle Rock.wav")));
 		Clip song2 = AudioSystem.getClip();
@@ -77,38 +75,21 @@ public class Game extends Application{
 		title.open(AudioSystem.getAudioInputStream(new File("src/Resources/Spaceball.wav")));
 		Clip credit = AudioSystem.getClip();
 		credit.open(AudioSystem.getAudioInputStream(new File("src/Resources/Dudley.wav")));
-
-
 		if(songNum == 1) {
-
 			song1.start();
-
 		}else if (songNum ==2) {
-
 			song2.start();
-
 		}else if (songNum ==3) {
-
 			song3.start();
-
 		}else if (songNum ==4) {
-
 			song4.start();
-
 		}else if (songNum ==5) {
-
 			song5.start();
-
 		}else if (songNum ==6) {
-
 			song6.start();
-
 		}else if (songNum ==7) {
-
 			song7.start();
-
 		}else if (songNum ==8) {
-
 			song8.start();
 		}else if (songNum ==9) {
 			song9.start();
@@ -129,20 +110,12 @@ public class Game extends Application{
 		}else if (songNum == 16) {
 			credit.start();
 		}
-
 		//	for (int i = 0; i < square.size(); i++) {
-
 		//	for (int i = 0; i < (squareSize*2); i++) {
-
 		//	square.add(new Square(squareSize, squareSize, 0, (int)canvas.getWidth(), 0, (int)canvas.getHeight()));
-
 		//	square.get(i).setXSpeed(0);
-
 		//	square.get(i).setYSpeed(0);
-
 		//	}
-
-
 		//		boolean startPressed= false;
 		//			title.start();
 		//			do {
@@ -156,42 +129,24 @@ public class Game extends Application{
 		//			group.getChildren().add(instructions);
 		//			startPressed = start.isPressed();
 		//	}while(startPressed = false);
-
 		GridPane gridpane = new GridPane();
-
 		for (int i = 0; i < squareSize; i++) {
-
 			RowConstraints row = new RowConstraints(60);
-
 			gridpane.getRowConstraints().add(row);
-
 		}
-
 		canvas.setOnKeyPressed(event -> {
-
 			String direction = " " ;
-
 			if(event.getCode() == KeyCode.A) {
-
 				direction = "Left";
-
 				moveBlocks(direction);
-
 			}else if(event.getCode() == KeyCode.D) {
-
 				direction = "Right";
-
 				moveBlocks(direction);
-
 			}else if(event.getCode() == KeyCode.S) {
 				direction = "Down";
 				moveBlocks(direction);
-
 			}
-
 		});
-
-
 		//Makes block drop one row every second.
 		time.schedule(new TimerTask() {
 			@Override
@@ -208,23 +163,18 @@ public class Game extends Application{
 			}	
 
 		}, dropSpeed, dropSpeed);
-
 		time.schedule(new TimerTask() {
 			@Override
 			public void run() {
 				rowCheck();
 			}
 		}, 0,1);
-
 		group.getChildren().add(gridpane);
 		canvas.setFocusTraversable(true);
-
 		Thread game = new Thread(new Runnable() {
-
 			/**
 			 * Repaints the canvas periodically.
 			 */
-
 			@Override
 			public void run() {
 				while (true) {
@@ -236,48 +186,42 @@ public class Game extends Application{
 				}
 			}
 		});
-
 		group.getChildren().add(canvas);
 		primaryStage.setScene(scene);
 		game.start();
 		primaryStage.show();
 	}
-
 	public void draw(GraphicsContext gc) {
-
 		gc.setFill(Color.WHITE);
-
 		gc.fillRect(0, 0, gc.getCanvas().getWidth(), gc.getCanvas().getHeight());
-
 		for (int i = 0; i < square.size(); i++) {
-
 			square.get(i).draw(gc);
-
 		}
-
 	}
-
+	/**
+	 * Allows the Tetris objects to move around
+	 * @param direction
+	 */
 	public void moveBlocks(String direction) {
 		if (direction =="Left"){
 			for(int i = square.size()-4; i <square.size();i ++) {
 				square.get(i).setX((int)(square.get(i).getX()- squareSize));
 			}
-
 		}else if (direction == "Right") {
 			for(int i = square.size()-4; i <square.size();i ++) {
 				square.get(i).setX((int)(square.get(i).getX()+ squareSize));
 			}
 		}else if (direction == "Down") {
-
 			dropBlocks();
 		}
-
 	}
-
+	/**
+	 * Creates the different types of Tetris blocks in the game
+	 * @param shape
+	 */
 	public void createBlocks(int shape) {
 		double x = 250;
 		double y = 25;
-
 		if(shape == 0) {
 			//2x2 square
 			for(int i = 0; i < 4; i ++) {
@@ -355,7 +299,6 @@ public class Game extends Application{
 						x=x +squareSize;
 					}
 				}else if(i==2) {
-
 				}
 				Square s = new Square(x,y,squareSize,squareSize,squareSize,squareSize,Color.PURPLE);
 				square.add(s);
@@ -400,9 +343,18 @@ public class Game extends Application{
 			}
 		}
 	}
+	/**
+	 * Generates one of the random shapes in Tetris
+	 * @return
+	 */
+
 	public int randomShape() {
 		return (int) (Math.random() * 7);
 	}
+	/**
+	 * Removes One full row when it has been completed
+	 * @param y
+	 */
 	public void removeRows(int y) {	
 		for (int x = 0; x<425;x=x+25) {
 			for(int i =0;i <square.size();i ++) {
@@ -412,97 +364,75 @@ public class Game extends Application{
 			}
 		}
 	}
+	/**
+	 * Drops the blocks
+	 */
 	public void dropBlocks() {
 		for(int i = square.size()-4; i <square.size();i ++) {
 			square.get(i).setY((int)(square.get(i).getY()+ squareSize));
 		}
-
 	}
-
+	/**
+	 * Checks if a row has been completed inorder to delete it
+	 */
 	public void rowCheck() {
-
-
 		for(int y=0; y<575;y=y+squareSize) {
 			for (int x = 0; x<425;x=x+squareSize) {
 				for(int i =0;i <square.size();i ++) {
 					if(square.get(i).getX() == x && y == square.get(i).getY()) {
 						count ++;
 					}
-
 				}
 			}
 			if(count == 18) {
-
 				removeRows(y);
 			}
 			count = 0;
 		}
 	}
+	/**
+	 * Allows User to rotate the random block to fit a certain area
+	 * @param shape
+	 */
 	public void rotateBlock(int shape) {
-
 		if (shape == 1) {
-
 			//Line
-
 			double x = square.get(2).getX();
 			double y =square.get(2).getY();
-
 			for(int i = 0; i <4;i ++) {
-
 				if(i == 2) {
-
-
-
 				}
-
 			}
-
 		}else if (shape == 2) {
-
 			//s
-
-
-
 		}else if (shape == 3) {
-
 			//z
-
-
-
 		}else if (shape == 4) {
-
 			//upside-down t
-
 		}else if (shape == 5) {
 			//L
 		}else if (shape == 6) {
 			//inverted L
 		}
-
 	}
-
+	/**
+	 * Hit Detection to determine if the random blocks can stack on top of each other
+	 * @param i
+	 * @return
+	 */
 	public boolean hit(int i) {
-
-
 		if(square.get(i).getY()+squareSize == 625 || square.get(i+1).getY()+squareSize == 625 || square.get(i+2).getY()+squareSize == 625 || square.get(i+3).getY()+squareSize == 625) {
 			return true;
 		}
-
 		for(int t = 0; t<square.size()-4; t++) {
-
 			for(int l =square.size()-5;l<square.size();l++) {
-
 				if(square.get(l).getY()+squareSize == square.get(t).getY()) {
-
 					if(square.get(l).getX() <= square.get(t).getX() && square.get(l).getX()+squareSize <= square.get(t).getX()) {
 						return true;
 					}
 				}
 			}
 		}
-
 		return false;
-
 	}
-
 }

@@ -19,7 +19,6 @@ public class Square extends MovingObject {
 	 * The number of frames to wait before toggling the flash.
 	 */
 	int flashSpeed;
-	
 	Color tcolor;
 	/**
 	 * Calls the superclass constructor, plus sets radius, and flash parameters.
@@ -66,12 +65,12 @@ public class Square extends MovingObject {
 		gc.fillRect(drawX, drawY, size, size);
 	}
 	public double getX() {
-	return x;
+		return x;
 	}
 	public double getY() {
-	return y;
+		return y;
 	}
 	public double getRadius() {
-	return size;
+		return size;
 	}
-	}
+}
