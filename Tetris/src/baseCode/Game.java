@@ -23,10 +23,11 @@ import javafx.stage.Stage;
 
 public class Game extends Application{
 	Timer time = new Timer();
+	int delay = 0;
 	int shape = (int) (Math.random() * 7);
 	ArrayList<Square> square = new ArrayList<Square>();
 	final int squareSize = 25;
-	int songNum = 15;//(int) (Math.random() * 16)+1;
+	int songNum = 8;//(int) (Math.random() * 16)+1;
 	int dropSpeed = 1000;
 	int count = 0;
 	public static void main (String[] args) {
@@ -43,88 +44,88 @@ public class Game extends Application{
 		Canvas canvas = new Canvas(450, 600);
 		final GraphicsContext gc = canvas.getGraphicsContext2D();
 
-		Clip song1 = AudioSystem.getClip();
-		song1.open(AudioSystem.getAudioInputStream(new File("src/Resources/Castle Rock.wav")));
-		Clip song2 = AudioSystem.getClip();
-		song2.open(AudioSystem.getAudioInputStream(new File("src/Resources/TetrisDance.wav")));
-		Clip song3 = AudioSystem.getClip();
-		song3.open(AudioSystem.getAudioInputStream(new File("src/Resources/Fever Dr. Mario.wav")));
-		Clip song4 = AudioSystem.getClip();
-		song4.open(AudioSystem.getAudioInputStream(new File("src/Resources/Paper Mario.wav")));
-		Clip song5 = AudioSystem.getClip();
-		song5.open(AudioSystem.getAudioInputStream(new File("src/Resources/Snow Bros.wav")));
-		Clip song6 = AudioSystem.getClip();
-		song6.open(AudioSystem.getAudioInputStream(new File("src/Resources/Super Mario Bros.wav")));
-		Clip song7 = AudioSystem.getClip();
-		song7.open(AudioSystem.getAudioInputStream(new File("src/Resources/Battletoads.wav")));
-		Clip song8 = AudioSystem.getClip();
-		song8.open(AudioSystem.getAudioInputStream(new File("src/Resources/FlashManStage.wav")));
-		//		Clip song9 = AudioSystem.getClip();
-		//		song9.open(AudioSystem.getAudioInputStream(new File("src/Resources/TheManWithTheMachineGun.wav")));
-		//		Clip song10 = AudioSystem.getClip();
-		//		song10.open(AudioSystem.getAudioInputStream(new File("src/Resources/Balrog.wav")));
-		//		Clip song11 = AudioSystem.getClip();
-		//		song11.open(AudioSystem.getAudioInputStream(new File("src/Resources/DuckTales.wav")));
-		//		Clip song12 = AudioSystem.getClip();
-		//		song12.open(AudioSystem.getAudioInputStream(new File("src/Resources/BubbleBobble.wav")));
-		//		Clip song13 = AudioSystem.getClip();
-		//		song13.open(AudioSystem.getAudioInputStream(new File("src/Resources/SuperMarioBrosUnderground.wav")));
-		//		Clip song14 = AudioSystem.getClip();
-		//		song14.open(AudioSystem.getAudioInputStream(new File("src/Resources/Super Mario Bros. 3.wav")));
-		//		Clip song15 = AudioSystem.getClip();
-		//		song15.open(AudioSystem.getAudioInputStream(new File("src/Resources/Dudley.wav")));
-		//		Clip title = AudioSystem.getClip();
-		//		title.open(AudioSystem.getAudioInputStream(new File("src/Resources/Spaceball.wav")));
-
-
-		if(songNum == 1) {
-
-			song1.start();
-
-		}else if (songNum ==2) {
-
-			song2.start();
-
-		}else if (songNum ==3) {
-
-			song3.start();
-
-		}else if (songNum ==4) {
-
-			song4.start();
-
-		}else if (songNum ==5) {
-
-			song5.start();
-
-		}else if (songNum ==6) {
-
-			song6.start();
-
-		}else if (songNum ==7) {
-
-			song7.start();
-
-		}else if (songNum ==8) {
-
-			song8.start();
-		}//else if (song ==9) {
-		//			song9.start();
-		//		}else if (song ==10) {
-		//			song10.start();
-		//		}else if (song ==11) {
-		//			song11.start();
-		//		}else if (song ==12) {
-		//			song12.start();
-		//		}else if (song ==13) {
-		//			song13.start();
-		//		}else if (song ==14) {
-		//			song14.start();
-		//		}else if (song ==15) {
-		//			song15.start();
-		//		}else if (song == 16) {
-		//			title.start();
-		//		}
+//		Clip song1 = AudioSystem.getClip();
+//		song1.open(AudioSystem.getAudioInputStream(new File("src/Resources/Castle Rock.wav")));
+//		Clip song2 = AudioSystem.getClip();
+//		song2.open(AudioSystem.getAudioInputStream(new File("src/Resources/TetrisDance.wav")));
+//		Clip song3 = AudioSystem.getClip();
+//		song3.open(AudioSystem.getAudioInputStream(new File("src/Resources/Fever Dr. Mario.wav")));
+//		Clip song4 = AudioSystem.getClip();
+//		song4.open(AudioSystem.getAudioInputStream(new File("src/Resources/Paper Mario.wav")));
+//		Clip song5 = AudioSystem.getClip();
+//		song5.open(AudioSystem.getAudioInputStream(new File("src/Resources/Snow Bros.wav")));
+//		Clip song6 = AudioSystem.getClip();
+//		song6.open(AudioSystem.getAudioInputStream(new File("src/Resources/Super Mario Bros.wav")));
+//		Clip song7 = AudioSystem.getClip();
+//		song7.open(AudioSystem.getAudioInputStream(new File("src/Resources/Battletoads.wav")));
+//		Clip song8 = AudioSystem.getClip();
+//		song8.open(AudioSystem.getAudioInputStream(new File("src/Resources/FlashManStage.wav")));
+//		//		Clip song9 = AudioSystem.getClip();
+//		//		song9.open(AudioSystem.getAudioInputStream(new File("src/Resources/TheManWithTheMachineGun.wav")));
+//		//		Clip song10 = AudioSystem.getClip();
+//		//		song10.open(AudioSystem.getAudioInputStream(new File("src/Resources/Balrog.wav")));
+//		//		Clip song11 = AudioSystem.getClip();
+//		//		song11.open(AudioSystem.getAudioInputStream(new File("src/Resources/DuckTales.wav")));
+//		//		Clip song12 = AudioSystem.getClip();
+//		//		song12.open(AudioSystem.getAudioInputStream(new File("src/Resources/BubbleBobble.wav")));
+//		//		Clip song13 = AudioSystem.getClip();
+//		//		song13.open(AudioSystem.getAudioInputStream(new File("src/Resources/SuperMarioBrosUnderground.wav")));
+//		//		Clip song14 = AudioSystem.getClip();
+//		//		song14.open(AudioSystem.getAudioInputStream(new File("src/Resources/Super Mario Bros. 3.wav")));
+//		//		Clip song15 = AudioSystem.getClip();
+//		//		song15.open(AudioSystem.getAudioInputStream(new File("src/Resources/Dudley.wav")));
+//		//		Clip title = AudioSystem.getClip();
+//		//		title.open(AudioSystem.getAudioInputStream(new File("src/Resources/Spaceball.wav")));
+//
+//
+//		if(songNum == 1) {
+//
+//			song1.start();
+//
+//		}else if (songNum ==2) {
+//
+//			song2.start();
+//
+//		}else if (songNum ==3) {
+//
+//			song3.start();
+//
+//		}else if (songNum ==4) {
+//
+//			song4.start();
+//
+//		}else if (songNum ==5) {
+//
+//			song5.start();
+//
+//		}else if (songNum ==6) {
+//
+//			song6.start();
+//
+//		}else if (songNum ==7) {
+//
+//			song7.start();
+//
+//		}else if (songNum ==8) {
+//
+//			song8.start();
+//		}//else if (song ==9) {
+////					song9.start();
+////				}else if (song ==10) {
+////					song10.start();
+////				}else if (song ==11) {
+////					song11.start();
+////				}else if (song ==12) {
+////					song12.start();
+////				}else if (song ==13) {
+////					song13.start();
+////				}else if (song ==14) {
+////					song14.start();
+////				}else if (song ==15) {
+////					song15.start();
+////				}else if (song == 16) {
+////					title.start();
+////				}
 
 		//	for (int i = 0; i < square.size(); i++) {
 
@@ -137,7 +138,6 @@ public class Game extends Application{
 		//	square.get(i).setYSpeed(0);
 
 		//	}
-
 
 //		boolean startPressed= false;
 //			title.start();
@@ -193,14 +193,8 @@ public class Game extends Application{
 			@Override
 			public void run() {
 				//Makes block drop one row every second.
-				System.out.println(hit(square.size()-4));
-				//TODO find out why hit does not trigger when blocks collide
-				if(hit(square.size()-4)) {
-					createBlocks(randomShape());
-				}
-				else {
 					dropBlocks();
-				}
+
 			}	
 
 		}, dropSpeed, dropSpeed);
@@ -208,9 +202,24 @@ public class Game extends Application{
 				time.schedule(new TimerTask() {
 					@Override
 					public void run() {
+						
 						rowCheck();
 					}
 				}, 0,1);
+				//TODO fix multiplying bug when spawning blocks on hit
+				time.schedule(new TimerTask() {
+
+					@Override
+					public void run() {
+						
+						if(square.size() ==0 || hit() == true) {
+							
+							createBlocks(randomShape());
+						}
+						
+					}
+					
+				}, 900, 100);
 
 		group.getChildren().add(gridpane);
 		canvas.setFocusTraversable(true);
@@ -477,10 +486,10 @@ public class Game extends Application{
 
 	}
 
-	public boolean hit(int i) {
+	public boolean hit() {
 
 
-		if(square.get(i).getY()+squareSize == 625 || square.get(i+1).getY()+squareSize == 625 || square.get(i+2).getY()+squareSize == 625 || square.get(i+3).getY()+squareSize == 625) {
+		if(square.get(square.size()-4).getY()+squareSize == 625 || square.get(square.size()-3).getY()+squareSize == 625 || square.get(square.size()-2).getY()+squareSize == 625 || square.get(square.size()-1).getY()+squareSize == 625) {
 			return true;
 		}
 
@@ -490,8 +499,12 @@ public class Game extends Application{
 				
 				if(square.get(l).getY()+squareSize == square.get(t).getY()) {
 					
-					if(square.get(l).getX() <= square.get(t).getX() && square.get(l).getX()+squareSize <= square.get(t).getX()) {
-						return true;
+					for(double i = square.get(t).getX(); i < square.get(t).getX() + squareSize; i+=0.1) {
+						
+						if(i == square.get(l).getX()) {
+							System.out.println("Block: " + t + " is coliding with Block: " + l);
+							return true;
+						}
 					}
 				}
 			}
