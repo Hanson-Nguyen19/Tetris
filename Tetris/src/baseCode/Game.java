@@ -26,7 +26,7 @@ public class Game extends Application{
 	int shape = (int) (Math.random() * 7);
 	ArrayList<Square> square = new ArrayList<Square>();
 	final int squareSize = 25;
-	int songNum = (int) (Math.random() * 18)+1;
+	int songNum = (int) (Math.random() * 19)+1;
 	int dropSpeed = 1000;
 	int count = 0;
 	public static void main (String[] args) {
@@ -74,33 +74,37 @@ public class Game extends Application{
 		song15.open(AudioSystem.getAudioInputStream(new File("src/Resources/Dudley.wav")));
 		Clip song16 = AudioSystem.getClip();
 		song16.open(AudioSystem.getAudioInputStream(new File("src/Resources/Spider Dance.wav")));
+		Clip song17 = AudioSystem.getClip();
+		song17.open(AudioSystem.getAudioInputStream(new File("src/Resources/Spaceball.wav")));
 		Clip title = AudioSystem.getClip();
-		title.open(AudioSystem.getAudioInputStream(new File("src/Resources/Spaceball.wav")));
+		title.open(AudioSystem.getAudioInputStream(new File("src/Resources/Excitebike Arena.wav")));
 		Clip credit = AudioSystem.getClip();
 		credit.open(AudioSystem.getAudioInputStream(new File("src/Resources/AssassinsCreed III.wav")));
 
-		
-		boolean startPressed= false;
-		title.start();
-		Button start = new Button("Start");
-		Button instructions= new Button("Rules");
-		start.setLayoutX(200);
-		start.setLayoutY(270);
-		instructions.setLayoutX(200);
-		instructions.setLayoutY(295);
-		group.getChildren().add(start);
-		group.getChildren().add(instructions);
-		group.getChildren().add(canvas);
-		do {
-	
-		if(start.isPressed()) {
-			startPressed = true;
-		}else if(instructions.isPressed()) {
-			System.out.println("You");
-		}
-}while(startPressed == false);	
-		title.stop();
-		
+//		boolean startPressed= true;
+//		title.start();
+//		Button start = new Button("Start");
+//		Button instructions= new Button("Rules");
+//		start.setLayoutX(200);
+//		start.setLayoutY(270);
+//		instructions.setLayoutX(200);
+//		instructions.setLayoutY(295);
+//		group.getChildren().add(start);
+//		group.getChildren().add(instructions);
+//		group.getChildren().add(canvas);
+//		primaryStage.setScene(scene);
+//		primaryStage.show();
+//
+//		do {
+//			if(start.isPressed()) {
+//				startPressed = true;
+//			}else if(instructions.isPressed()) {
+//				System.out.println("Rotate Blocks with a mouse click, move left or right with the 'A' and 'D' keys,");
+//				System.out.println("Ad");
+//			}
+//		}while(startPressed == false);	
+//		title.stop();
+
 		if(songNum == 1) {
 
 			song1.start();
@@ -126,11 +130,8 @@ public class Game extends Application{
 			song6.start();
 
 		}else if (songNum ==7) {
-
 			song7.start();
-
 		}else if (songNum ==8) {
-
 			song8.start();
 		}else if (songNum ==9) {
 			song9.start();
@@ -167,7 +168,7 @@ public class Game extends Application{
 		//	}
 
 
-				
+
 
 		GridPane gridpane = new GridPane();
 
@@ -248,9 +249,8 @@ public class Game extends Application{
 				}
 			}
 		});
-		
-		primaryStage.setScene(scene);
-		primaryStage.show();
+
+
 		game.start();
 	}
 
