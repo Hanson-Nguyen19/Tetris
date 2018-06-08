@@ -190,7 +190,7 @@ public class Game extends Application{
 
 			}
 
-		}, 900, 100);
+		}, 0, 1);
 
 		time.schedule(new TimerTask() {
 			@Override
