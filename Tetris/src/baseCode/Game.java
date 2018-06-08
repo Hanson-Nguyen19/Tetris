@@ -148,7 +148,6 @@ public class Game extends Application{
 		}else if (songNum == 20) {
 			credit.start();
 		}
-
 		canvas.setOnKeyPressed(event -> {
 			String direction = " " ;
 			if(event.getCode() == KeyCode.A) {
@@ -162,7 +161,6 @@ public class Game extends Application{
 				moveBlocks(direction);
 			}
 		});
-
 		canvas.setOnMouseClicked(event ->{
 			rotateBlock(2);
 		});
@@ -172,35 +170,24 @@ public class Game extends Application{
 			public void run() {
 				//Makes block drop one row every second.
 				dropBlocks();
-
 			}	
-
 		}, dropSpeed, dropSpeed);
-
 		//TODO fix multiplying bug when spawning blocks on hit
 		time.schedule(new TimerTask() {
-
 			@Override
 			public void run() {
-
 				if(square.size() ==0 || isHit() == true) {
-
 					createBlocks(randomShape());
 				}
-
 			}
-
 		}, 900, 100);
-
 		time.schedule(new TimerTask() {
 			@Override
 			public void run() {
-
 				rowCheck();
 			}
 		}, 0,1);
 		//TODO fix multiplying bug when spawning blocks on hit
-
 		canvas.setFocusTraversable(true);
 		Thread game = new Thread(new Runnable() {
 			/**
@@ -217,11 +204,9 @@ public class Game extends Application{
 				}
 			}
 		});
-
 		group.getChildren().add(canvas);
 		primaryStage.setScene(scene);
 		primaryStage.show();
-
 		game.start();
 	}
 	public void draw(GraphicsContext gc) {
@@ -381,7 +366,6 @@ public class Game extends Application{
 	 * Generates one of the random shapes in Tetris
 	 * @return
 	 */
-
 	public int randomShape() {
 		return (int) (Math.random() * 7);
 	}
@@ -499,19 +483,14 @@ public class Game extends Application{
 			}
 		}else if (shape == 3) {
 			//z
-			
 		}else if (shape == 4) {
 			//upside-down t
-			
 		}else if (shape == 5) {
 			//L
-			
 		}else if (shape == 6) {
 			//inverted L
-			
 		}
 	}
-
 	/**
 	 * Hit Detection to determine if the random blocks can stack on top of each other
 	 * @return
@@ -530,7 +509,6 @@ public class Game extends Application{
 							System.out.println("Block: " + l + " is coliding with Block: " + t);
 							return true;
 						}
-
 					}
 				} 	
 			}	
