@@ -27,7 +27,7 @@ public class Game extends Application{
 	int shape = (int) (Math.random() * 7);
 	ArrayList<Square> square = new ArrayList<Square>();
 	final int squareSize = 25;
-	int songNum = 18;//(int) (Math.random() * 20)+1;
+	int songNum = (int) (Math.random() * 20)+1;
 	int dropSpeed = 1000;
 	int count = 0;
 	public static void main (String[] args) {
@@ -106,6 +106,7 @@ public class Game extends Application{
 		//			}
 		//		}while(startPressed == false);	
 		//		title.stop();
+
 		if(songNum == 1) {
 			song1.start();
 		}else if (songNum ==2) {
@@ -148,36 +149,6 @@ public class Game extends Application{
 			credit.start();
 		}
 
-		//		boolean startPressed= false;
-		//		//		title.start();
-		//		Button start = new Button("Start");
-		//		Button instructions= new Button("Rules");
-		//		start.setLayoutX(200);
-		//		start.setLayoutY(270);
-		//		instructions.setLayoutX(200);
-		//		instructions.setLayoutY(295);
-		//		group.getChildren().add(start);
-		//		group.getChildren().add(instructions);
-		//		group.getChildren().add(canvas);
-		//		do {
-		//			if(start.isPressed()) {
-		//				startPressed = true;
-		//			}else if(instructions.isPressed()) {
-		//				System.out.println("You");
-		//			}
-		//	
-
-		//		title.stop();
-
-
-
-		//	for (int i = 0; i < square.size(); i++) {
-		//	for (int i = 0; i < (squareSize*2); i++) {
-		//	square.add(new Square(squareSize, squareSize, 0, (int)canvas.getWidth(), 0, (int)canvas.getHeight()));
-		//	square.get(i).setXSpeed(0);
-		//	square.get(i).setYSpeed(0);
-		//	}
-
 		canvas.setOnKeyPressed(event -> {
 			String direction = " " ;
 			if(event.getCode() == KeyCode.A) {
@@ -190,6 +161,10 @@ public class Game extends Application{
 				direction = "Down";
 				moveBlocks(direction);
 			}
+		});
+
+		canvas.setOnMouseClicked(event ->{
+			rotateBlock(2);
 		});
 		//Makes block drop one row every second.
 		time.schedule(new TimerTask() {
@@ -208,7 +183,7 @@ public class Game extends Application{
 			@Override
 			public void run() {
 
-				if(square.size() ==0 || hit() == true) {
+				if(square.size() ==0 || isHit() == true) {
 
 					createBlocks(randomShape());
 				}
@@ -300,12 +275,12 @@ public class Game extends Application{
 			//Line
 			for(int i = 0; i < 4; i ++) {
 				if(i <=1) {
-					x =x -squareSize;
+					x =x +squareSize;
 					if(i == 0) {
-						x= x-squareSize;
+						x= x+squareSize;
 					}
 				}else if (i == 3) {
-					x = x +squareSize;
+					x = x -squareSize;
 				}
 				Square s = new Square(x,y,squareSize,squareSize,squareSize,squareSize,Color.LIGHTGREEN);
 				square.add(s);
@@ -320,6 +295,7 @@ public class Game extends Application{
 				}else if (i == 1 ) {
 					y =y +squareSize;
 				}else if (i == 3) {
+					//bottom left
 					x = x -squareSize;
 					y =y +squareSize;
 				}
@@ -418,6 +394,7 @@ public class Game extends Application{
 			for(int i =0;i <square.size();i ++) {
 				if(square.get(i).getX() == x && y == square.get(i).getY()) {
 					square.remove(i);
+					dropAllBlocks();
 				}
 			}
 		}
@@ -427,6 +404,10 @@ public class Game extends Application{
 	 */
 	public void dropBlocks() {
 		for(int i = square.size()-4; i <square.size();i ++) {
+			square.get(i).setY((int)(square.get(i).getY()+ squareSize));
+		}
+	}public void dropAllBlocks() {
+		for(int i = 0; i <square.size();i ++) {
 			square.get(i).setY((int)(square.get(i).getY()+ squareSize));
 		}
 	}
@@ -455,22 +436,79 @@ public class Game extends Application{
 	public void rotateBlock(int shape) {
 		if (shape == 1) {
 			//Line
-			double x = square.get(2).getX();
-			double y =square.get(2).getY();
-			for(int i = 0; i <4;i ++) {
-				if(i == 2) {
-				}
+			if((square.get(square.size()-1).getX() + squareSize) == square.get(square.size()-2).getX()) {
+				square.get(square.size()-1).setX((int)square.get(square.size()-2).getX());
+				square.get(square.size()-1).setY((int)square.get(square.size()-2).getY() + squareSize);
+				square.get(square.size()-4).setX((int)square.get(square.size()-2).getX());
+				square.get(square.size()-4).setY((int)square.get(square.size()-2).getY() - 2*squareSize);
+				square.get(square.size()-3).setX((int)square.get(square.size()-2).getX());
+				square.get(square.size()-3).setY((int)square.get(square.size()-2).getY() - squareSize);
+
+			}else if ((square.get(square.size()-1).getX() - squareSize) == square.get(square.size()-2).getX()) {
+				square.get(square.size()-1).setX((int)square.get(square.size()-2).getX()+ squareSize);
+				square.get(square.size()-1).setY((int)square.get(square.size()-2).getY());
+				square.get(square.size()-4).setX((int)square.get(square.size()-2).getX() + 2*squareSize);
+				square.get(square.size()-4).setY((int)square.get(square.size()-2).getY());
+				square.get(square.size()-3).setX((int)square.get(square.size()-2).getX()+ squareSize);
+				square.get(square.size()-3).setY((int)square.get(square.size()-2).getY());
+			}else if ((square.get(square.size()-1).getY() + squareSize) == square.get(square.size()-2).getY()) {
+				square.get(square.size()-1).setX((int)square.get(square.size()-2).getX());
+				square.get(square.size()-1).setY((int)square.get(square.size()-2).getY() - squareSize);
+				square.get(square.size()-4).setX((int)square.get(square.size()-2).getX());
+				square.get(square.size()-4).setY((int)square.get(square.size()-2).getY() + 2*squareSize);
+				square.get(square.size()-3).setX((int)square.get(square.size()-2).getX());
+				square.get(square.size()-3).setY((int)square.get(square.size()-2).getY() + squareSize);
+			}else if ((square.get(square.size()-1).getY() - squareSize) == square.get(square.size()-2).getY()) {
+				square.get(square.size()-1).setX((int)square.get(square.size()-2).getX() - squareSize);
+				square.get(square.size()-1).setY((int)square.get(square.size()-2).getY());
+				square.get(square.size()-4).setX((int)square.get(square.size()-2).getX()+ 2*squareSize);
+				square.get(square.size()-4).setY((int)square.get(square.size()-2).getY());
+				square.get(square.size()-3).setX((int)square.get(square.size()-2).getX() + squareSize);
+				square.get(square.size()-3).setY((int)square.get(square.size()-2).getY());
 			}
 		}else if (shape == 2) {
 			//s
+			if((square.get(square.size()-3).getX()-squareSize) == square.get(square.size()-2).getX()) {
+				square.get(square.size()-4).setX((int)square.get(square.size()-2).getX());
+				square.get(square.size()-4).setY((int)square.get(square.size()-2).getY()-squareSize);
+				square.get(square.size()-1).setX((int)square.get(square.size()-2).getX()+squareSize);
+				square.get(square.size()-1).setY((int)square.get(square.size()-2).getY());
+				square.get(square.size()-3).setX((int)square.get(square.size()-2).getX()+squareSize);
+				square.get(square.size()-3).setY((int)square.get(square.size()-2).getY());
+			}else if ((square.get(square.size()-3).getX()+squareSize) == square.get(square.size()-2).getX()) {
+				square.get(square.size()-4).setX((int)square.get(square.size()-2).getX()-squareSize);
+				square.get(square.size()-4).setY((int)square.get(square.size()-2).getY());
+				square.get(square.size()-3).setX((int)square.get(square.size()-2).getX());
+				square.get(square.size()-3).setY((int)square.get(square.size()-2).getY()-squareSize);
+				//square.get(square.size()-1).setX(x);
+				square.get(square.size()-1).setY((int)square.get(square.size()-2).getY()-squareSize);
+			}else if ((square.get(square.size()-3).getY()-squareSize)== square.get(square.size()-2).getY()) {
+				square.get(square.size()-4).setX((int)square.get(square.size()-2).getX());
+				square.get(square.size()-4).setY((int)square.get(square.size()-2).getY()+squareSize);
+				square.get(square.size()-3).setX((int)square.get(square.size()-2).getX()-squareSize);
+				square.get(square.size()-3).setY((int)square.get(square.size()-2).getY());
+				square.get(square.size()-1).setX((int)square.get(square.size()-2).getX()-squareSize);
+				//square.get(square.size()-1).setY(x);
+			}else if ((square.get(square.size()-3).getY()+squareSize)== square.get(square.size()-2).getY()) {
+				square.get(square.size()-4).setX((int)square.get(square.size()-2).getX()+squareSize);
+				square.get(square.size()-4).setY((int)square.get(square.size()-2).getY());
+				square.get(square.size()-3).setX((int)square.get(square.size()-2).getX());
+				square.get(square.size()-3).setY((int)square.get(square.size()-2).getY()+squareSize);
+				//square.get(square.size()-1).setX(x);
+				square.get(square.size()-1).setY((int)square.get(square.size()-1).getY()+2*squareSize);
+			}
 		}else if (shape == 3) {
 			//z
+			
 		}else if (shape == 4) {
 			//upside-down t
+			
 		}else if (shape == 5) {
 			//L
+			
 		}else if (shape == 6) {
 			//inverted L
+			
 		}
 	}
 
@@ -478,7 +516,7 @@ public class Game extends Application{
 	 * Hit Detection to determine if the random blocks can stack on top of each other
 	 * @return
 	 */
-	public boolean hit() {
+	public boolean isHit() {
 		if(square.get(square.size()-4).getY()+squareSize == 625 || square.get(square.size()-3).getY()+squareSize == 625 || square.get(square.size()-2).getY()+squareSize == 625 || square.get(square.size()-1).getY()+squareSize == 625) {
 			return true;
 		}
