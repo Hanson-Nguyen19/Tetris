@@ -187,10 +187,7 @@ public class Game extends Application{
 				}
 			}
 
-
 		}, 0, 1);
-
-
 
 		time.schedule(new TimerTask() {
 			@Override
@@ -378,7 +375,22 @@ public class Game extends Application{
 	 * @return
 	 */
 
+	public void rowCheck() {
+		for(int y=0; y<575;y=y+squareSize) {
+			for (int x = 0; x<425;x=x+squareSize) {
+				for(int i =0;i <square.size();i ++) {
+					if(square.get(i).getX() == x && y == square.get(i).getY()) {
+						count ++;
+					}
+				}
+			}
+			if(count == 18) {
+				removeRows(y);
+			}
+			count = 0;
+		}
 
+	}
 	public int randomShape(int shape) {
 
 		shape =	(int) (Math.random() * 7);
@@ -409,6 +421,7 @@ public class Game extends Application{
 			square.get(i).setY((int)(square.get(i).getY()+ squareSize));
 
 		}
+
 	}
 	public void dropAllBlocks() {
 		for(int i = 0; i <square.size();i ++) {
@@ -416,6 +429,16 @@ public class Game extends Application{
 
 		}
 	}
+
+	/**
+	 * Hit Detection to determine if the random blocks can stack on top of each other
+	 * @return
+	 */
+		/**
+		 * Checks if a row has been completed in order to delete it
+		 */
+		
+	
 	/**
 	 * Allows User to rotate the random block to fit a certain area
 	 * @param shape
@@ -731,22 +754,7 @@ public class Game extends Application{
 
 
 	} 
-	public void rowCheck() {
-		for(int y=0; y<575;y=y+squareSize) {
-			for (int x = 0; x<425;x=x+squareSize) {
-				for(int i =0;i <square.size();i ++) {
-					if(square.get(i).getX() == x && y == square.get(i).getY()) {
-						count ++;
-					}
-
-
-				} if(count == 18) {
-					removeRows(y);
-				}
-				count = 0;
-			}
-		}
-	}
+	
 	/**
 	 * Hit Detection to determine if the random blocks can stack on top of each other
 	 * @return
