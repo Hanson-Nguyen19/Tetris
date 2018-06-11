@@ -578,6 +578,13 @@ public class Game extends Application{
 	 * @return
 	 */
 	public boolean isHit() {
+		//TODO make game over method
+		for(int i = square.size()-4; i<square.size(); i++) {
+			if(square.get(i).getY() <= 75) {
+				time.cancel();
+				return true;
+			}
+		}
 		if(square.get(square.size()-4).getY()+squareSize == 625 || square.get(square.size()-3).getY()+squareSize == 625 || square.get(square.size()-2).getY()+squareSize == 625 || square.get(square.size()-1).getY()+squareSize == 625) {
 			return true;
 		}
