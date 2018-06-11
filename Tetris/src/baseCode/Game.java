@@ -699,8 +699,6 @@ public class Game extends Application{
 					for(int l =square.size()-4;l<square.size();l++) {
 						if(square.get(l).getY()+squareSize == square.get(t).getY()) {
 
-
-
 							if(square.get(l).getX() == square.get(t).getX()) {
 								System.out.println("Block: " + l + " is coliding with Block: " + t);
 								return true;
