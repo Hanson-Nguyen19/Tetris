@@ -263,7 +263,7 @@ public class Game extends Application{
 						return;
 					}
 					else
-					return;
+						return;
 				}
 			}
 
@@ -289,9 +289,9 @@ public class Game extends Application{
 						return;
 					}
 					else
-					return;
+						return;
 				}
-				
+
 			}
 
 		}else if (direction == "Down") {
@@ -432,7 +432,22 @@ public class Game extends Application{
 	 * @return
 	 */
 
+	public void rowCheck() {
+		for(int y=0; y<575;y=y+squareSize) {
+			for (int x = 0; x<425;x=x+squareSize) {
+				for(int i =0;i <square.size();i ++) {
+					if(square.get(i).getX() == x && y == square.get(i).getY()) {
+						count ++;
+					}
+				}
+			}
+			if(count == 18) {
+				removeRows(y);
+			}
+			count = 0;
+		}
 
+	}
 	public int randomShape(int shape) {
 
 		shape =	(int) (Math.random() * 7);
@@ -448,48 +463,35 @@ public class Game extends Application{
 				if(square.get(i).getX() == x && y == square.get(i).getY()) {
 					square.remove(i);
 
+
+
 					//					dropAllBlocks();
 
 				}
+
 			}
+
 		}
 	}
+
 	/**
 	 * Drops the blocks
 	 */
 	public void dropBlocks() {
 		for(int i = square.size()-4; i <square.size();i ++) {
 			square.get(i).setY((int)(square.get(i).getY()+ squareSize));
+
 		}
-	}public void dropAllBlocks() {
+	}
+	public void dropAllBlocks() {
 		for(int i = 0; i <square.size();i ++) {
 			square.get(i).setY((int)(square.get(i).getY()+ squareSize));
 		}
 	}
 
 
-	/**
-	 * Hit Detection to determine if the random blocks can stack on top of each other
-	 * @return
-	 */
-	/**
-	 * Checks if a row has been completed in order to delete it
-	 */
-	public void rowCheck() {
-		for(int y=0; y<575;y=y+squareSize) {
-			for (int x = 0; x<425;x=x+squareSize) {
-				for(int i =0;i <square.size();i ++) {
-					if(square.get(i).getX() == x && y == square.get(i).getY()) {
-						count ++;
-					}
-				}
-			}
-			if(count == 18) {
-				removeRows(y);
-			}
-			count = 0;
-		}
-	}
+
+
 	/**
 	 * Allows User to rotate the random block to fit a certain area
 	 * @param shape
@@ -503,8 +505,10 @@ public class Game extends Application{
 
 				square.get(square.size()-1).setX((int)square.get(square.size()-2).getX());
 				square.get(square.size()-1).setY((int)square.get(square.size()-2).getY() + squareSize);
+
 				square.get(square.size()-4).setX((int)square.get(square.size()-2).getX());
 				square.get(square.size()-4).setY((int)square.get(square.size()-2).getY() - 2*squareSize);
+
 				square.get(square.size()-3).setX((int)square.get(square.size()-2).getX());
 				square.get(square.size()-3).setY((int)square.get(square.size()-2).getY() - squareSize);
 
@@ -512,8 +516,10 @@ public class Game extends Application{
 
 				square.get(square.size()-1).setX((int)square.get(square.size()-2).getX()+ squareSize);
 				square.get(square.size()-1).setY((int)square.get(square.size()-2).getY());
+
 				square.get(square.size()-4).setX((int)square.get(square.size()-2).getX() + 2*squareSize);
 				square.get(square.size()-4).setY((int)square.get(square.size()-2).getY());
+
 				square.get(square.size()-3).setX((int)square.get(square.size()-2).getX()+ squareSize);
 				square.get(square.size()-3).setY((int)square.get(square.size()-2).getY());
 
@@ -521,8 +527,10 @@ public class Game extends Application{
 
 				square.get(square.size()-1).setX((int)square.get(square.size()-2).getX());
 				square.get(square.size()-1).setY((int)square.get(square.size()-2).getY() - squareSize);
+
 				square.get(square.size()-4).setX((int)square.get(square.size()-2).getX());
 				square.get(square.size()-4).setY((int)square.get(square.size()-2).getY() + 2*squareSize);
+
 				square.get(square.size()-3).setX((int)square.get(square.size()-2).getX());
 				square.get(square.size()-3).setY((int)square.get(square.size()-2).getY() + squareSize);
 
@@ -530,217 +538,262 @@ public class Game extends Application{
 
 				square.get(square.size()-1).setX((int)square.get(square.size()-2).getX() - squareSize);
 				square.get(square.size()-1).setY((int)square.get(square.size()-2).getY());
+
 				square.get(square.size()-4).setX((int)square.get(square.size()-2).getX()+ 2*squareSize);
 				square.get(square.size()-4).setY((int)square.get(square.size()-2).getY());
+
 				square.get(square.size()-3).setX((int)square.get(square.size()-2).getX() + squareSize);
 				square.get(square.size()-3).setY((int)square.get(square.size()-2).getY());
 
 			}
+
 		}else if (shape == 2) {
 			//s
 			if((square.get(square.size()-1).getY()-squareSize) == square.get(square.size()-2).getY()) {
 
-				square.get(square.size()-4).setX((int)square.get(square.size()-2).getX());
-				square.get(square.size()-4).setY((int)square.get(square.size()-2).getY()+squareSize);
-
-				square.get(square.size()-1).setX((int)square.get(square.size()-2).getX()-squareSize);
-				square.get(square.size()-1).setY((int)square.get(square.size()-2).getY());
-
-				square.get(square.size()-3).setX((int)square.get(square.size()-2).getX()-squareSize);
+				square.get(square.size()-3).setX((int)square.get(square.size()-2).getX()+squareSize);
 				square.get(square.size()-3).setY((int)square.get(square.size()-2).getY()-squareSize);
 
-			}else if ((square.get(square.size()-1).getX()+squareSize) == square.get(square.size()-2).getX()) {
+				square.get(square.size()-1).setX((int)square.get(square.size()-2).getX());
+				square.get(square.size()-1).setY((int)square.get(square.size()-2).getY()-squareSize);
 
 				square.get(square.size()-4).setX((int)square.get(square.size()-2).getX()-squareSize);
 				square.get(square.size()-4).setY((int)square.get(square.size()-2).getY());
 
-				square.get(square.size()-3).setX((int)square.get(square.size()-2).getX()+squareSize);
+			}else if ((square.get(square.size()-1).getX()+squareSize) == square.get(square.size()-2).getX()) {
+
+				square.get(square.size()-3).setX((int)square.get(square.size()-2).getX());
 				square.get(square.size()-3).setY((int)square.get(square.size()-2).getY()-squareSize);
 
-				square.get(square.size()-1).setX((int)square.get(square.size()-2).getY());	
-				square.get(square.size()-1).setY((int)square.get(square.size()-2).getY()-squareSize);
-
-			}else if ((square.get(square.size()-1).getY()+squareSize)== square.get(square.size()-2).getY()) {
+				square.get(square.size()-1).setX((int)square.get(square.size()-2).getX()-squareSize);
+				square.get(square.size()-1).setY((int)square.get(square.size()-2).getY());
 
 				square.get(square.size()-4).setX((int)square.get(square.size()-2).getX());
-				square.get(square.size()-4).setY((int)square.get(square.size()-2).getY()-squareSize);
+				square.get(square.size()-4).setY((int)square.get(square.size()-2).getY()+squareSize);
+
+			}else if ((square.get(square.size()-1).getY()+squareSize) == square.get(square.size()-2).getY()) {
 
 				square.get(square.size()-3).setX((int)square.get(square.size()-2).getX()+squareSize);
 				square.get(square.size()-3).setY((int)square.get(square.size()-2).getY()+squareSize);
 
 				square.get(square.size()-1).setX((int)square.get(square.size()-2).getX()+squareSize);
-				square.get(square.size()-1).setY((int)square.get(square.size()-2).getX());
+				square.get(square.size()-1).setY((int)square.get(square.size()-2).getY());
+				
+				square.get(square.size()-4).setX((int)square.get(square.size()-2).getX()-squareSize);
+				square.get(square.size()-4).setY((int)square.get(square.size()-2).getY()-squareSize);
 
-			}else if ((square.get(square.size()-1).getX()-squareSize)== square.get(square.size()-2).getX()) {
-
-				square.get(square.size()-4).setX((int)square.get(square.size()-2).getX()+squareSize);
-				square.get(square.size()-4).setY((int)square.get(square.size()-2).getY());
+			}else if ((square.get(square.size()-1).getX()-squareSize) == square.get(square.size()-2).getX()) {
 
 				square.get(square.size()-3).setX((int)square.get(square.size()-2).getX()-squareSize);
 				square.get(square.size()-3).setY((int)square.get(square.size()-2).getY()+squareSize);
 
 				square.get(square.size()-1).setX((int)square.get(square.size()-2).getX());
-				square.get(square.size()-1).setY((int)square.get(square.size()-1).getY()+squareSize);
+				square.get(square.size()-1).setY((int)square.get(square.size()-2).getY()+squareSize);
+
+				square.get(square.size()-4).setX((int)square.get(square.size()-2).getX()+squareSize);
+				square.get(square.size()-4).setY((int)square.get(square.size()-2).getY());
 
 			}
+
 		}else if (shape == 3) {
 			//z
+			if((square.get(square.size()-4).getY()-squareSize) == square.get(square.size()-2).getY()) {
 
-		}else if (shape == 4) {
-			//upside-down t
-
-			if((square.get(square.size()-2).getY()+squareSize) == square.get(square.size()-1).getY()) {
-
-				square.get(square.size()-2).setX((int)square.get(square.size()-2).getX()+squareSize);
-				square.get(square.size()-2).setY((int)square.get(square.size()-2).getY()+squareSize);
-
-				square.get(square.size()-3).setX((int)square.get(square.size()-2).getX()-squareSize);
-				square.get(square.size()-3).setY((int)square.get(square.size()-2).getY()+squareSize);
-
-				square.get(square.size()-4).setX((int)square.get(square.size()-2).getX()-squareSize);
-				square.get(square.size()-4).setY((int)square.get(square.size()-2).getY()-squareSize);
-
-			}else if((square.get(square.size()-2).getX()-squareSize) == square.get(square.size()-1).getX()) {
-
-				square.get(square.size()-2).setX((int)square.get(square.size()-2).getX()-squareSize);
-				square.get(square.size()-2).setY((int)square.get(square.size()-2).getY()+squareSize);
-
-				square.get(square.size()-3).setX((int)square.get(square.size()-2).getX()-squareSize);
+				square.get(square.size()-3).setX((int)square.get(square.size()-2).getX());
 				square.get(square.size()-3).setY((int)square.get(square.size()-2).getY()-squareSize);
 
-				square.get(square.size()-4).setX((int)square.get(square.size()-2).getX()+squareSize);
+				square.get(square.size()-4).setX((int)square.get(square.size()-2).getX()-squareSize);
+				square.get(square.size()-4).setY((int)square.get(square.size()-2).getY());
+
+				square.get(square.size()-1).setX((int)square.get(square.size()-2).getX()-squareSize);
+				square.get(square.size()-1).setY((int)square.get(square.size()-2).getY()+squareSize);
+
+			}else if ((square.get(square.size()-4).getX()+squareSize) == square.get(square.size()-2).getX()) {
+
+				square.get(square.size()-3).setX((int)square.get(square.size()-2).getX()+squareSize);
+				square.get(square.size()-3).setY((int)square.get(square.size()-2).getY());
+
+				square.get(square.size()-4).setX((int)square.get(square.size()-2).getX());
 				square.get(square.size()-4).setY((int)square.get(square.size()-2).getY()-squareSize);
 
-			}else if((square.get(square.size()-2).getY()-squareSize) == square.get(square.size()-1).getY()) {
+				square.get(square.size()-1).setX((int)square.get(square.size()-2).getX()-squareSize);
+				square.get(square.size()-1).setY((int)square.get(square.size()-2).getY()-squareSize);
 
-				square.get(square.size()-2).setX((int)square.get(square.size()-2).getX()-squareSize);
-				square.get(square.size()-2).setY((int)square.get(square.size()-2).getY()-squareSize);
+			}else if ((square.get(square.size()-4).getY()+squareSize) == square.get(square.size()-2).getY()) {
 
-				square.get(square.size()-3).setX((int)square.get(square.size()-2).getX()+squareSize);
-				square.get(square.size()-3).setY((int)square.get(square.size()-2).getY()-squareSize);
-
-				square.get(square.size()-4).setX((int)square.get(square.size()-2).getX()+squareSize);
-				square.get(square.size()-4).setY((int)square.get(square.size()-2).getY()+squareSize);
-
-			}else if((square.get(square.size()-2).getX()+squareSize) == square.get(square.size()-1).getX()) {
-
-				square.get(square.size()-2).setX((int)square.get(square.size()-2).getX()+squareSize);
-				square.get(square.size()-2).setY((int)square.get(square.size()-2).getY()-squareSize);
-
-				square.get(square.size()-3).setX((int)square.get(square.size()-2).getX()+squareSize);
+				square.get(square.size()-3).setX((int)square.get(square.size()-2).getX());
 				square.get(square.size()-3).setY((int)square.get(square.size()-2).getY()+squareSize);
 
-				square.get(square.size()-4).setX((int)square.get(square.size()-2).getX()-squareSize);
+				square.get(square.size()-4).setX((int)square.get(square.size()-2).getX()+squareSize);
+				square.get(square.size()-4).setY((int)square.get(square.size()-2).getY());
+
+				square.get(square.size()-1).setX((int)square.get(square.size()-2).getX()+squareSize);
+				square.get(square.size()-1).setY((int)square.get(square.size()-2).getY()-squareSize);
+
+			}else if ((square.get(square.size()-4).getX()-squareSize) == square.get(square.size()-2).getX()) {
+
+				square.get(square.size()-3).setX((int)square.get(square.size()-2).getX()-squareSize);
+				square.get(square.size()-3).setY((int)square.get(square.size()-2).getY());
+
+				square.get(square.size()-4).setX((int)square.get(square.size()-2).getX());
 				square.get(square.size()-4).setY((int)square.get(square.size()-2).getY()+squareSize);
 
-			}
+				square.get(square.size()-1).setX((int)square.get(square.size()-2).getX()+squareSize);
+				square.get(square.size()-1).setY((int)square.get(square.size()-2).getY()+squareSize);
 
-		}else if (shape == 5) {
-			//L
+			}else if (shape == 4) {
+				//upside-down t
+				if((square.get(square.size()-2).getY()+squareSize) == square.get(square.size()-1).getY()) {
 
-			if((square.get(square.size()-4).getY()-squareSize) == (square.get(square.size()-2).getY())) {
+					square.get(square.size()-2).setX((int)square.get(square.size()-2).getX()+squareSize);
+					square.get(square.size()-2).setY((int)square.get(square.size()-2).getY()+squareSize);
 
-				square.get(square.size()-2).setX((int)square.get(square.size()-4).getX()+squareSize);
-				square.get(square.size()-2).setY((int)square.get(square.size()-4).getY());
+					square.get(square.size()-3).setX((int)square.get(square.size()-2).getX()-squareSize);
+					square.get(square.size()-3).setY((int)square.get(square.size()-2).getY()+squareSize);
 
-				square.get(square.size()-1).setX((int)square.get(square.size()-4).getX()-squareSize);
-				square.get(square.size()-1).setY((int)square.get(square.size()-4).getY());
+					square.get(square.size()-4).setX((int)square.get(square.size()-2).getX()-squareSize);
+					square.get(square.size()-4).setY((int)square.get(square.size()-2).getY()-squareSize);
 
-				square.get(square.size()-3).setX((int)square.get(square.size()-4).getX()-squareSize);
-				square.get(square.size()-3).setY((int)square.get(square.size()-4).getY()+squareSize);
+				}else if((square.get(square.size()-2).getX()-squareSize) == square.get(square.size()-1).getX()) {
 
-			}
-			else if((square.get(square.size()-4).getX()+squareSize) == (square.get(square.size()-2).getX())) {
+					square.get(square.size()-2).setX((int)square.get(square.size()-2).getX()-squareSize);
+					square.get(square.size()-2).setY((int)square.get(square.size()-2).getY()+squareSize);
 
-				square.get(square.size()-2).setX((int)square.get(square.size()-4).getX());
-				square.get(square.size()-2).setY((int)square.get(square.size()-4).getY()+squareSize);
+					square.get(square.size()-3).setX((int)square.get(square.size()-2).getX()-squareSize);
+					square.get(square.size()-3).setY((int)square.get(square.size()-2).getY()-squareSize);
 
-				square.get(square.size()-1).setX((int)square.get(square.size()-4).getX());
-				square.get(square.size()-1).setY((int)square.get(square.size()-4).getY()-squareSize);
+					square.get(square.size()-4).setX((int)square.get(square.size()-2).getX()+squareSize);
+					square.get(square.size()-4).setY((int)square.get(square.size()-2).getY()-squareSize);
 
-				square.get(square.size()-3).setX((int)square.get(square.size()-4).getX()-squareSize);
-				square.get(square.size()-3).setY((int)square.get(square.size()-4).getY()-squareSize);
+				}else if((square.get(square.size()-2).getY()-squareSize) == square.get(square.size()-1).getY()) {
 
-			}
-			else if((square.get(square.size()-4).getY()+squareSize) == (square.get(square.size()-2).getY())) {
+					square.get(square.size()-2).setX((int)square.get(square.size()-2).getX()-squareSize);
+					square.get(square.size()-2).setY((int)square.get(square.size()-2).getY()-squareSize);
 
-				square.get(square.size()-2).setX((int)square.get(square.size()-4).getX()-squareSize);
-				square.get(square.size()-2).setY((int)square.get(square.size()-4).getY());
+					square.get(square.size()-3).setX((int)square.get(square.size()-2).getX()+squareSize);
+					square.get(square.size()-3).setY((int)square.get(square.size()-2).getY()-squareSize);
 
-				square.get(square.size()-1).setX((int)square.get(square.size()-4).getX()+squareSize);
-				square.get(square.size()-1).setY((int)square.get(square.size()-4).getY());
+					square.get(square.size()-4).setX((int)square.get(square.size()-2).getX()+squareSize);
+					square.get(square.size()-4).setY((int)square.get(square.size()-2).getY()+squareSize);
 
-				square.get(square.size()-3).setX((int)square.get(square.size()-4).getX()+squareSize);
-				square.get(square.size()-3).setY((int)square.get(square.size()-4).getY()-squareSize);
+				}else if((square.get(square.size()-2).getX()+squareSize) == square.get(square.size()-1).getX()) {
 
-			}
-			else if((square.get(square.size()-4).getX()-squareSize) == (square.get(square.size()-2).getX())) {
+					square.get(square.size()-2).setX((int)square.get(square.size()-2).getX()+squareSize);
+					square.get(square.size()-2).setY((int)square.get(square.size()-2).getY()-squareSize);
 
-				square.get(square.size()-2).setX((int)square.get(square.size()-4).getX());
-				square.get(square.size()-2).setY((int)square.get(square.size()-4).getY()+squareSize);
+					square.get(square.size()-3).setX((int)square.get(square.size()-2).getX()+squareSize);
+					square.get(square.size()-3).setY((int)square.get(square.size()-2).getY()+squareSize);
 
-				square.get(square.size()-1).setX((int)square.get(square.size()-4).getX());
-				square.get(square.size()-1).setY((int)square.get(square.size()-4).getY()-squareSize);
+					square.get(square.size()-4).setX((int)square.get(square.size()-2).getX()-squareSize);
+					square.get(square.size()-4).setY((int)square.get(square.size()-2).getY()+squareSize);
+				}
 
-				square.get(square.size()-3).setX((int)square.get(square.size()-4).getX()+squareSize);
-				square.get(square.size()-3).setY((int)square.get(square.size()-4).getY()+squareSize);
+			}else if (shape == 5) {
+				//L
+				if((square.get(square.size()-4).getY()-squareSize) == (square.get(square.size()-2).getY())) {
 
-			}
+					square.get(square.size()-2).setX((int)square.get(square.size()-4).getX()+squareSize);
+					square.get(square.size()-2).setY((int)square.get(square.size()-4).getY());
 
-			//github.com/Hanson-Nguyen19/Tetris.git
-		}else if (shape == 6) {
-			//inverted L
+					square.get(square.size()-1).setX((int)square.get(square.size()-4).getX()-squareSize);
+					square.get(square.size()-1).setY((int)square.get(square.size()-4).getY());
 
-			if((square.get(square.size()-4).getY()-squareSize) == (square.get(square.size()-2).getY())) {
+					square.get(square.size()-3).setX((int)square.get(square.size()-4).getX()-squareSize);
+					square.get(square.size()-3).setY((int)square.get(square.size()-4).getY()+squareSize);
 
-				square.get(square.size()-2).setX((int)square.get(square.size()-4).getX()+squareSize);
-				square.get(square.size()-2).setY((int)square.get(square.size()-4).getY());
+				}
 
-				square.get(square.size()-1).setX((int)square.get(square.size()-4).getX()-squareSize);
-				square.get(square.size()-1).setY((int)square.get(square.size()-4).getY());
+				else if((square.get(square.size()-4).getX()+squareSize) == (square.get(square.size()-2).getX())) {
 
-				square.get(square.size()-3).setX((int)square.get(square.size()-4).getX()-squareSize);
-				square.get(square.size()-3).setY((int)square.get(square.size()-4).getY()-squareSize);
+					square.get(square.size()-2).setX((int)square.get(square.size()-4).getX());
+					square.get(square.size()-2).setY((int)square.get(square.size()-4).getY()+squareSize);
 
-			}else if((square.get(square.size()-4).getX()+squareSize) == (square.get(square.size()-2).getX())) {
+					square.get(square.size()-1).setX((int)square.get(square.size()-4).getX());
+					square.get(square.size()-1).setY((int)square.get(square.size()-4).getY()-squareSize);
 
-				square.get(square.size()-2).setX((int)square.get(square.size()-4).getX());
-				square.get(square.size()-2).setY((int)square.get(square.size()-4).getY()+squareSize);
+					square.get(square.size()-3).setX((int)square.get(square.size()-4).getX()-squareSize);
+					square.get(square.size()-3).setY((int)square.get(square.size()-4).getY()-squareSize);
 
-				square.get(square.size()-1).setX((int)square.get(square.size()-4).getX());
-				square.get(square.size()-1).setY((int)square.get(square.size()-4).getY()-squareSize);
+				}
 
-				square.get(square.size()-3).setX((int)square.get(square.size()-4).getX()+squareSize);
-				square.get(square.size()-3).setY((int)square.get(square.size()-4).getY()-squareSize);
+				else if((square.get(square.size()-4).getY()+squareSize) == (square.get(square.size()-2).getY())) {
 
-			}else if((square.get(square.size()-4).getY()+squareSize) == (square.get(square.size()-2).getY())) {
+					square.get(square.size()-2).setX((int)square.get(square.size()-4).getX()-squareSize);
+					square.get(square.size()-2).setY((int)square.get(square.size()-4).getY());
 
-				square.get(square.size()-2).setX((int)square.get(square.size()-4).getX()-squareSize);
-				square.get(square.size()-2).setY((int)square.get(square.size()-4).getY());
+					square.get(square.size()-1).setX((int)square.get(square.size()-4).getX()+squareSize);
+					square.get(square.size()-1).setY((int)square.get(square.size()-4).getY());
 
-				square.get(square.size()-1).setX((int)square.get(square.size()-4).getX()+squareSize);
-				square.get(square.size()-1).setY((int)square.get(square.size()-4).getY());
+					square.get(square.size()-3).setX((int)square.get(square.size()-4).getX()+squareSize);
+					square.get(square.size()-3).setY((int)square.get(square.size()-4).getY()-squareSize);
+				}
 
-				square.get(square.size()-3).setX((int)square.get(square.size()-4).getX()+squareSize);
-				square.get(square.size()-3).setY((int)square.get(square.size()-4).getY()+squareSize);
+				else if((square.get(square.size()-4).getX()-squareSize) == (square.get(square.size()-2).getX())) {
 
-			}else if((square.get(square.size()-4).getX()-squareSize) == (square.get(square.size()-2).getX())) {
+					square.get(square.size()-2).setX((int)square.get(square.size()-4).getX());
+					square.get(square.size()-2).setY((int)square.get(square.size()-4).getY()+squareSize);
 
-				square.get(square.size()-2).setX((int)square.get(square.size()-4).getX());
-				square.get(square.size()-2).setY((int)square.get(square.size()-4).getY()+squareSize);
+					square.get(square.size()-1).setX((int)square.get(square.size()-4).getX());
+					square.get(square.size()-1).setY((int)square.get(square.size()-4).getY()-squareSize);
 
-				square.get(square.size()-1).setX((int)square.get(square.size()-4).getX());
-				square.get(square.size()-1).setY((int)square.get(square.size()-4).getY()-squareSize);
+					square.get(square.size()-3).setX((int)square.get(square.size()-4).getX()+squareSize);
+					square.get(square.size()-3).setY((int)square.get(square.size()-4).getY()+squareSize);
 
-				square.get(square.size()-3).setX((int)square.get(square.size()-4).getX()-squareSize);
-				square.get(square.size()-3).setY((int)square.get(square.size()-4).getY()+squareSize);
+				}
+
+			}else if (shape == 6) {
+				//inverted L
+				if((square.get(square.size()-4).getY()-squareSize) == (square.get(square.size()-2).getY())) {
+
+					square.get(square.size()-2).setX((int)square.get(square.size()-4).getX()+squareSize);
+					square.get(square.size()-2).setY((int)square.get(square.size()-4).getY());
+
+					square.get(square.size()-1).setX((int)square.get(square.size()-4).getX()-squareSize);
+					square.get(square.size()-1).setY((int)square.get(square.size()-4).getY());
+
+					square.get(square.size()-3).setX((int)square.get(square.size()-4).getX()-squareSize);
+					square.get(square.size()-3).setY((int)square.get(square.size()-4).getY()-squareSize);
+
+				}else if((square.get(square.size()-4).getX()+squareSize) == (square.get(square.size()-2).getX())) {
+
+					square.get(square.size()-2).setX((int)square.get(square.size()-4).getX());
+					square.get(square.size()-2).setY((int)square.get(square.size()-4).getY()+squareSize);
+
+					square.get(square.size()-1).setX((int)square.get(square.size()-4).getX());
+					square.get(square.size()-1).setY((int)square.get(square.size()-4).getY()-squareSize);
+
+					square.get(square.size()-3).setX((int)square.get(square.size()-4).getX()+squareSize);
+					square.get(square.size()-3).setY((int)square.get(square.size()-4).getY()-squareSize);
+
+				}else if((square.get(square.size()-4).getY()+squareSize) == (square.get(square.size()-2).getY())) {
+
+					square.get(square.size()-2).setX((int)square.get(square.size()-4).getX()-squareSize);
+					square.get(square.size()-2).setY((int)square.get(square.size()-4).getY());
+
+					square.get(square.size()-1).setX((int)square.get(square.size()-4).getX()+squareSize);
+					square.get(square.size()-1).setY((int)square.get(square.size()-4).getY());
+
+					square.get(square.size()-3).setX((int)square.get(square.size()-4).getX()+squareSize);
+					square.get(square.size()-3).setY((int)square.get(square.size()-4).getY()+squareSize);
+
+				}else if((square.get(square.size()-4).getX()-squareSize) == (square.get(square.size()-2).getX())) {
+
+					square.get(square.size()-2).setX((int)square.get(square.size()-4).getX());
+					square.get(square.size()-2).setY((int)square.get(square.size()-4).getY()+squareSize);
+
+					square.get(square.size()-1).setX((int)square.get(square.size()-4).getX());
+					square.get(square.size()-1).setY((int)square.get(square.size()-4).getY()-squareSize);
+
+					square.get(square.size()-3).setX((int)square.get(square.size()-4).getX()-squareSize);
+					square.get(square.size()-3).setY((int)square.get(square.size()-4).getY()+squareSize);
+
+				}
 
 			}
 
 		}
 
-	} 
-
+	}
 
 
 
@@ -755,11 +808,9 @@ public class Game extends Application{
 		for(int t = 0; t<square.size()-4; t++) {
 			for(int l =square.size()-4;l<square.size();l++) {
 				if(square.get(l).getY()+squareSize == square.get(t).getY()) {
-
 					if(square.get(l).getX() == square.get(t).getX()) {
 						System.out.println("Block: " + l + " is coliding with Block: " + t);
 						return true;
-
 					}
 				} 	
 			}	
