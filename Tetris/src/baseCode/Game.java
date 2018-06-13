@@ -27,9 +27,8 @@ public class Game extends Application{
 	int shape;
 	ArrayList<Square> square = new ArrayList<Square>();
 	final int squareSize = 25;
-	int songNum = (int) (Math.random() * 20)+1;
+	int songNum = (int) (Math.random() * 19)+1;
 	int dropSpeed = 1000;
-	int count = 0;
 	public static void main (String[] args) {
 		launch(args);
 	}
@@ -78,8 +77,8 @@ public class Game extends Application{
 				song17.open(AudioSystem.getAudioInputStream(new File("src/Resources/Spaceball.wav")));
 				Clip song18 = AudioSystem.getClip();
 				song18.open(AudioSystem.getAudioInputStream(new File("src/Resources/PAC-MAN.wav")));
-				Clip title = AudioSystem.getClip();
-				title.open(AudioSystem.getAudioInputStream(new File("src/Resources/Excitebike Arena.wav")));
+				Clip song19 = AudioSystem.getClip();
+				song19.open(AudioSystem.getAudioInputStream(new File("src/Resources/Excitebike Arena.wav")));
 				Clip credit = AudioSystem.getClip();
 				credit.open(AudioSystem.getAudioInputStream(new File("src/Resources/AssassinsCreed III.wav")));
 
@@ -145,9 +144,7 @@ public class Game extends Application{
 				}else if (songNum ==18) {
 					song18.start();
 				}else if (songNum == 19) {
-					title.start();
-				}else if (songNum == 20) {
-					credit.start();
+					song19.start();
 				}
 
 
@@ -231,7 +228,7 @@ public class Game extends Application{
 					}else if (songNum ==18) {
 						song18.stop();
 					}else if (songNum == 19) {
-						title.stop();
+						song19.stop();
 					}
 				}
 				
@@ -383,6 +380,8 @@ public class Game extends Application{
 			}
 		}else if (shape == 2) {
 			//s
+			// 20
+			//31
 			for(int i = 0; i < 4; i ++) {
 				if(i ==0) {
 					x =x +squareSize;
@@ -400,6 +399,8 @@ public class Game extends Application{
 			}
 		}else if (shape == 3) {
 			//z
+			//12
+			// 03
 			for(int i = 0; i < 4; i ++) {
 				if(i<2){
 					if(i ==0) {
@@ -418,6 +419,8 @@ public class Game extends Application{
 			}
 		}else if (shape == 4) {
 			//upside-down t
+			// 2
+			//031
 			for(int i = 0; i < 4; i ++) {
 				if(i != 2) {
 					y= y+squareSize;
@@ -435,6 +438,9 @@ public class Game extends Application{
 			}
 		}else if (shape == 5) {
 			//L
+			//2
+			//0
+			//31
 			for(int i = 0; i < 4; i ++) {
 				if(i != 2) {
 					if(i==0) {
@@ -453,6 +459,9 @@ public class Game extends Application{
 			}
 		}else if (shape == 6) {
 			//inverted L
+			// 2
+			// 0
+			//13
 			for(int i = 0; i < 4; i ++) {
 				if(i != 2) {
 					if(i==0) {
@@ -477,16 +486,20 @@ public class Game extends Application{
 	 */
 
 	public void rowCheck() {
-		for(int y=0; y<575;y=y+squareSize) {
-			for (int x = 0; x<425;x=x+squareSize) {
+		int count = 0;
+		for(int y=0; y<=575;y=y+squareSize) {
+			for (int x = 0; x<450;x=x+squareSize) {
 				for(int i =0;i <square.size();i ++) {
-					if(square.get(i).getX() == x && y == square.get(i).getY()) {
+					if((int)square.get(i).getX() == x && y == (int)square.get(i).getY()) {
 						count ++;
 					}
 				}
 			}
+			//System.out.println(y);
 			if(count == 18) {
+				System.out.println(y);
 				removeRows(y);
+				
 			}
 			count = 0;
 		}
@@ -506,11 +519,7 @@ public class Game extends Application{
 			for(int i =0;i <square.size();i ++) {
 				if(square.get(i).getX() == x && y == square.get(i).getY()) {
 					square.remove(i);
-
-
-
 					//					dropAllBlocks();
-
 				}
 
 			}
@@ -542,7 +551,7 @@ public class Game extends Application{
 	 */
 	public void rotateBlock(int shape) {
 
-		System.out.println(shape);
+	
 		if (shape == 1) {
 			//Line
 			if((square.get(square.size()-1).getX() + squareSize) == square.get(square.size()-2).getX()) {
@@ -589,6 +598,7 @@ public class Game extends Application{
 				square.get(square.size()-3).setX((int)square.get(square.size()-2).getX() + squareSize);
 				square.get(square.size()-3).setY((int)square.get(square.size()-2).getY());
 
+
 			}
 
 		}else if (shape == 2) {
@@ -622,7 +632,7 @@ public class Game extends Application{
 
 				square.get(square.size()-1).setX((int)square.get(square.size()-2).getX()+squareSize);
 				square.get(square.size()-1).setY((int)square.get(square.size()-2).getY());
-				
+
 				square.get(square.size()-4).setX((int)square.get(square.size()-2).getX()-squareSize);
 				square.get(square.size()-4).setY((int)square.get(square.size()-2).getY()-squareSize);
 
@@ -638,7 +648,6 @@ public class Game extends Application{
 				square.get(square.size()-4).setY((int)square.get(square.size()-2).getY());
 
 			}
-
 		}else if (shape == 3) {
 			//z
 			if((square.get(square.size()-4).getY()-squareSize) == square.get(square.size()-2).getY()) {
@@ -685,8 +694,10 @@ public class Game extends Application{
 				square.get(square.size()-1).setX((int)square.get(square.size()-2).getX()+squareSize);
 				square.get(square.size()-1).setY((int)square.get(square.size()-2).getY()+squareSize);
 
+
 			}else if (shape == 4) {
 				//upside-down t
+
 				if((square.get(square.size()-2).getY()+squareSize) == square.get(square.size()-1).getY()) {
 
 					square.get(square.size()-2).setX((int)square.get(square.size()-2).getX()+squareSize);
@@ -730,10 +741,12 @@ public class Game extends Application{
 
 					square.get(square.size()-4).setX((int)square.get(square.size()-2).getX()-squareSize);
 					square.get(square.size()-4).setY((int)square.get(square.size()-2).getY()+squareSize);
+
 				}
 
 			}else if (shape == 5) {
 				//L
+
 				if((square.get(square.size()-4).getY()-squareSize) == (square.get(square.size()-2).getY())) {
 
 					square.get(square.size()-2).setX((int)square.get(square.size()-4).getX()+squareSize);
@@ -746,7 +759,6 @@ public class Game extends Application{
 					square.get(square.size()-3).setY((int)square.get(square.size()-4).getY()+squareSize);
 
 				}
-
 				else if((square.get(square.size()-4).getX()+squareSize) == (square.get(square.size()-2).getX())) {
 
 					square.get(square.size()-2).setX((int)square.get(square.size()-4).getX());
@@ -759,7 +771,6 @@ public class Game extends Application{
 					square.get(square.size()-3).setY((int)square.get(square.size()-4).getY()-squareSize);
 
 				}
-
 				else if((square.get(square.size()-4).getY()+squareSize) == (square.get(square.size()-2).getY())) {
 
 					square.get(square.size()-2).setX((int)square.get(square.size()-4).getX()-squareSize);
@@ -770,8 +781,8 @@ public class Game extends Application{
 
 					square.get(square.size()-3).setX((int)square.get(square.size()-4).getX()+squareSize);
 					square.get(square.size()-3).setY((int)square.get(square.size()-4).getY()-squareSize);
-				}
 
+				}
 				else if((square.get(square.size()-4).getX()-squareSize) == (square.get(square.size()-2).getX())) {
 
 					square.get(square.size()-2).setX((int)square.get(square.size()-4).getX());
@@ -785,8 +796,10 @@ public class Game extends Application{
 
 				}
 
+				//github.com/Hanson-Nguyen19/Tetris.git
 			}else if (shape == 6) {
 				//inverted L
+
 				if((square.get(square.size()-4).getY()-squareSize) == (square.get(square.size()-2).getY())) {
 
 					square.get(square.size()-2).setX((int)square.get(square.size()-4).getX()+squareSize);
@@ -834,7 +847,6 @@ public class Game extends Application{
 				}
 
 			}
-
 		}
 
 	}
