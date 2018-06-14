@@ -113,36 +113,36 @@ public class Game extends Application{
 		//			}
 		//		}while(startPressed == false);	
 		//		title.stop();
-		gc.setFill( Color.WHITE );
-		gc.setStroke( Color.WHITE );
-		gc.setLineWidth(2);
-		Font theFont = Font.font( "", FontWeight.BOLD, 50 );
-		Font buttonFont = Font.font( "", FontWeight.BOLD, 20 );
-		gc.setFont( theFont );
-		gc.fillText( "Welcome To Fruit Dungeon!", 100, 200 );//this is the text that will be printed to the screen
-		gc.strokeText( "Welcome To Fruit Dungeon!", 100, 200 );
-		Button start = new Button("START");//this button will lead to the game mode selection screen
-		//Button highscores = new Button("HIGHSCORES");//this button will prompt the high scores menu to appear
-		Button instructions = new Button ("Instructions");// this button will display the controls and objective of the game.
-		start.setLayoutX(200);
-		start.setLayoutY(270);
-		instructions.setLayoutX(200);
-		instructions.setLayoutY(295);
-		group.getChildren().add(start);
-		group.getChildren().add(instructions);
-		group.getChildren().add(canvas);
-		primaryStage.setScene(scene);
-		start.setStyle("-fx-background-color: white; -fx-text-fill: black;"); 
-		//highscores.setStyle("-fx-background-color: white; -fx-text-fill: black;"); 
-		instructions.setStyle("-fx-background-color: white; -fx-text-fill: black;"); 
-		start.setFont(buttonFont);
-		//highscores.setFont(buttonFont);
-		instructions.setFont(buttonFont);
-		start.setOnAction(new EventHandler<ActionEvent>() {
-			@Override 
-			public void handle(ActionEvent e) {
-				gc.clearRect(0, 0, gc.getCanvas().getWidth(), gc.getCanvas().getHeight());
-			}});
+//		gc.setFill( Color.WHITE );
+//		gc.setStroke( Color.WHITE );
+//		gc.setLineWidth(2);
+//		Font theFont = Font.font( "", FontWeight.BOLD, 50 );
+//		Font buttonFont = Font.font( "", FontWeight.BOLD, 20 );
+//		gc.setFont( theFont );
+//		gc.fillText( "Welcome To Fruit Dungeon!", 100, 200 );//this is the text that will be printed to the screen
+//		gc.strokeText( "Welcome To Fruit Dungeon!", 100, 200 );
+//		Button start = new Button("START");//this button will lead to the game mode selection screen
+//		//Button highscores = new Button("HIGHSCORES");//this button will prompt the high scores menu to appear
+//		Button instructions = new Button ("Instructions");// this button will display the controls and objective of the game.
+//		start.setLayoutX(200);
+//		start.setLayoutY(270);
+//		instructions.setLayoutX(200);
+//		instructions.setLayoutY(295);
+//		group.getChildren().add(start);
+//		group.getChildren().add(instructions);
+//		group.getChildren().add(canvas);
+//		primaryStage.setScene(scene);
+//		start.setStyle("-fx-background-color: white; -fx-text-fill: black;"); 
+//		//highscores.setStyle("-fx-background-color: white; -fx-text-fill: black;"); 
+//		instructions.setStyle("-fx-background-color: white; -fx-text-fill: black;"); 
+//		start.setFont(buttonFont);
+//		//highscores.setFont(buttonFont);
+//		instructions.setFont(buttonFont);
+//		start.setOnAction(new EventHandler<ActionEvent>() {
+//			@Override 
+//			public void handle(ActionEvent e) {
+//				gc.clearRect(0, 0, gc.getCanvas().getWidth(), gc.getCanvas().getHeight());
+//			}});
 		if(songNum == 1) {
 			song1.start();
 		}else if (songNum ==2) {
