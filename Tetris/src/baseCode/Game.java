@@ -46,49 +46,49 @@ public class Game extends Application{
 		Canvas canvas = new Canvas(450, 600);
 		final GraphicsContext gc = canvas.getGraphicsContext2D();
 
-
-				Clip song1 = AudioSystem.getClip();
-				song1.open(AudioSystem.getAudioInputStream(new File("src/Resources/Castle Rock.wav")));
-				Clip song2 = AudioSystem.getClip();
-				song2.open(AudioSystem.getAudioInputStream(new File("src/Resources/TetrisDance.wav")));
-				Clip song3 = AudioSystem.getClip();
-				song3.open(AudioSystem.getAudioInputStream(new File("src/Resources/Fever Dr. Mario.wav")));
-				Clip song4 = AudioSystem.getClip();
-				song4.open(AudioSystem.getAudioInputStream(new File("src/Resources/Paper Mario.wav")));
-				Clip song5 = AudioSystem.getClip();
-				song5.open(AudioSystem.getAudioInputStream(new File("src/Resources/Snow Bros.wav")));
-				Clip song6 = AudioSystem.getClip();
-				song6.open(AudioSystem.getAudioInputStream(new File("src/Resources/Super Mario Bros.wav")));
-				Clip song7 = AudioSystem.getClip();
-				song7.open(AudioSystem.getAudioInputStream(new File("src/Resources/Battletoads.wav")));
-				Clip song8 = AudioSystem.getClip();
-				song8.open(AudioSystem.getAudioInputStream(new File("src/Resources/FlashManStage.wav")));
-				Clip song9 = AudioSystem.getClip();
-				song9.open(AudioSystem.getAudioInputStream(new File("src/Resources/TheManWithTheMachineGun.wav")));
-				Clip song10 = AudioSystem.getClip();
-				song10.open(AudioSystem.getAudioInputStream(new File("src/Resources/Balrog.wav")));
-				Clip song11 = AudioSystem.getClip();
-				song11.open(AudioSystem.getAudioInputStream(new File("src/Resources/DuckTales.wav")));
-				Clip song12 = AudioSystem.getClip();
-				song12.open(AudioSystem.getAudioInputStream(new File("src/Resources/BubbleBobble.wav")));
-				Clip song13 = AudioSystem.getClip();
-				song13.open(AudioSystem.getAudioInputStream(new File("src/Resources/SuperMarioBrosUnderground.wav")));
-				Clip song14 = AudioSystem.getClip();
-				song14.open(AudioSystem.getAudioInputStream(new File("src/Resources/Super Mario Bros. 3.wav")));
-				Clip song15 = AudioSystem.getClip();
-				song15.open(AudioSystem.getAudioInputStream(new File("src/Resources/Dudley.wav")));
-				Clip song16 = AudioSystem.getClip();
-				song16.open(AudioSystem.getAudioInputStream(new File("src/Resources/Spider Dance.wav")));
-				Clip song17 = AudioSystem.getClip();
-				song17.open(AudioSystem.getAudioInputStream(new File("src/Resources/Spaceball.wav")));
-				Clip song18 = AudioSystem.getClip();
-				song18.open(AudioSystem.getAudioInputStream(new File("src/Resources/PAC-MAN.wav")));
-				Clip song19 = AudioSystem.getClip();
-				song19.open(AudioSystem.getAudioInputStream(new File("src/Resources/Excitebike Arena.wav")));
-				Clip credit = AudioSystem.getClip();
-				credit.open(AudioSystem.getAudioInputStream(new File("src/Resources/AssassinsCreed III.wav")));
-
-
+/**
+ * All the songs in the code
+ */
+		Clip song1 = AudioSystem.getClip();
+		song1.open(AudioSystem.getAudioInputStream(new File("src/Resources/Castle Rock.wav")));
+		Clip song2 = AudioSystem.getClip();
+		song2.open(AudioSystem.getAudioInputStream(new File("src/Resources/TetrisDance.wav")));
+		Clip song3 = AudioSystem.getClip();
+		song3.open(AudioSystem.getAudioInputStream(new File("src/Resources/Fever Dr. Mario.wav")));
+		Clip song4 = AudioSystem.getClip();
+		song4.open(AudioSystem.getAudioInputStream(new File("src/Resources/Paper Mario.wav")));
+		Clip song5 = AudioSystem.getClip();
+		song5.open(AudioSystem.getAudioInputStream(new File("src/Resources/Snow Bros.wav")));
+		Clip song6 = AudioSystem.getClip();
+		song6.open(AudioSystem.getAudioInputStream(new File("src/Resources/Super Mario Bros.wav")));
+		Clip song7 = AudioSystem.getClip();
+		song7.open(AudioSystem.getAudioInputStream(new File("src/Resources/Battletoads.wav")));
+		Clip song8 = AudioSystem.getClip();
+		song8.open(AudioSystem.getAudioInputStream(new File("src/Resources/FlashManStage.wav")));
+		Clip song9 = AudioSystem.getClip();
+		song9.open(AudioSystem.getAudioInputStream(new File("src/Resources/TheManWithTheMachineGun.wav")));
+		Clip song10 = AudioSystem.getClip();
+		song10.open(AudioSystem.getAudioInputStream(new File("src/Resources/Balrog.wav")));
+		Clip song11 = AudioSystem.getClip();
+		song11.open(AudioSystem.getAudioInputStream(new File("src/Resources/DuckTales.wav")));
+		Clip song12 = AudioSystem.getClip();
+		song12.open(AudioSystem.getAudioInputStream(new File("src/Resources/BubbleBobble.wav")));
+		Clip song13 = AudioSystem.getClip();
+		song13.open(AudioSystem.getAudioInputStream(new File("src/Resources/SuperMarioBrosUnderground.wav")));
+		Clip song14 = AudioSystem.getClip();
+		song14.open(AudioSystem.getAudioInputStream(new File("src/Resources/Super Mario Bros. 3.wav")));
+		Clip song15 = AudioSystem.getClip();
+		song15.open(AudioSystem.getAudioInputStream(new File("src/Resources/Dudley.wav")));
+		Clip song16 = AudioSystem.getClip();
+		song16.open(AudioSystem.getAudioInputStream(new File("src/Resources/Spider Dance.wav")));
+		Clip song17 = AudioSystem.getClip();
+		song17.open(AudioSystem.getAudioInputStream(new File("src/Resources/Spaceball.wav")));
+		Clip song18 = AudioSystem.getClip();
+		song18.open(AudioSystem.getAudioInputStream(new File("src/Resources/PAC-MAN.wav")));
+		Clip song19 = AudioSystem.getClip();
+		song19.open(AudioSystem.getAudioInputStream(new File("src/Resources/Excitebike Arena.wav")));
+		Clip credit = AudioSystem.getClip();
+		credit.open(AudioSystem.getAudioInputStream(new File("src/Resources/AssassinsCreed III.wav")));
 		//		boolean startPressed= true;
 		//		title.start();
 		//		Button start = new Button("Start");
@@ -102,7 +102,6 @@ public class Game extends Application{
 		//		group.getChildren().add(canvas);
 		//		primaryStage.setScene(scene);
 		//		primaryStage.show();
-		//
 		//		do {
 		//			if(start.isPressed()) {
 		//				startPressed = true;
@@ -112,83 +111,75 @@ public class Game extends Application{
 		//			}
 		//		}while(startPressed == false);	
 		//		title.stop();
-				gc.setFill( Color.WHITE );
-				gc.setStroke( Color.WHITE );
-				gc.setLineWidth(2);
-				Font theFont = Font.font( "", FontWeight.BOLD, 50 );
-				Font buttonFont = Font.font( "", FontWeight.BOLD, 20 );
-				gc.setFont( theFont );
-				gc.fillText( "Welcome To Fruit Dungeon!", 100, 200 );//this is the text that will be printed to the screen
-				gc.strokeText( "Welcome To Fruit Dungeon!", 100, 200 );
-
-				Button start = new Button("START");//this button will lead to the game mode selection screen
-				//Button highscores = new Button("HIGHSCORES");//this button will prompt the high scores menu to appear
-				Button instructions = new Button ("Instructions");// this button will display the controls and objective of the game.
-				start.setLayoutX(200);
-						start.setLayoutY(270);
-						instructions.setLayoutX(200);
-						instructions.setLayoutY(295);
-						group.getChildren().add(start);
-						group.getChildren().add(instructions);
-						group.getChildren().add(canvas);
-						primaryStage.setScene(scene);
-
+		gc.setFill( Color.WHITE );
+		gc.setStroke( Color.WHITE );
+		gc.setLineWidth(2);
+		Font theFont = Font.font( "", FontWeight.BOLD, 50 );
+		Font buttonFont = Font.font( "", FontWeight.BOLD, 20 );
+		gc.setFont( theFont );
+		gc.fillText( "Welcome To Fruit Dungeon!", 100, 200 );//this is the text that will be printed to the screen
+		gc.strokeText( "Welcome To Fruit Dungeon!", 100, 200 );
+		Button start = new Button("START");//this button will lead to the game mode selection screen
+		//Button highscores = new Button("HIGHSCORES");//this button will prompt the high scores menu to appear
+		Button instructions = new Button ("Instructions");// this button will display the controls and objective of the game.
+		start.setLayoutX(200);
+		start.setLayoutY(270);
+		instructions.setLayoutX(200);
+		instructions.setLayoutY(295);
+		group.getChildren().add(start);
+		group.getChildren().add(instructions);
+		group.getChildren().add(canvas);
+		primaryStage.setScene(scene);
 		start.setStyle("-fx-background-color: white; -fx-text-fill: black;"); 
-				//highscores.setStyle("-fx-background-color: white; -fx-text-fill: black;"); 
-				instructions.setStyle("-fx-background-color: white; -fx-text-fill: black;"); 
-				start.setFont(buttonFont);
-				//highscores.setFont(buttonFont);
-				instructions.setFont(buttonFont);
-
-				
-				start.setOnAction(new EventHandler<ActionEvent>() {
-					@Override 
-					public void handle(ActionEvent e) {
-						gc.clearRect(0, 0, gc.getCanvas().getWidth(), gc.getCanvas().getHeight());
+		//highscores.setStyle("-fx-background-color: white; -fx-text-fill: black;"); 
+		instructions.setStyle("-fx-background-color: white; -fx-text-fill: black;"); 
+		start.setFont(buttonFont);
+		//highscores.setFont(buttonFont);
+		instructions.setFont(buttonFont);
+		start.setOnAction(new EventHandler<ActionEvent>() {
+			@Override 
+			public void handle(ActionEvent e) {
+				gc.clearRect(0, 0, gc.getCanvas().getWidth(), gc.getCanvas().getHeight());
 			}});
-
-
-
-				if(songNum == 1) {
-					song1.start();
-				}else if (songNum ==2) {
-					song2.start();
-				}else if (songNum ==3) {
-					song3.start();
-				}else if (songNum ==4) {
-					song4.start();
-				}else if (songNum ==5) {
-					song5.start();
-				}else if (songNum ==6) {
-					song6.start();
-				}else if (songNum ==7) {
-					song7.start();
-				}else if (songNum ==8) {
-					song8.start();
-				}else if (songNum ==9) {
-					song9.start();
-				}else if (songNum ==10) {
-					song10.start();
-				}else if (songNum ==11) {
-					song11.start();
-				}else if (songNum ==12) {
-					song12.start();
-				}else if (songNum ==13) {
-					song13.start();
-				}else if (songNum ==14) {
-					song14.start();
-				}else if (songNum ==15) {
-					song15.start();
-				}else if (songNum ==16) {
-					song16.start();
-				}else if (songNum ==17) {
-					song17.start();
-				}else if (songNum ==18) {
-					song18.start();
-				}else if (songNum == 19) {
-					song19.start();
-				}
-
+		if(songNum == 1) {
+			song1.start();
+		}else if (songNum ==2) {
+			song2.start();
+		}else if (songNum ==3) {
+			song3.start();
+		}else if (songNum ==4) {
+			song4.start();
+		}else if (songNum ==5) {
+			song5.start();
+		}else if (songNum ==6) {
+			song6.start();
+		}else if (songNum ==7) {
+			song7.start();
+		}else if (songNum ==8) {
+			song8.start();
+		}else if (songNum ==9) {
+			song9.start();
+		}else if (songNum ==10) {
+			song10.start();
+		}else if (songNum ==11) {
+			song11.start();
+		}else if (songNum ==12) {
+			song12.start();
+		}else if (songNum ==13) {
+			song13.start();
+		}else if (songNum ==14) {
+			song14.start();
+		}else if (songNum ==15) {
+			song15.start();
+		}else if (songNum ==16) {
+			song16.start();
+		}else if (songNum ==17) {
+			song17.start();
+		}else if (songNum ==18) {
+			song18.start();
+		}else if (songNum == 19) {
+			song19.start();
+		}
 		canvas.setOnKeyPressed(event -> {
 			String direction = " " ;
 			if(event.getCode() == KeyCode.A) {
@@ -202,6 +193,9 @@ public class Game extends Application{
 				moveBlocks(direction);
 			}
 		});
+		/**
+		 * On click your block will rotate except the square no rotations for square
+		 */
 		canvas.setOnMouseClicked(event ->{
 			rotateBlock();
 		});
@@ -218,21 +212,15 @@ public class Game extends Application{
 			@Override
 			public void run() {
 				int end = -1;
-
 				if(square.size() == 0) {
-
 					createBlocks(shape);
-
 				}
-
 				if(isHit() && square.get(square.size()-4).getY() <= 75) {
 					end = 1;
 					time.cancel();
 				}
-
 				if(end == 1) {
 					credit.start();
-
 					if(songNum == 1) {
 						song1.stop();
 					}else if (songNum ==2) {
@@ -272,19 +260,13 @@ public class Game extends Application{
 					}else if (songNum == 19) {
 						song19.stop();
 					}
-
 				}
-
 				if(isHit() == true) {
-
 					shape = randomShape(shape);
 					createBlocks(shape);
-
 				}
 			}
-
 		}, 0, 1);
-
 		time.schedule(new TimerTask() {
 			@Override
 			public void run() {
@@ -353,7 +335,6 @@ public class Game extends Application{
 						return;
 				}
 			}
-
 		}else if (direction == "Right") {
 			if(isHit()) {
 				return;
@@ -380,10 +361,8 @@ public class Game extends Application{
 					}
 					else
 						return;
-				}
-				
+				}	
 			}
-
 		}else if (direction == "Down") {
 			dropBlocks();
 		}
@@ -533,9 +512,7 @@ public class Game extends Application{
 	 * Generates one of the random shapes in Tetris
 	 * @return
 	 */
-
 	public void rowCheck(int count) {
-		
 		for(int y=0; y<=575;y=y+squareSize) {
 			for (int x = 0; x<450;x=x+squareSize) {
 				for(int i =0;i <square.size();i ++) {
@@ -548,14 +525,16 @@ public class Game extends Application{
 			if(count == 18) {
 				System.out.println(y);
 				removeRows(y);
-				
 			}
 			count = 0;
 		}
-
 	}
+	/**
+	 * Generates a random shape from Square.java
+	 * @param shape
+	 * @return
+	 */
 	public int randomShape(int shape) {
-
 		shape =	(int) (Math.random() * 7);
 		return shape;
 	}
@@ -570,85 +549,61 @@ public class Game extends Application{
 					square.remove(i);
 					//					dropAllBlocks();
 				}
-
 			}
-
 		}
 	}
-
 	/**
 	 * Drops the blocks
 	 */
 	public void dropBlocks() {
 		for(int i = square.size()-4; i <square.size();i ++) {
 			square.get(i).setY((int)(square.get(i).getY()+ squareSize));
-
 		}
 	}
+	/**
+	 * Drops all the different types of blocks
+	 */
 	public void dropAllBlocks() {
 		for(int i = 0; i <square.size();i ++) {
 			square.get(i).setY((int)(square.get(i).getY()+ squareSize));
 		}
 	}
-
-
-
-
 	/**
 	 * Allows User to rotate the random block to fit a certain area
 	 * @param shape
 	 */
-	public void rotateBlock() {
-		
+	public void rotateBlock() {	
 		if (shape == 1) {
 			//Line
 			if((square.get(square.size()-1).getX() + squareSize) == square.get(square.size()-2).getX()) {
-
 				square.get(square.size()-1).setX((int)square.get(square.size()-2).getX());
 				square.get(square.size()-1).setY((int)square.get(square.size()-2).getY() + squareSize);
-
 				square.get(square.size()-4).setX((int)square.get(square.size()-2).getX());
 				square.get(square.size()-4).setY((int)square.get(square.size()-2).getY() - 2*squareSize);
-
 				square.get(square.size()-3).setX((int)square.get(square.size()-2).getX());
 				square.get(square.size()-3).setY((int)square.get(square.size()-2).getY() - squareSize);
-
 			}else if ((square.get(square.size()-1).getX() - squareSize) == square.get(square.size()-2).getX()) {
-
 				square.get(square.size()-1).setX((int)square.get(square.size()-2).getX()+ squareSize);
 				square.get(square.size()-1).setY((int)square.get(square.size()-2).getY());
-
 				square.get(square.size()-4).setX((int)square.get(square.size()-2).getX() + 2*squareSize);
 				square.get(square.size()-4).setY((int)square.get(square.size()-2).getY());
-
 				square.get(square.size()-3).setX((int)square.get(square.size()-2).getX()+ squareSize);
 				square.get(square.size()-3).setY((int)square.get(square.size()-2).getY());
-
 			}else if ((square.get(square.size()-1).getY() + squareSize) == square.get(square.size()-2).getY()) {
-
 				square.get(square.size()-1).setX((int)square.get(square.size()-2).getX());
 				square.get(square.size()-1).setY((int)square.get(square.size()-2).getY() - squareSize);
-
 				square.get(square.size()-4).setX((int)square.get(square.size()-2).getX());
 				square.get(square.size()-4).setY((int)square.get(square.size()-2).getY() + 2*squareSize);
-
 				square.get(square.size()-3).setX((int)square.get(square.size()-2).getX());
 				square.get(square.size()-3).setY((int)square.get(square.size()-2).getY() + squareSize);
-
 			}else if ((square.get(square.size()-1).getY() - squareSize) == square.get(square.size()-2).getY()) {
-
 				square.get(square.size()-1).setX((int)square.get(square.size()-2).getX() - squareSize);
 				square.get(square.size()-1).setY((int)square.get(square.size()-2).getY());
-
 				square.get(square.size()-4).setX((int)square.get(square.size()-2).getX()+ 2*squareSize);
 				square.get(square.size()-4).setY((int)square.get(square.size()-2).getY());
-
 				square.get(square.size()-3).setX((int)square.get(square.size()-2).getX() + squareSize);
 				square.get(square.size()-3).setY((int)square.get(square.size()-2).getY());
-
-
 			}
-
 		}else if (shape == 2) {
 			//s
 			// 20
@@ -657,48 +612,34 @@ public class Game extends Application{
 				System.out.println(shape);
 				square.get(square.size()-3).setX((int)square.get(square.size()-2).getX()-squareSize);
 				square.get(square.size()-3).setY((int)square.get(square.size()-2).getY());
-
 				square.get(square.size()-1).setX((int)square.get(square.size()-2).getX()-squareSize);
 				square.get(square.size()-1).setY((int)square.get(square.size()-2).getY()-squareSize);
-
 				square.get(square.size()-4).setX((int)square.get(square.size()-2).getX());
 				square.get(square.size()-4).setY((int)square.get(square.size()-2).getY()+squareSize);
-
 			}else if ((square.get(square.size()-3).getX()+squareSize) == square.get(square.size()-2).getX()) {
 				System.out.println(shape);
 				square.get(square.size()-3).setX((int)square.get(square.size()-2).getX());
 				square.get(square.size()-3).setY((int)square.get(square.size()-2).getY()-squareSize);
-
 				square.get(square.size()-1).setX((int)square.get(square.size()-2).getX()+squareSize);
 				square.get(square.size()-1).setY((int)square.get(square.size()-2).getY()-squareSize);
-
 				square.get(square.size()-4).setX((int)square.get(square.size()-2).getX()-squareSize);
 				square.get(square.size()-4).setY((int)square.get(square.size()-2).getY());
-
 			}else if ((square.get(square.size()-3).getY()+squareSize) == square.get(square.size()-2).getY()) {
 				System.out.println(shape);
-				
 				square.get(square.size()-3).setX((int)square.get(square.size()-2).getX()+squareSize);
 				square.get(square.size()-3).setY((int)square.get(square.size()-2).getY());
-
 				square.get(square.size()-1).setX((int)square.get(square.size()-2).getX()+squareSize);
 				square.get(square.size()-1).setY((int)square.get(square.size()-2).getY()+squareSize);
-
 				square.get(square.size()-4).setX((int)square.get(square.size()-2).getX());
 				square.get(square.size()-4).setY((int)square.get(square.size()-2).getY()-squareSize);
-
 			}else if ((square.get(square.size()-3).getX()-squareSize) == square.get(square.size()-2).getX()) {
 				System.out.println(shape);
-				
 				square.get(square.size()-3).setX((int)square.get(square.size()-2).getX());
 				square.get(square.size()-3).setY((int)square.get(square.size()-2).getY()+squareSize);
-
 				square.get(square.size()-1).setX((int)square.get(square.size()-2).getX()-squareSize);
 				square.get(square.size()-1).setY((int)square.get(square.size()-2).getY()+squareSize);
-
 				square.get(square.size()-4).setX((int)square.get(square.size()-2).getX()+squareSize);
 				square.get(square.size()-4).setY((int)square.get(square.size()-2).getY());
-
 			}
 		}else if (shape == 3) {
 			//z
@@ -706,47 +647,34 @@ public class Game extends Application{
 				System.out.println(shape);
 				square.get(square.size()-3).setX((int)square.get(square.size()-2).getX());
 				square.get(square.size()-3).setY((int)square.get(square.size()-2).getY()-squareSize);
-
 				square.get(square.size()-4).setX((int)square.get(square.size()-2).getX()-squareSize);
 				square.get(square.size()-4).setY((int)square.get(square.size()-2).getY());
-
 				square.get(square.size()-1).setX((int)square.get(square.size()-2).getX()-squareSize);
 				square.get(square.size()-1).setY((int)square.get(square.size()-2).getY()+squareSize);
-
 			}else if ((square.get(square.size()-4).getX()+squareSize) == square.get(square.size()-2).getX()) {
 				System.out.println(shape);
 				square.get(square.size()-3).setX((int)square.get(square.size()-2).getX()+squareSize);
 				square.get(square.size()-3).setY((int)square.get(square.size()-2).getY());
-
 				square.get(square.size()-4).setX((int)square.get(square.size()-2).getX());
 				square.get(square.size()-4).setY((int)square.get(square.size()-2).getY()-squareSize);
-
 				square.get(square.size()-1).setX((int)square.get(square.size()-2).getX()-squareSize);
 				square.get(square.size()-1).setY((int)square.get(square.size()-2).getY()-squareSize);
-
 			}else if ((square.get(square.size()-4).getY()+squareSize) == square.get(square.size()-2).getY()) {
 				System.out.println(shape);
 				square.get(square.size()-3).setX((int)square.get(square.size()-2).getX());
 				square.get(square.size()-3).setY((int)square.get(square.size()-2).getY()+squareSize);
-
 				square.get(square.size()-4).setX((int)square.get(square.size()-2).getX()+squareSize);
 				square.get(square.size()-4).setY((int)square.get(square.size()-2).getY());
-
 				square.get(square.size()-1).setX((int)square.get(square.size()-2).getX()+squareSize);
 				square.get(square.size()-1).setY((int)square.get(square.size()-2).getY()-squareSize);
-
 			}else if ((square.get(square.size()-4).getX()-squareSize) == square.get(square.size()-2).getX()) {
 				System.out.println(shape);
 				square.get(square.size()-3).setX((int)square.get(square.size()-2).getX()-squareSize);
 				square.get(square.size()-3).setY((int)square.get(square.size()-2).getY());
-
 				square.get(square.size()-4).setX((int)square.get(square.size()-2).getX());
 				square.get(square.size()-4).setY((int)square.get(square.size()-2).getY()+squareSize);
-
 				square.get(square.size()-1).setX((int)square.get(square.size()-2).getX()+squareSize);
 				square.get(square.size()-1).setY((int)square.get(square.size()-2).getY()+squareSize);
-
-
 			}else if (shape == 4) {//TODO fix everything past this line
 				//upside-down t
 				// 2
@@ -755,48 +683,35 @@ public class Game extends Application{
 					System.out.println(shape);
 					square.get(square.size()-2).setX((int)square.get(square.size()-2).getX()+squareSize);
 					square.get(square.size()-2).setY((int)square.get(square.size()-2).getY()+squareSize);
-
 					square.get(square.size()-3).setX((int)square.get(square.size()-2).getX()-squareSize);
 					square.get(square.size()-3).setY((int)square.get(square.size()-2).getY()+squareSize);
-
 					square.get(square.size()-4).setX((int)square.get(square.size()-2).getX()-squareSize);
 					square.get(square.size()-4).setY((int)square.get(square.size()-2).getY()-squareSize);
-
 				}else if((square.get(square.size()-2).getX()-squareSize) == square.get(square.size()-1).getX()) {
 					System.out.println(shape);
 					square.get(square.size()-2).setX((int)square.get(square.size()-2).getX()-squareSize);
 					square.get(square.size()-2).setY((int)square.get(square.size()-2).getY()+squareSize);
-
 					square.get(square.size()-3).setX((int)square.get(square.size()-2).getX()-squareSize);
 					square.get(square.size()-3).setY((int)square.get(square.size()-2).getY()-squareSize);
-
 					square.get(square.size()-4).setX((int)square.get(square.size()-2).getX()+squareSize);
 					square.get(square.size()-4).setY((int)square.get(square.size()-2).getY()-squareSize);
-
 				}else if((square.get(square.size()-2).getY()-squareSize) == square.get(square.size()-1).getY()) {
 					System.out.println(shape);
 					square.get(square.size()-2).setX((int)square.get(square.size()-2).getX()-squareSize);
 					square.get(square.size()-2).setY((int)square.get(square.size()-2).getY()-squareSize);
-
 					square.get(square.size()-3).setX((int)square.get(square.size()-2).getX()+squareSize);
 					square.get(square.size()-3).setY((int)square.get(square.size()-2).getY()-squareSize);
-
 					square.get(square.size()-4).setX((int)square.get(square.size()-2).getX()+squareSize);
 					square.get(square.size()-4).setY((int)square.get(square.size()-2).getY()+squareSize);
-
 				}else if((square.get(square.size()-2).getX()+squareSize) == square.get(square.size()-1).getX()) {
 					System.out.println(shape);
 					square.get(square.size()-2).setX((int)square.get(square.size()-2).getX()+squareSize);
 					square.get(square.size()-2).setY((int)square.get(square.size()-2).getY()-squareSize);
-
 					square.get(square.size()-3).setX((int)square.get(square.size()-2).getX()+squareSize);
 					square.get(square.size()-3).setY((int)square.get(square.size()-2).getY()+squareSize);
-
 					square.get(square.size()-4).setX((int)square.get(square.size()-2).getX()-squareSize);
 					square.get(square.size()-4).setY((int)square.get(square.size()-2).getY()+squareSize);
-
 				}
-
 			}else if (shape == 5) {
 				//L
 				//2
@@ -806,106 +721,76 @@ public class Game extends Application{
 					System.out.println(shape);
 					square.get(square.size()-2).setX((int)square.get(square.size()-4).getX()+squareSize);
 					square.get(square.size()-2).setY((int)square.get(square.size()-4).getY());
-
 					square.get(square.size()-1).setX((int)square.get(square.size()-4).getX()-squareSize);
 					square.get(square.size()-1).setY((int)square.get(square.size()-4).getY());
-
 					square.get(square.size()-3).setX((int)square.get(square.size()-4).getX()-squareSize);
 					square.get(square.size()-3).setY((int)square.get(square.size()-4).getY()+squareSize);
-
 				}
 				else if((square.get(square.size()-4).getX()+squareSize) == (square.get(square.size()-2).getX())) {
 					System.out.println(shape);
 					square.get(square.size()-2).setX((int)square.get(square.size()-4).getX());
 					square.get(square.size()-2).setY((int)square.get(square.size()-4).getY()+squareSize);
-
 					square.get(square.size()-1).setX((int)square.get(square.size()-4).getX());
 					square.get(square.size()-1).setY((int)square.get(square.size()-4).getY()-squareSize);
-
 					square.get(square.size()-3).setX((int)square.get(square.size()-4).getX()-squareSize);
 					square.get(square.size()-3).setY((int)square.get(square.size()-4).getY()-squareSize);
-
 				}
 				else if((square.get(square.size()-4).getY()+squareSize) == (square.get(square.size()-2).getY())) {
 					System.out.println(shape);
 					square.get(square.size()-2).setX((int)square.get(square.size()-4).getX()-squareSize);
 					square.get(square.size()-2).setY((int)square.get(square.size()-4).getY());
-
 					square.get(square.size()-1).setX((int)square.get(square.size()-4).getX()+squareSize);
 					square.get(square.size()-1).setY((int)square.get(square.size()-4).getY());
-
 					square.get(square.size()-3).setX((int)square.get(square.size()-4).getX()+squareSize);
 					square.get(square.size()-3).setY((int)square.get(square.size()-4).getY()-squareSize);
-
 				}
 				else if((square.get(square.size()-4).getX()-squareSize) == (square.get(square.size()-2).getX())) {
 					System.out.println(shape);
 					square.get(square.size()-2).setX((int)square.get(square.size()-4).getX());
 					square.get(square.size()-2).setY((int)square.get(square.size()-4).getY()+squareSize);
-
 					square.get(square.size()-1).setX((int)square.get(square.size()-4).getX());
 					square.get(square.size()-1).setY((int)square.get(square.size()-4).getY()-squareSize);
-
 					square.get(square.size()-3).setX((int)square.get(square.size()-4).getX()+squareSize);
 					square.get(square.size()-3).setY((int)square.get(square.size()-4).getY()+squareSize);
-
 				}
 			}else if (shape == 6) {
 				//inverted L
-
 				if((square.get(square.size()-4).getY()-squareSize) == (square.get(square.size()-2).getY())) {
 					System.out.println(shape);
 					square.get(square.size()-2).setX((int)square.get(square.size()-4).getX()+squareSize);
 					square.get(square.size()-2).setY((int)square.get(square.size()-4).getY());
-
 					square.get(square.size()-1).setX((int)square.get(square.size()-4).getX()-squareSize);
 					square.get(square.size()-1).setY((int)square.get(square.size()-4).getY());
-
 					square.get(square.size()-3).setX((int)square.get(square.size()-4).getX()-squareSize);
 					square.get(square.size()-3).setY((int)square.get(square.size()-4).getY()-squareSize);
-
 				}else if((square.get(square.size()-4).getX()+squareSize) == (square.get(square.size()-2).getX())) {
 					System.out.println(shape);
 					square.get(square.size()-2).setX((int)square.get(square.size()-4).getX());
 					square.get(square.size()-2).setY((int)square.get(square.size()-4).getY()+squareSize);
-
 					square.get(square.size()-1).setX((int)square.get(square.size()-4).getX());
 					square.get(square.size()-1).setY((int)square.get(square.size()-4).getY()-squareSize);
-
 					square.get(square.size()-3).setX((int)square.get(square.size()-4).getX()+squareSize);
 					square.get(square.size()-3).setY((int)square.get(square.size()-4).getY()-squareSize);
-
 				}else if((square.get(square.size()-4).getY()+squareSize) == (square.get(square.size()-2).getY())) {
 					System.out.println(shape);
 					square.get(square.size()-2).setX((int)square.get(square.size()-4).getX()-squareSize);
 					square.get(square.size()-2).setY((int)square.get(square.size()-4).getY());
-
 					square.get(square.size()-1).setX((int)square.get(square.size()-4).getX()+squareSize);
 					square.get(square.size()-1).setY((int)square.get(square.size()-4).getY());
-
 					square.get(square.size()-3).setX((int)square.get(square.size()-4).getX()+squareSize);
 					square.get(square.size()-3).setY((int)square.get(square.size()-4).getY()+squareSize);
-
 				}else if((square.get(square.size()-4).getX()-squareSize) == (square.get(square.size()-2).getX())) {
 					System.out.println(shape);
 					square.get(square.size()-2).setX((int)square.get(square.size()-4).getX());
 					square.get(square.size()-2).setY((int)square.get(square.size()-4).getY()+squareSize);
-
 					square.get(square.size()-1).setX((int)square.get(square.size()-4).getX());
 					square.get(square.size()-1).setY((int)square.get(square.size()-4).getY()-squareSize);
-
 					square.get(square.size()-3).setX((int)square.get(square.size()-4).getX()-squareSize);
 					square.get(square.size()-3).setY((int)square.get(square.size()-4).getY()+squareSize);
-
 				}
-
 			}
 		}
-
 	}
-
-
-
 	/**
 	 * Hit Detection to determine if the random blocks can stack on top of each other
 	 * @return
