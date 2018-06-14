@@ -88,7 +88,7 @@ public class Game extends Application{
 				Clip credit = AudioSystem.getClip();
 				credit.open(AudioSystem.getAudioInputStream(new File("src/Resources/AssassinsCreed III.wav")));
 
-=
+
 		//		boolean startPressed= true;
 		//		title.start();
 		//		Button start = new Button("Start");
