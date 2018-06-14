@@ -35,6 +35,7 @@ public class Game extends Application{
 	Image buffer;
 	@Override
 	public void start(Stage primaryStage) throws Exception {
+		int count = 0;
 		Group group = new Group();
 		Scene scene = new Scene(group, 450, 600);
 		primaryStage.setTitle("Tetris");
@@ -222,9 +223,9 @@ public class Game extends Application{
 		time.schedule(new TimerTask() {
 			@Override
 			public void run() {
-				rowCheck();
+				rowCheck(count);
 			}
-		}, 0,1);
+		}, 0,10);
 		//TODO fix multiplying bug when spawning blocks on hit
 		canvas.setFocusTraversable(true);
 		Thread game = new Thread(new Runnable() {
@@ -468,8 +469,8 @@ public class Game extends Application{
 	 * @return
 	 */
 
-	public void rowCheck() {
-		int count = 0;
+	public void rowCheck(int count) {
+		
 		for(int y=0; y<=575;y=y+squareSize) {
 			for (int x = 0; x<450;x=x+squareSize) {
 				for(int i =0;i <square.size();i ++) {
