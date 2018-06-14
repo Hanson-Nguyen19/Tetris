@@ -42,86 +42,86 @@ public class Game extends Application{
 		final GraphicsContext gc = canvas.getGraphicsContext2D();
 
 
-				Clip song1 = AudioSystem.getClip();
-				song1.open(AudioSystem.getAudioInputStream(new File("src/Resources/Castle Rock.wav")));
-				Clip song2 = AudioSystem.getClip();
-				song2.open(AudioSystem.getAudioInputStream(new File("src/Resources/TetrisDance.wav")));
-				Clip song3 = AudioSystem.getClip();
-				song3.open(AudioSystem.getAudioInputStream(new File("src/Resources/Fever Dr. Mario.wav")));
-				Clip song4 = AudioSystem.getClip();
-				song4.open(AudioSystem.getAudioInputStream(new File("src/Resources/Paper Mario.wav")));
-				Clip song5 = AudioSystem.getClip();
-				song5.open(AudioSystem.getAudioInputStream(new File("src/Resources/Snow Bros.wav")));
-				Clip song6 = AudioSystem.getClip();
-				song6.open(AudioSystem.getAudioInputStream(new File("src/Resources/Super Mario Bros.wav")));
-				Clip song7 = AudioSystem.getClip();
-				song7.open(AudioSystem.getAudioInputStream(new File("src/Resources/Battletoads.wav")));
-				Clip song8 = AudioSystem.getClip();
-				song8.open(AudioSystem.getAudioInputStream(new File("src/Resources/FlashManStage.wav")));
-				Clip song9 = AudioSystem.getClip();
-				song9.open(AudioSystem.getAudioInputStream(new File("src/Resources/TheManWithTheMachineGun.wav")));
-				Clip song10 = AudioSystem.getClip();
-				song10.open(AudioSystem.getAudioInputStream(new File("src/Resources/Balrog.wav")));
-				Clip song11 = AudioSystem.getClip();
-				song11.open(AudioSystem.getAudioInputStream(new File("src/Resources/DuckTales.wav")));
-				Clip song12 = AudioSystem.getClip();
-				song12.open(AudioSystem.getAudioInputStream(new File("src/Resources/BubbleBobble.wav")));
-				Clip song13 = AudioSystem.getClip();
-				song13.open(AudioSystem.getAudioInputStream(new File("src/Resources/SuperMarioBrosUnderground.wav")));
-				Clip song14 = AudioSystem.getClip();
-				song14.open(AudioSystem.getAudioInputStream(new File("src/Resources/Super Mario Bros. 3.wav")));
-				Clip song15 = AudioSystem.getClip();
-				song15.open(AudioSystem.getAudioInputStream(new File("src/Resources/Dudley.wav")));
-				Clip song16 = AudioSystem.getClip();
-				song16.open(AudioSystem.getAudioInputStream(new File("src/Resources/Spider Dance.wav")));
-				Clip song17 = AudioSystem.getClip();
-				song17.open(AudioSystem.getAudioInputStream(new File("src/Resources/Spaceball.wav")));
-				Clip song18 = AudioSystem.getClip();
-				song18.open(AudioSystem.getAudioInputStream(new File("src/Resources/PAC-MAN.wav")));
-				Clip song19 = AudioSystem.getClip();
-				song19.open(AudioSystem.getAudioInputStream(new File("src/Resources/Excitebike Arena.wav")));
+//				Clip song1 = AudioSystem.getClip();
+//				song1.open(AudioSystem.getAudioInputStream(new File("src/Resources/Castle Rock.wav")));
+//				Clip song2 = AudioSystem.getClip();
+//				song2.open(AudioSystem.getAudioInputStream(new File("src/Resources/TetrisDance.wav")));
+//				Clip song3 = AudioSystem.getClip();
+//				song3.open(AudioSystem.getAudioInputStream(new File("src/Resources/Fever Dr. Mario.wav")));
+//				Clip song4 = AudioSystem.getClip();
+//				song4.open(AudioSystem.getAudioInputStream(new File("src/Resources/Paper Mario.wav")));
+//				Clip song5 = AudioSystem.getClip();
+//				song5.open(AudioSystem.getAudioInputStream(new File("src/Resources/Snow Bros.wav")));
+//				Clip song6 = AudioSystem.getClip();
+//				song6.open(AudioSystem.getAudioInputStream(new File("src/Resources/Super Mario Bros.wav")));
+//				Clip song7 = AudioSystem.getClip();
+//				song7.open(AudioSystem.getAudioInputStream(new File("src/Resources/Battletoads.wav")));
+//				Clip song8 = AudioSystem.getClip();
+//				song8.open(AudioSystem.getAudioInputStream(new File("src/Resources/FlashManStage.wav")));
+//				Clip song9 = AudioSystem.getClip();
+//				song9.open(AudioSystem.getAudioInputStream(new File("src/Resources/TheManWithTheMachineGun.wav")));
+//				Clip song10 = AudioSystem.getClip();
+//				song10.open(AudioSystem.getAudioInputStream(new File("src/Resources/Balrog.wav")));
+//				Clip song11 = AudioSystem.getClip();
+//				song11.open(AudioSystem.getAudioInputStream(new File("src/Resources/DuckTales.wav")));
+//				Clip song12 = AudioSystem.getClip();
+//				song12.open(AudioSystem.getAudioInputStream(new File("src/Resources/BubbleBobble.wav")));
+//				Clip song13 = AudioSystem.getClip();
+//				song13.open(AudioSystem.getAudioInputStream(new File("src/Resources/SuperMarioBrosUnderground.wav")));
+//				Clip song14 = AudioSystem.getClip();
+//				song14.open(AudioSystem.getAudioInputStream(new File("src/Resources/Super Mario Bros. 3.wav")));
+//				Clip song15 = AudioSystem.getClip();
+//				song15.open(AudioSystem.getAudioInputStream(new File("src/Resources/Dudley.wav")));
+//				Clip song16 = AudioSystem.getClip();
+//				song16.open(AudioSystem.getAudioInputStream(new File("src/Resources/Spider Dance.wav")));
+//				Clip song17 = AudioSystem.getClip();
+//				song17.open(AudioSystem.getAudioInputStream(new File("src/Resources/Spaceball.wav")));
+//				Clip song18 = AudioSystem.getClip();
+//				song18.open(AudioSystem.getAudioInputStream(new File("src/Resources/PAC-MAN.wav")));
+//				Clip song19 = AudioSystem.getClip();
+//				song19.open(AudioSystem.getAudioInputStream(new File("src/Resources/Excitebike Arena.wav")));
 				Clip credit = AudioSystem.getClip();
 				credit.open(AudioSystem.getAudioInputStream(new File("src/Resources/AssassinsCreed III.wav")));
 
-				if(songNum == 1) {
-					song1.start();
-				}else if (songNum ==2) {
-					song2.start();
-				}else if (songNum ==3) {
-					song3.start();
-				}else if (songNum ==4) {
-					song4.start();
-				}else if (songNum ==5) {
-					song5.start();
-				}else if (songNum ==6) {
-					song6.start();
-				}else if (songNum ==7) {
-					song7.start();
-				}else if (songNum ==8) {
-					song8.start();
-				}else if (songNum ==9) {
-					song9.start();
-				}else if (songNum ==10) {
-					song10.start();
-				}else if (songNum ==11) {
-					song11.start();
-				}else if (songNum ==12) {
-					song12.start();
-				}else if (songNum ==13) {
-					song13.start();
-				}else if (songNum ==14) {
-					song14.start();
-				}else if (songNum ==15) {
-					song15.start();
-				}else if (songNum ==16) {
-					song16.start();
-				}else if (songNum ==17) {
-					song17.start();
-				}else if (songNum ==18) {
-					song18.start();
-				}else if (songNum == 19) {
-					song19.start();
-				}
+//				if(songNum == 1) {
+//					song1.start();
+//				}else if (songNum ==2) {
+//					song2.start();
+//				}else if (songNum ==3) {
+//					song3.start();
+//				}else if (songNum ==4) {
+//					song4.start();
+//				}else if (songNum ==5) {
+//					song5.start();
+//				}else if (songNum ==6) {
+//					song6.start();
+//				}else if (songNum ==7) {
+//					song7.start();
+//				}else if (songNum ==8) {
+//					song8.start();
+//				}else if (songNum ==9) {
+//					song9.start();
+//				}else if (songNum ==10) {
+//					song10.start();
+//				}else if (songNum ==11) {
+//					song11.start();
+//				}else if (songNum ==12) {
+//					song12.start();
+//				}else if (songNum ==13) {
+//					song13.start();
+//				}else if (songNum ==14) {
+//					song14.start();
+//				}else if (songNum ==15) {
+//					song15.start();
+//				}else if (songNum ==16) {
+//					song16.start();
+//				}else if (songNum ==17) {
+//					song17.start();
+//				}else if (songNum ==18) {
+//					song18.start();
+//				}else if (songNum == 19) {
+//					song19.start();
+//				}
 
 		canvas.setOnKeyPressed(event -> {
 			String direction = " " ;
@@ -137,7 +137,7 @@ public class Game extends Application{
 			}
 		});
 		canvas.setOnMouseClicked(event ->{
-			rotateBlock();
+			rotateBlock(shape);
 		});
 		//Makes block drop one row every second.
 		time.schedule(new TimerTask() {
@@ -167,45 +167,45 @@ public class Game extends Application{
 				if(end == 1) {
 					credit.start();
 
-					if(songNum == 1) {
-						song1.stop();
-					}else if (songNum ==2) {
-						song2.stop();
-					}else if (songNum ==3) {
-						song3.stop();
-					}else if (songNum ==4) {
-						song4.stop();
-					}else if (songNum ==5) {
-						song5.stop();
-					}else if (songNum ==6) {
-						song6.stop();
-					}else if (songNum ==7) {
-						song7.stop();
-					}else if (songNum ==8) {
-						song8.stop();
-					}else if (songNum ==9) {
-						song9.stop();
-					}else if (songNum ==10) {
-						song10.stop();
-					}else if (songNum ==11) {
-						song11.stop();
-					}else if (songNum ==12) {
-						song12.stop();
-					}else if (songNum ==13) {
-						song13.stop();
-					}else if (songNum ==14) {
-						song14.stop();
-					}else if (songNum ==15) {
-						song15.stop();
-					}else if (songNum ==16) {
-						song16.stop();
-					}else if (songNum ==17) {
-						song17.stop();
-					}else if (songNum ==18) {
-						song18.stop();
-					}else if (songNum == 19) {
-						song19.stop();
-					}
+//					if(songNum == 1) {
+//						song1.stop();
+//					}else if (songNum ==2) {
+//						song2.stop();
+//					}else if (songNum ==3) {
+//						song3.stop();
+//					}else if (songNum ==4) {
+//						song4.stop();
+//					}else if (songNum ==5) {
+//						song5.stop();
+//					}else if (songNum ==6) {
+//						song6.stop();
+//					}else if (songNum ==7) {
+//						song7.stop();
+//					}else if (songNum ==8) {
+//						song8.stop();
+//					}else if (songNum ==9) {
+//						song9.stop();
+//					}else if (songNum ==10) {
+//						song10.stop();
+//					}else if (songNum ==11) {
+//						song11.stop();
+//					}else if (songNum ==12) {
+//						song12.stop();
+//					}else if (songNum ==13) {
+//						song13.stop();
+//					}else if (songNum ==14) {
+//						song14.stop();
+//					}else if (songNum ==15) {
+//						song15.stop();
+//					}else if (songNum ==16) {
+//						song16.stop();
+//					}else if (songNum ==17) {
+//						song17.stop();
+//					}else if (songNum ==18) {
+//						song18.stop();
+//					}else if (songNum == 19) {
+//						song19.stop();
+//					}
 
 				}
 
@@ -532,7 +532,7 @@ public class Game extends Application{
 	 * Allows User to rotate the random block to fit a certain area
 	 * @param shape
 	 */
-	public void rotateBlock() {
+	public void rotateBlock(int shape) {
 		
 		if (shape == 1) {
 			//Line
@@ -588,7 +588,6 @@ public class Game extends Application{
 			// 20
 			//31
 			if((square.get(square.size()-3).getY()-squareSize) == square.get(square.size()-2).getY()) {
-				System.out.println(shape);
 				square.get(square.size()-3).setX((int)square.get(square.size()-2).getX()-squareSize);
 				square.get(square.size()-3).setY((int)square.get(square.size()-2).getY());
 
@@ -599,7 +598,6 @@ public class Game extends Application{
 				square.get(square.size()-4).setY((int)square.get(square.size()-2).getY()+squareSize);
 
 			}else if ((square.get(square.size()-3).getX()+squareSize) == square.get(square.size()-2).getX()) {
-				System.out.println(shape);
 				square.get(square.size()-3).setX((int)square.get(square.size()-2).getX());
 				square.get(square.size()-3).setY((int)square.get(square.size()-2).getY()-squareSize);
 
@@ -610,7 +608,6 @@ public class Game extends Application{
 				square.get(square.size()-4).setY((int)square.get(square.size()-2).getY());
 
 			}else if ((square.get(square.size()-3).getY()+squareSize) == square.get(square.size()-2).getY()) {
-				System.out.println(shape);
 				
 				square.get(square.size()-3).setX((int)square.get(square.size()-2).getX()+squareSize);
 				square.get(square.size()-3).setY((int)square.get(square.size()-2).getY());
@@ -622,7 +619,6 @@ public class Game extends Application{
 				square.get(square.size()-4).setY((int)square.get(square.size()-2).getY()-squareSize);
 
 			}else if ((square.get(square.size()-3).getX()-squareSize) == square.get(square.size()-2).getX()) {
-				System.out.println(shape);
 				
 				square.get(square.size()-3).setX((int)square.get(square.size()-2).getX());
 				square.get(square.size()-3).setY((int)square.get(square.size()-2).getY()+squareSize);
@@ -637,7 +633,6 @@ public class Game extends Application{
 		}else if (shape == 3) {
 			//z
 			if((square.get(square.size()-4).getY()-squareSize) == square.get(square.size()-2).getY()) {
-				System.out.println(shape);
 				square.get(square.size()-3).setX((int)square.get(square.size()-2).getX());
 				square.get(square.size()-3).setY((int)square.get(square.size()-2).getY()-squareSize);
 
@@ -648,7 +643,6 @@ public class Game extends Application{
 				square.get(square.size()-1).setY((int)square.get(square.size()-2).getY()+squareSize);
 
 			}else if ((square.get(square.size()-4).getX()+squareSize) == square.get(square.size()-2).getX()) {
-				System.out.println(shape);
 				square.get(square.size()-3).setX((int)square.get(square.size()-2).getX()+squareSize);
 				square.get(square.size()-3).setY((int)square.get(square.size()-2).getY());
 
@@ -659,7 +653,6 @@ public class Game extends Application{
 				square.get(square.size()-1).setY((int)square.get(square.size()-2).getY()-squareSize);
 
 			}else if ((square.get(square.size()-4).getY()+squareSize) == square.get(square.size()-2).getY()) {
-				System.out.println(shape);
 				square.get(square.size()-3).setX((int)square.get(square.size()-2).getX());
 				square.get(square.size()-3).setY((int)square.get(square.size()-2).getY()+squareSize);
 
@@ -670,7 +663,6 @@ public class Game extends Application{
 				square.get(square.size()-1).setY((int)square.get(square.size()-2).getY()-squareSize);
 
 			}else if ((square.get(square.size()-4).getX()-squareSize) == square.get(square.size()-2).getX()) {
-				System.out.println(shape);
 				square.get(square.size()-3).setX((int)square.get(square.size()-2).getX()-squareSize);
 				square.get(square.size()-3).setY((int)square.get(square.size()-2).getY());
 
@@ -680,13 +672,13 @@ public class Game extends Application{
 				square.get(square.size()-1).setX((int)square.get(square.size()-2).getX()+squareSize);
 				square.get(square.size()-1).setY((int)square.get(square.size()-2).getY()+squareSize);
 
-
+			}
 			}else if (shape == 4) {//TODO fix everything past this line
 				//upside-down t
 				// 2
 				//031
 				if((square.get(square.size()-2).getY()+squareSize) == square.get(square.size()-1).getY()) {
-					System.out.println(shape);
+
 					square.get(square.size()-2).setX((int)square.get(square.size()-2).getX()+squareSize);
 					square.get(square.size()-2).setY((int)square.get(square.size()-2).getY()+squareSize);
 
@@ -697,7 +689,7 @@ public class Game extends Application{
 					square.get(square.size()-4).setY((int)square.get(square.size()-2).getY()-squareSize);
 
 				}else if((square.get(square.size()-2).getX()-squareSize) == square.get(square.size()-1).getX()) {
-					System.out.println(shape);
+
 					square.get(square.size()-2).setX((int)square.get(square.size()-2).getX()-squareSize);
 					square.get(square.size()-2).setY((int)square.get(square.size()-2).getY()+squareSize);
 
@@ -708,7 +700,7 @@ public class Game extends Application{
 					square.get(square.size()-4).setY((int)square.get(square.size()-2).getY()-squareSize);
 
 				}else if((square.get(square.size()-2).getY()-squareSize) == square.get(square.size()-1).getY()) {
-					System.out.println(shape);
+
 					square.get(square.size()-2).setX((int)square.get(square.size()-2).getX()-squareSize);
 					square.get(square.size()-2).setY((int)square.get(square.size()-2).getY()-squareSize);
 
@@ -719,7 +711,7 @@ public class Game extends Application{
 					square.get(square.size()-4).setY((int)square.get(square.size()-2).getY()+squareSize);
 
 				}else if((square.get(square.size()-2).getX()+squareSize) == square.get(square.size()-1).getX()) {
-					System.out.println(shape);
+
 					square.get(square.size()-2).setX((int)square.get(square.size()-2).getX()+squareSize);
 					square.get(square.size()-2).setY((int)square.get(square.size()-2).getY()-squareSize);
 
@@ -737,7 +729,7 @@ public class Game extends Application{
 				//0
 				//31
 				if((square.get(square.size()-4).getY()-squareSize) == (square.get(square.size()-2).getY())) {
-					System.out.println(shape);
+
 					square.get(square.size()-2).setX((int)square.get(square.size()-4).getX()+squareSize);
 					square.get(square.size()-2).setY((int)square.get(square.size()-4).getY());
 
@@ -749,7 +741,7 @@ public class Game extends Application{
 
 				}
 				else if((square.get(square.size()-4).getX()+squareSize) == (square.get(square.size()-2).getX())) {
-					System.out.println(shape);
+
 					square.get(square.size()-2).setX((int)square.get(square.size()-4).getX());
 					square.get(square.size()-2).setY((int)square.get(square.size()-4).getY()+squareSize);
 
@@ -761,7 +753,7 @@ public class Game extends Application{
 
 				}
 				else if((square.get(square.size()-4).getY()+squareSize) == (square.get(square.size()-2).getY())) {
-					System.out.println(shape);
+					
 					square.get(square.size()-2).setX((int)square.get(square.size()-4).getX()-squareSize);
 					square.get(square.size()-2).setY((int)square.get(square.size()-4).getY());
 
@@ -773,22 +765,23 @@ public class Game extends Application{
 
 				}
 				else if((square.get(square.size()-4).getX()-squareSize) == (square.get(square.size()-2).getX())) {
-					System.out.println(shape);
+
 					square.get(square.size()-2).setX((int)square.get(square.size()-4).getX());
-					square.get(square.size()-2).setY((int)square.get(square.size()-4).getY()+squareSize);
+					square.get(square.size()-2).setY((int)square.get(square.size()-4).getY()-squareSize);
 
 					square.get(square.size()-1).setX((int)square.get(square.size()-4).getX());
-					square.get(square.size()-1).setY((int)square.get(square.size()-4).getY()-squareSize);
+					square.get(square.size()-1).setY((int)square.get(square.size()-4).getY()+squareSize);
 
 					square.get(square.size()-3).setX((int)square.get(square.size()-4).getX()+squareSize);
 					square.get(square.size()-3).setY((int)square.get(square.size()-4).getY()+squareSize);
 
 				}
 			}else if (shape == 6) {
+
 				//inverted L
 
 				if((square.get(square.size()-4).getY()-squareSize) == (square.get(square.size()-2).getY())) {
-					System.out.println(shape);
+
 					square.get(square.size()-2).setX((int)square.get(square.size()-4).getX()+squareSize);
 					square.get(square.size()-2).setY((int)square.get(square.size()-4).getY());
 
@@ -799,7 +792,7 @@ public class Game extends Application{
 					square.get(square.size()-3).setY((int)square.get(square.size()-4).getY()-squareSize);
 
 				}else if((square.get(square.size()-4).getX()+squareSize) == (square.get(square.size()-2).getX())) {
-					System.out.println(shape);
+
 					square.get(square.size()-2).setX((int)square.get(square.size()-4).getX());
 					square.get(square.size()-2).setY((int)square.get(square.size()-4).getY()+squareSize);
 
@@ -810,7 +803,7 @@ public class Game extends Application{
 					square.get(square.size()-3).setY((int)square.get(square.size()-4).getY()-squareSize);
 
 				}else if((square.get(square.size()-4).getY()+squareSize) == (square.get(square.size()-2).getY())) {
-					System.out.println(shape);
+
 					square.get(square.size()-2).setX((int)square.get(square.size()-4).getX()-squareSize);
 					square.get(square.size()-2).setY((int)square.get(square.size()-4).getY());
 
@@ -821,12 +814,12 @@ public class Game extends Application{
 					square.get(square.size()-3).setY((int)square.get(square.size()-4).getY()+squareSize);
 
 				}else if((square.get(square.size()-4).getX()-squareSize) == (square.get(square.size()-2).getX())) {
-					System.out.println(shape);
+
 					square.get(square.size()-2).setX((int)square.get(square.size()-4).getX());
-					square.get(square.size()-2).setY((int)square.get(square.size()-4).getY()+squareSize);
+					square.get(square.size()-2).setY((int)square.get(square.size()-4).getY()-squareSize);
 
 					square.get(square.size()-1).setX((int)square.get(square.size()-4).getX());
-					square.get(square.size()-1).setY((int)square.get(square.size()-4).getY()-squareSize);
+					square.get(square.size()-1).setY((int)square.get(square.size()-4).getY()+squareSize);
 
 					square.get(square.size()-3).setX((int)square.get(square.size()-4).getX()-squareSize);
 					square.get(square.size()-3).setY((int)square.get(square.size()-4).getY()+squareSize);
@@ -834,7 +827,7 @@ public class Game extends Application{
 				}
 
 			}
-		}
+		
 
 	}
 
