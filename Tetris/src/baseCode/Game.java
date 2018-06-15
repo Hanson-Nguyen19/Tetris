@@ -31,7 +31,7 @@ public class Game extends Application{
 	int shape;
 	ArrayList<Square> square = new ArrayList<Square>();
 	final int squareSize = 25;
-	int songNum = (int) (Math.random() * 24)+1;
+	int songNum = (int) (Math.random() * 25)+1;
 	int dropSpeed = 1000;
 	public static void main (String[] args) {
 		launch(args);
@@ -137,7 +137,9 @@ public class Game extends Application{
 //		Clip song24 = AudioSystem.getClip();
 //		song24.open(AudioSystem.getAudioInputStream(new File("src/Resources/TheBlocksWeLoved.wav")));
 //		
-//		
+//			Clip song25 = AudioSystem.getClip();
+//	song25.open(AudioSystem.getAudioInputStream(new File("src/Resources/MechanicalRhythm.wav")));
+//	
 //		Clip credit = AudioSystem.getClip();
 //		credit.open(AudioSystem.getAudioInputStream(new File("src/Resources/AssassinsCreed III.wav")));
 //
@@ -206,6 +208,8 @@ public class Game extends Application{
 		song23.open(AudioSystem.getAudioInputStream(new File("src/Resources/MaloMart.wav")));
 		Clip song24 = AudioSystem.getClip();
 		song24.open(AudioSystem.getAudioInputStream(new File("src/Resources/TheBlocksWeLoved.wav")));
+		Clip song25 = AudioSystem.getClip();
+		song25.open(AudioSystem.getAudioInputStream(new File("src/Resources/MechanicalRhythm.wav")));
 		Clip credit = AudioSystem.getClip();
 		credit.open(AudioSystem.getAudioInputStream(new File("src/Resources/AssassinsCreed III.wav")));
 
@@ -334,6 +338,9 @@ public class Game extends Application{
 		}else if (songNum == 24) {
 			song24.start();
 			song24.loop(song24.LOOP_CONTINUOUSLY);
+		}else if (songNum == 25) {
+			song25.start();
+			song25.loop(song25.LOOP_CONTINUOUSLY);
 		}
 		canvas.setOnKeyPressed(event -> {
 			String direction = " " ;
@@ -393,6 +400,8 @@ public class Game extends Application{
 					song23.stop();
 				}else if (songNum == 24) {
 					song24.stop();
+				}else if (songNum == 25) {
+					song25.stop();
 				}
 				song1.start();
 				song1.loop(song1.LOOP_CONTINUOUSLY);
@@ -444,6 +453,8 @@ public class Game extends Application{
 					song23.stop();
 				}else if (songNum == 24) {
 					song24.stop();
+				}else if (songNum == 25) {
+					song25.stop();
 				}
 				song2.start();
 				song2.loop(song2.LOOP_CONTINUOUSLY);
@@ -495,6 +506,8 @@ public class Game extends Application{
 					song23.stop();
 				}else if (songNum == 24) {
 					song24.stop();
+				}else if (songNum == 25) {
+					song25.stop();
 				}
 				song3.start();
 				song3.loop(song3.LOOP_CONTINUOUSLY);
@@ -546,6 +559,8 @@ public class Game extends Application{
 					song23.stop();
 				}else if (songNum == 24) {
 					song24.stop();
+				}else if (songNum == 25) {
+					song25.stop();
 				}
 				song4.start();
 				song4.loop(song4.LOOP_CONTINUOUSLY);
@@ -597,6 +612,8 @@ public class Game extends Application{
 					song23.stop();
 				}else if (songNum == 24) {
 					song24.stop();
+				}else if (songNum == 25) {
+					song25.stop();
 				}
 				song5.start();
 				song5.loop(song5.LOOP_CONTINUOUSLY);
@@ -648,6 +665,8 @@ public class Game extends Application{
 					song23.stop();
 				}else if (songNum == 24) {
 					song24.stop();
+				}else if (songNum == 25) {
+					song25.stop();
 				}
 				song6.start();
 				song6.loop(song6.LOOP_CONTINUOUSLY);
@@ -699,6 +718,8 @@ public class Game extends Application{
 					song23.stop();
 				}else if (songNum == 24) {
 					song24.stop();
+				}else if (songNum == 25) {
+					song25.stop();
 				}
 				song7.start();
 				song7.loop(song7.LOOP_CONTINUOUSLY);
@@ -750,6 +771,8 @@ public class Game extends Application{
 					song23.stop();
 				}else if (songNum == 24) {
 					song24.stop();
+				}else if (songNum == 25) {
+					song25.stop();
 				}
 				song8.start();
 				song8.loop(song8.LOOP_CONTINUOUSLY);
@@ -801,6 +824,8 @@ public class Game extends Application{
 					song23.stop();
 				}else if (songNum == 24) {
 					song24.stop();
+				}else if (songNum == 25) {
+					song25.stop();
 				}
 				song9.start();
 				song9.loop(song9.LOOP_CONTINUOUSLY);
@@ -852,12 +877,14 @@ public class Game extends Application{
 					song23.stop();
 				}else if (songNum == 24) {
 					song24.stop();
+				}else if (songNum == 25) {
+					song25.stop();
 				}
 				song10.start();
 				song10.loop(song10.LOOP_CONTINUOUSLY);
 				songNum = 10;
 			}else if (event.getCode() == KeyCode.P) {
-				if(songNum <=14) {
+				if(songNum <=15) {
 					songNum = songNum + 10;
 				}
 				if(songNum== 11){
@@ -930,6 +957,11 @@ public class Game extends Application{
 					song24.start();
 					song24.loop(song24.LOOP_CONTINUOUSLY);
 					songNum = 24;
+				}else if (songNum==25) {
+					song15.stop();
+					song25.start();
+					song25.loop(song25.LOOP_CONTINUOUSLY);
+					songNum = 25;
 				}
 
 			}
@@ -1010,6 +1042,8 @@ public class Game extends Application{
 						song23.stop();
 					}else if (songNum == 24) {
 						song24.stop();
+					}else if (songNum == 25) {
+						song25.stop();
 					}
 
 					credit.start();
