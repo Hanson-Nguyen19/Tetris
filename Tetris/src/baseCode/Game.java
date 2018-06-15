@@ -31,7 +31,7 @@ public class Game extends Application{
 	int shape;
 	ArrayList<Square> square = new ArrayList<Square>();
 	final int squareSize = 25;
-	int songNum = (int) (Math.random() * 20)+1;
+	int songNum = (int) (Math.random() * 24)+1;
 	int dropSpeed = 1000;
 	public static void main (String[] args) {
 		launch(args);
@@ -90,6 +90,14 @@ public class Game extends Application{
 		song19.open(AudioSystem.getAudioInputStream(new File("src/Resources/Excitebike Arena.wav")));
 		Clip song20 = AudioSystem.getClip();
 		song20.open(AudioSystem.getAudioInputStream(new File("src/Resources/BrinstarDepths.wav")));
+		Clip song21 = AudioSystem.getClip();
+		song21.open(AudioSystem.getAudioInputStream(new File("src/Resources/LuigisMansion.wav")));
+		Clip song22 = AudioSystem.getClip();
+		song22.open(AudioSystem.getAudioInputStream(new File("src/Resources/BloodyPurity.wav")));
+		Clip song23 = AudioSystem.getClip();
+		song23.open(AudioSystem.getAudioInputStream(new File("src/Resources/MaloMart.wav")));
+		Clip song24 = AudioSystem.getClip();
+		song24.open(AudioSystem.getAudioInputStream(new File("src/Resources/TheBlocksWeLoved.wav")));
 		Clip credit = AudioSystem.getClip();
 		credit.open(AudioSystem.getAudioInputStream(new File("src/Resources/AssassinsCreed III.wav")));
 
@@ -115,37 +123,37 @@ public class Game extends Application{
 		//			}
 		//		}while(startPressed == false);	
 		//		title.stop();
-//				gc.setFill( Color.WHITE );
-//				gc.setStroke( Color.WHITE );
-//				gc.setLineWidth(2);
-//				Font theFont = Font.font( "", FontWeight.BOLD, 50 );
-//				Font buttonFont = Font.font( "", FontWeight.BOLD, 20 );
-//				gc.setFont( theFont );
-//				gc.fillText( "Welcome To Tetris", 100, 200 );//this is the text that will be printed to the screen
-//				gc.strokeText( "Welcome To Tetris", 100, 200 );
-//				Button start = new Button("START");//this button will lead to the game mode selection screen
-//				//Button highscores = new Button("HIGHSCORES");//this button will prompt the high scores menu to appear
-//				Button instructions = new Button ("Instructions");// this button will display the controls and objective of the game.
-//				start.setLayoutX(200);
-//				start.setLayoutY(270);
-//				instructions.setLayoutX(200);
-//				instructions.setLayoutY(295);
-//				start.setStyle("-fx-background-color: white; -fx-text-fill: black;"); 
-//				//highscores.setStyle("-fx-background-color: white; -fx-text-fill: black;"); 
-//				instructions.setStyle("-fx-background-color: white; -fx-text-fill: black;"); 
-//				start.setFont(buttonFont);
-//				//highscores.setFont(buttonFont);
-//				instructions.setFont(buttonFont);
-//				group.getChildren().add(start);
-//				group.getChildren().add(instructions);
-//				group.getChildren().add(canvas);
-//				primaryStage.setScene(scene);
-//				start.setOnAction(new EventHandler<ActionEvent>() {
-//					@Override 
-//					public void handle(ActionEvent e) {
-//						gc.clearRect(0, 0, gc.getCanvas().getWidth(), gc.getCanvas().getHeight());
-//					}});
-				
+		//				gc.setFill( Color.WHITE );
+		//				gc.setStroke( Color.WHITE );
+		//				gc.setLineWidth(2);
+		//				Font theFont = Font.font( "", FontWeight.BOLD, 50 );
+		//				Font buttonFont = Font.font( "", FontWeight.BOLD, 20 );
+		//				gc.setFont( theFont );
+		//				gc.fillText( "Welcome To Tetris", 100, 200 );//this is the text that will be printed to the screen
+		//				gc.strokeText( "Welcome To Tetris", 100, 200 );
+		//				Button start = new Button("START");//this button will lead to the game mode selection screen
+		//				//Button highscores = new Button("HIGHSCORES");//this button will prompt the high scores menu to appear
+		//				Button instructions = new Button ("Instructions");// this button will display the controls and objective of the game.
+		//				start.setLayoutX(200);
+		//				start.setLayoutY(270);
+		//				instructions.setLayoutX(200);
+		//				instructions.setLayoutY(295);
+		//				start.setStyle("-fx-background-color: white; -fx-text-fill: black;"); 
+		//				//highscores.setStyle("-fx-background-color: white; -fx-text-fill: black;"); 
+		//				instructions.setStyle("-fx-background-color: white; -fx-text-fill: black;"); 
+		//				start.setFont(buttonFont);
+		//				//highscores.setFont(buttonFont);
+		//				instructions.setFont(buttonFont);
+		//				group.getChildren().add(start);
+		//				group.getChildren().add(instructions);
+		//				group.getChildren().add(canvas);
+		//				primaryStage.setScene(scene);
+		//				start.setOnAction(new EventHandler<ActionEvent>() {
+		//					@Override 
+		//					public void handle(ActionEvent e) {
+		//						gc.clearRect(0, 0, gc.getCanvas().getWidth(), gc.getCanvas().getHeight());
+		//					}});
+
 		if(songNum == 1) {
 			song1.start();
 			song1.loop(song1.LOOP_CONTINUOUSLY);
@@ -206,6 +214,18 @@ public class Game extends Application{
 		}else if (songNum == 20) {
 			song20.start();
 			song20.loop(song20.LOOP_CONTINUOUSLY);
+		}else if (songNum == 21) {
+			song21.start();
+			song21.loop(song21.LOOP_CONTINUOUSLY);
+		}else if (songNum == 22) {
+			song22.start();
+			song22.loop(song22.LOOP_CONTINUOUSLY);
+		}else if (songNum == 23) {
+			song23.start();
+			song23.loop(song23.LOOP_CONTINUOUSLY);
+		}else if (songNum == 24) {
+			song24.start();
+			song24.loop(song24.LOOP_CONTINUOUSLY);
 		}
 		canvas.setOnKeyPressed(event -> {
 			String direction = " " ;
@@ -218,6 +238,568 @@ public class Game extends Application{
 			}else if(event.getCode() == KeyCode.S) {
 				direction = "Down";
 				moveBlocks(direction);
+			}else if(event.getCode() == KeyCode.DIGIT1) {
+				if (songNum ==2) {
+					song2.stop();
+				}else if (songNum ==3) {
+					song3.stop();
+				}else if (songNum ==4) {
+					song4.stop();
+				}else if (songNum ==5) {
+					song5.stop();
+				}else if (songNum ==6) {
+					song6.stop();
+				}else if (songNum ==7) {
+					song7.stop();
+				}else if (songNum ==8) {
+					song8.stop();
+				}else if (songNum ==9) {
+					song9.stop();
+				}else if (songNum ==10) {
+					song10.stop();
+				}else if (songNum ==11) {
+					song11.stop();
+				}else if (songNum ==12) {
+					song12.stop();
+				}else if (songNum ==13) {
+					song13.stop();
+				}else if (songNum ==14) {
+					song14.stop();
+				}else if (songNum ==15) {
+					song15.stop();
+				}else if (songNum ==16) {
+					song16.stop();
+				}else if (songNum ==17) {
+					song17.stop();
+				}else if (songNum ==18) {
+					song18.stop();
+				}else if (songNum == 19) {
+					song19.stop();
+				}else if (songNum == 20) {
+					song20.stop();
+				}else if (songNum == 21) {
+					song21.stop();
+				}else if (songNum == 22) {
+					song22.stop();
+				}else if (songNum == 23) {
+					song23.stop();
+				}else if (songNum == 24) {
+					song24.stop();
+				}
+				song1.start();
+				songNum = 1;
+			}else if(event.getCode() == KeyCode.DIGIT2) {
+				if(songNum == 1) {
+					song1.stop();
+				}else if (songNum ==3) {
+					song3.stop();
+				}else if (songNum ==4) {
+					song4.stop();
+				}else if (songNum ==5) {
+					song5.stop();
+				}else if (songNum ==6) {
+					song6.stop();
+				}else if (songNum ==7) {
+					song7.stop();
+				}else if (songNum ==8) {
+					song8.stop();
+				}else if (songNum ==9) {
+					song9.stop();
+				}else if (songNum ==10) {
+					song10.stop();
+				}else if (songNum ==11) {
+					song11.stop();
+				}else if (songNum ==12) {
+					song12.stop();
+				}else if (songNum ==13) {
+					song13.stop();
+				}else if (songNum ==14) {
+					song14.stop();
+				}else if (songNum ==15) {
+					song15.stop();
+				}else if (songNum ==16) {
+					song16.stop();
+				}else if (songNum ==17) {
+					song17.stop();
+				}else if (songNum ==18) {
+					song18.stop();
+				}else if (songNum == 19) {
+					song19.stop();
+				}else if (songNum == 20) {
+					song20.stop();
+				}else if (songNum == 21) {
+					song21.stop();
+				}else if (songNum == 22) {
+					song22.stop();
+				}else if (songNum == 23) {
+					song23.stop();
+				}else if (songNum == 24) {
+					song24.stop();
+				}
+				song2.start();
+				songNum = 2;
+			}else if(event.getCode() == KeyCode.DIGIT3) {
+				if(songNum == 1) {
+					song1.stop();
+				}else if (songNum ==2) {
+					song2.stop();
+				}else if (songNum ==4) {
+					song4.stop();
+				}else if (songNum ==5) {
+					song5.stop();
+				}else if (songNum ==6) {
+					song6.stop();
+				}else if (songNum ==7) {
+					song7.stop();
+				}else if (songNum ==8) {
+					song8.stop();
+				}else if (songNum ==9) {
+					song9.stop();
+				}else if (songNum ==10) {
+					song10.stop();
+				}else if (songNum ==11) {
+					song11.stop();
+				}else if (songNum ==12) {
+					song12.stop();
+				}else if (songNum ==13) {
+					song13.stop();
+				}else if (songNum ==14) {
+					song14.stop();
+				}else if (songNum ==15) {
+					song15.stop();
+				}else if (songNum ==16) {
+					song16.stop();
+				}else if (songNum ==17) {
+					song17.stop();
+				}else if (songNum ==18) {
+					song18.stop();
+				}else if (songNum == 19) {
+					song19.stop();
+				}else if (songNum == 20) {
+					song20.stop();
+				}else if (songNum == 21) {
+					song21.stop();
+				}else if (songNum == 22) {
+					song22.stop();
+				}else if (songNum == 23) {
+					song23.stop();
+				}else if (songNum == 24) {
+					song24.stop();
+				}
+				song3.start();
+				songNum = 3;
+			}else if(event.getCode() == KeyCode.DIGIT4) {
+				if(songNum == 1) {
+					song1.stop();
+				}else if (songNum ==2) {
+					song2.stop();
+				}else if (songNum ==3) {
+					song3.stop();
+				}else if (songNum ==5) {
+					song5.stop();
+				}else if (songNum ==6) {
+					song6.stop();
+				}else if (songNum ==7) {
+					song7.stop();
+				}else if (songNum ==8) {
+					song8.stop();
+				}else if (songNum ==9) {
+					song9.stop();
+				}else if (songNum ==10) {
+					song10.stop();
+				}else if (songNum ==11) {
+					song11.stop();
+				}else if (songNum ==12) {
+					song12.stop();
+				}else if (songNum ==13) {
+					song13.stop();
+				}else if (songNum ==14) {
+					song14.stop();
+				}else if (songNum ==15) {
+					song15.stop();
+				}else if (songNum ==16) {
+					song16.stop();
+				}else if (songNum ==17) {
+					song17.stop();
+				}else if (songNum ==18) {
+					song18.stop();
+				}else if (songNum == 19) {
+					song19.stop();
+				}else if (songNum == 20) {
+					song20.stop();
+				}else if (songNum == 21) {
+					song21.stop();
+				}else if (songNum == 22) {
+					song22.stop();
+				}else if (songNum == 23) {
+					song23.stop();
+				}else if (songNum == 24) {
+					song24.stop();
+				}
+				song4.start();
+				songNum = 4;
+			}else if(event.getCode() == KeyCode.DIGIT5) {
+				if(songNum == 1) {
+					song1.stop();
+				}else if (songNum ==2) {
+					song2.stop();
+				}else if (songNum ==3) {
+					song3.stop();
+				}else if (songNum ==4) {
+					song4.stop();
+				}else if (songNum ==6) {
+					song6.stop();
+				}else if (songNum ==7) {
+					song7.stop();
+				}else if (songNum ==8) {
+					song8.stop();
+				}else if (songNum ==9) {
+					song9.stop();
+				}else if (songNum ==10) {
+					song10.stop();
+				}else if (songNum ==11) {
+					song11.stop();
+				}else if (songNum ==12) {
+					song12.stop();
+				}else if (songNum ==13) {
+					song13.stop();
+				}else if (songNum ==14) {
+					song14.stop();
+				}else if (songNum ==15) {
+					song15.stop();
+				}else if (songNum ==16) {
+					song16.stop();
+				}else if (songNum ==17) {
+					song17.stop();
+				}else if (songNum ==18) {
+					song18.stop();
+				}else if (songNum == 19) {
+					song19.stop();
+				}else if (songNum == 20) {
+					song20.stop();
+				}else if (songNum == 21) {
+					song21.stop();
+				}else if (songNum == 22) {
+					song22.stop();
+				}else if (songNum == 23) {
+					song23.stop();
+				}else if (songNum == 24) {
+					song24.stop();
+				}
+				song5.start();
+				songNum = 5;
+			}else if(event.getCode() == KeyCode.DIGIT6) {
+				if(songNum == 1) {
+					song1.stop();
+				}else if (songNum ==2) {
+					song2.stop();
+				}else if (songNum ==3) {
+					song3.stop();
+				}else if (songNum ==4) {
+					song4.stop();
+				}else if (songNum ==5) {
+					song5.stop();
+				}else if (songNum ==7) {
+					song7.stop();
+				}else if (songNum ==8) {
+					song8.stop();
+				}else if (songNum ==9) {
+					song9.stop();
+				}else if (songNum ==10) {
+					song10.stop();
+				}else if (songNum ==11) {
+					song11.stop();
+				}else if (songNum ==12) {
+					song12.stop();
+				}else if (songNum ==13) {
+					song13.stop();
+				}else if (songNum ==14) {
+					song14.stop();
+				}else if (songNum ==15) {
+					song15.stop();
+				}else if (songNum ==16) {
+					song16.stop();
+				}else if (songNum ==17) {
+					song17.stop();
+				}else if (songNum ==18) {
+					song18.stop();
+				}else if (songNum == 19) {
+					song19.stop();
+				}else if (songNum == 20) {
+					song20.stop();
+				}else if (songNum == 21) {
+					song21.stop();
+				}else if (songNum == 22) {
+					song22.stop();
+				}else if (songNum == 23) {
+					song23.stop();
+				}else if (songNum == 24) {
+					song24.stop();
+				}
+				song6.start();
+				songNum = 6;
+			}else if(event.getCode() == KeyCode.DIGIT7) {
+				if(songNum == 1) {
+					song1.stop();
+				}else if (songNum ==2) {
+					song2.stop();
+				}else if (songNum ==3) {
+					song3.stop();
+				}else if (songNum ==4) {
+					song4.stop();
+				}else if (songNum ==5) {
+					song5.stop();
+				}else if (songNum ==6) {
+					song6.stop();
+				}else if (songNum ==8) {
+					song8.stop();
+				}else if (songNum ==9) {
+					song9.stop();
+				}else if (songNum ==10) {
+					song10.stop();
+				}else if (songNum ==11) {
+					song11.stop();
+				}else if (songNum ==12) {
+					song12.stop();
+				}else if (songNum ==13) {
+					song13.stop();
+				}else if (songNum ==14) {
+					song14.stop();
+				}else if (songNum ==15) {
+					song15.stop();
+				}else if (songNum ==16) {
+					song16.stop();
+				}else if (songNum ==17) {
+					song17.stop();
+				}else if (songNum ==18) {
+					song18.stop();
+				}else if (songNum == 19) {
+					song19.stop();
+				}else if (songNum == 20) {
+					song20.stop();
+				}else if (songNum == 21) {
+					song21.stop();
+				}else if (songNum == 22) {
+					song22.stop();
+				}else if (songNum == 23) {
+					song23.stop();
+				}else if (songNum == 24) {
+					song24.stop();
+				}
+				song7.start();
+				songNum = 7;
+			}else if(event.getCode() == KeyCode.DIGIT8) {
+				if(songNum == 1) {
+					song1.stop();
+				}else if (songNum ==2) {
+					song2.stop();
+				}else if (songNum ==3) {
+					song3.stop();
+				}else if (songNum ==4) {
+					song4.stop();
+				}else if (songNum ==5) {
+					song5.stop();
+				}else if (songNum ==6) {
+					song6.stop();
+				}else if (songNum ==7) {
+					song7.stop();
+				}else if (songNum ==9) {
+					song9.stop();
+				}else if (songNum ==10) {
+					song10.stop();
+				}else if (songNum ==11) {
+					song11.stop();
+				}else if (songNum ==12) {
+					song12.stop();
+				}else if (songNum ==13) {
+					song13.stop();
+				}else if (songNum ==14) {
+					song14.stop();
+				}else if (songNum ==15) {
+					song15.stop();
+				}else if (songNum ==16) {
+					song16.stop();
+				}else if (songNum ==17) {
+					song17.stop();
+				}else if (songNum ==18) {
+					song18.stop();
+				}else if (songNum == 19) {
+					song19.stop();
+				}else if (songNum == 20) {
+					song20.stop();
+				}else if (songNum == 21) {
+					song21.stop();
+				}else if (songNum == 22) {
+					song22.stop();
+				}else if (songNum == 23) {
+					song23.stop();
+				}else if (songNum == 24) {
+					song24.stop();
+				}
+				song8.start();
+				songNum = 8;
+			}else if(event.getCode() == KeyCode.DIGIT9) {
+				if(songNum == 1) {
+					song1.stop();
+				}else if (songNum ==2) {
+					song2.stop();
+				}else if (songNum ==3) {
+					song3.stop();
+				}else if (songNum ==4) {
+					song4.stop();
+				}else if (songNum ==5) {
+					song5.stop();
+				}else if (songNum ==6) {
+					song6.stop();
+				}else if (songNum ==7) {
+					song7.stop();
+				}else if (songNum ==8) {
+					song8.stop();
+				}else if (songNum ==10) {
+					song10.stop();
+				}else if (songNum ==11) {
+					song11.stop();
+				}else if (songNum ==12) {
+					song12.stop();
+				}else if (songNum ==13) {
+					song13.stop();
+				}else if (songNum ==14) {
+					song14.stop();
+				}else if (songNum ==15) {
+					song15.stop();
+				}else if (songNum ==16) {
+					song16.stop();
+				}else if (songNum ==17) {
+					song17.stop();
+				}else if (songNum ==18) {
+					song18.stop();
+				}else if (songNum == 19) {
+					song19.stop();
+				}else if (songNum == 20) {
+					song20.stop();
+				}else if (songNum == 21) {
+					song21.stop();
+				}else if (songNum == 22) {
+					song22.stop();
+				}else if (songNum == 23) {
+					song23.stop();
+				}else if (songNum == 24) {
+					song24.stop();
+				}
+				song9.start();
+				songNum = 9;
+			}else if(event.getCode() == KeyCode.DIGIT0) {
+				if(songNum == 1) {
+					song1.stop();
+				}else if (songNum ==2) {
+					song2.stop();
+				}else if (songNum ==3) {
+					song3.stop();
+				}else if (songNum ==4) {
+					song4.stop();
+				}else if (songNum ==5) {
+					song5.stop();
+				}else if (songNum ==6) {
+					song6.stop();
+				}else if (songNum ==7) {
+					song7.stop();
+				}else if (songNum ==8) {
+					song8.stop();
+				}else if (songNum ==9) {
+					song9.stop();
+				}else if (songNum ==11) {
+					song11.stop();
+				}else if (songNum ==12) {
+					song12.stop();
+				}else if (songNum ==13) {
+					song13.stop();
+				}else if (songNum ==14) {
+					song14.stop();
+				}else if (songNum ==15) {
+					song15.stop();
+				}else if (songNum ==16) {
+					song16.stop();
+				}else if (songNum ==17) {
+					song17.stop();
+				}else if (songNum ==18) {
+					song18.stop();
+				}else if (songNum == 19) {
+					song19.stop();
+				}else if (songNum == 20) {
+					song20.stop();
+				}else if (songNum == 21) {
+					song21.stop();
+				}else if (songNum == 22) {
+					song22.stop();
+				}else if (songNum == 23) {
+					song23.stop();
+				}else if (songNum == 24) {
+					song24.stop();
+				}
+				song10.start();
+				songNum = 10;
+			}else if (event.getCode() == KeyCode.P) {
+				if(songNum <=14) {
+					songNum = songNum + 10;
+				}
+				if(songNum== 11){
+					song1.stop();
+					song11.start();
+					songNum = 11;
+				}else if (songNum==12) {
+					song2.stop();
+					song12.start();
+					songNum = 12;
+				}else if (songNum==13) {
+					song3.stop();
+					song13.start();
+					songNum = 13;
+				}else if (songNum ==14) {
+					song4.stop();
+					song14.start();
+					songNum = 14;
+				}else if (songNum ==15) {
+					song5.stop();
+					song15.start();
+					songNum = 15;
+				}else if (songNum ==16) {
+					song6.stop();
+					song16.start();
+					songNum = 16;
+				}else if (songNum ==17) {
+					song7.stop();
+					song17.start();
+					songNum = 17;
+				}else if (songNum==18) {
+					song8.stop();
+					song18.start();
+					songNum = 18;
+				}else if (songNum==19) {
+					song9.stop();
+					song19.start();
+					songNum = 19;
+				}else if (songNum==20) {
+					song10.stop();
+					song20.start();
+					songNum = 20;
+				}else if (songNum==21) {
+					song11.stop();
+					song21.start();
+					songNum = 21;
+				}else if (songNum==22) {
+					song12.stop();
+					song22.start();
+					songNum = 22;
+				}else if (songNum==23) {
+					song13.stop();
+					song23.start();
+					songNum = 23;
+				}else if (songNum==24) {
+					song14.stop();
+					song24.start();
+					songNum = 24;
+				}
+
 			}
 		});
 		/**
@@ -545,8 +1127,8 @@ public class Game extends Application{
 	 * @return
 	 */
 	public void rowCheck(int count) {
-		for(int y=0; y<=575;y=y+squareSize) {
-			for (int x = 0; x<=425;x=x+squareSize) {
+		for(int y=0; y<=575;y=y+25) {
+			for (int x = 0; x<=425;x=x+25) {
 				for(int i =0;i <square.size();i ++) {
 					if(((int)square.get(i).getX()) == x && y == ((int)square.get(i).getY())) {
 						count ++;
