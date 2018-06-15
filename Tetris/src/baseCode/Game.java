@@ -287,6 +287,7 @@ public class Game extends Application{
 					song24.stop();
 				}
 				song1.start();
+				song1.loop(song1.LOOP_CONTINUOUSLY);
 				songNum = 1;
 			}else if(event.getCode() == KeyCode.DIGIT2) {
 				if(songNum == 1) {
@@ -337,6 +338,7 @@ public class Game extends Application{
 					song24.stop();
 				}
 				song2.start();
+				song2.loop(song2.LOOP_CONTINUOUSLY);
 				songNum = 2;
 			}else if(event.getCode() == KeyCode.DIGIT3) {
 				if(songNum == 1) {
@@ -387,6 +389,7 @@ public class Game extends Application{
 					song24.stop();
 				}
 				song3.start();
+				song3.loop(song3.LOOP_CONTINUOUSLY);
 				songNum = 3;
 			}else if(event.getCode() == KeyCode.DIGIT4) {
 				if(songNum == 1) {
@@ -437,6 +440,7 @@ public class Game extends Application{
 					song24.stop();
 				}
 				song4.start();
+				song4.loop(song4.LOOP_CONTINUOUSLY);
 				songNum = 4;
 			}else if(event.getCode() == KeyCode.DIGIT5) {
 				if(songNum == 1) {
@@ -487,6 +491,7 @@ public class Game extends Application{
 					song24.stop();
 				}
 				song5.start();
+				song5.loop(song5.LOOP_CONTINUOUSLY);
 				songNum = 5;
 			}else if(event.getCode() == KeyCode.DIGIT6) {
 				if(songNum == 1) {
@@ -537,6 +542,7 @@ public class Game extends Application{
 					song24.stop();
 				}
 				song6.start();
+				song6.loop(song6.LOOP_CONTINUOUSLY);
 				songNum = 6;
 			}else if(event.getCode() == KeyCode.DIGIT7) {
 				if(songNum == 1) {
@@ -587,6 +593,7 @@ public class Game extends Application{
 					song24.stop();
 				}
 				song7.start();
+				song7.loop(song7.LOOP_CONTINUOUSLY);
 				songNum = 7;
 			}else if(event.getCode() == KeyCode.DIGIT8) {
 				if(songNum == 1) {
@@ -637,6 +644,7 @@ public class Game extends Application{
 					song24.stop();
 				}
 				song8.start();
+				song8.loop(song8.LOOP_CONTINUOUSLY);
 				songNum = 8;
 			}else if(event.getCode() == KeyCode.DIGIT9) {
 				if(songNum == 1) {
@@ -687,6 +695,7 @@ public class Game extends Application{
 					song24.stop();
 				}
 				song9.start();
+				song9.loop(song9.LOOP_CONTINUOUSLY);
 				songNum = 9;
 			}else if(event.getCode() == KeyCode.DIGIT0) {
 				if(songNum == 1) {
@@ -737,6 +746,7 @@ public class Game extends Application{
 					song24.stop();
 				}
 				song10.start();
+				song10.loop(song10.LOOP_CONTINUOUSLY);
 				songNum = 10;
 			}else if (event.getCode() == KeyCode.P) {
 				if(songNum <=14) {
@@ -745,58 +755,72 @@ public class Game extends Application{
 				if(songNum== 11){
 					song1.stop();
 					song11.start();
+					song11.loop(song11.LOOP_CONTINUOUSLY);
 					songNum = 11;
 				}else if (songNum==12) {
 					song2.stop();
 					song12.start();
+					song12.loop(song12.LOOP_CONTINUOUSLY);
 					songNum = 12;
 				}else if (songNum==13) {
 					song3.stop();
 					song13.start();
+					song13.loop(song13.LOOP_CONTINUOUSLY);
 					songNum = 13;
 				}else if (songNum ==14) {
 					song4.stop();
 					song14.start();
+					song14.loop(song14.LOOP_CONTINUOUSLY);
 					songNum = 14;
 				}else if (songNum ==15) {
 					song5.stop();
 					song15.start();
+					song15.loop(song15.LOOP_CONTINUOUSLY);
 					songNum = 15;
 				}else if (songNum ==16) {
 					song6.stop();
 					song16.start();
+					song16.loop(song16.LOOP_CONTINUOUSLY);
 					songNum = 16;
 				}else if (songNum ==17) {
 					song7.stop();
 					song17.start();
+					song17.loop(song17.LOOP_CONTINUOUSLY);
 					songNum = 17;
 				}else if (songNum==18) {
 					song8.stop();
 					song18.start();
+					song18.loop(song18.LOOP_CONTINUOUSLY);
 					songNum = 18;
 				}else if (songNum==19) {
 					song9.stop();
 					song19.start();
+					song19.loop(song19.LOOP_CONTINUOUSLY);
 					songNum = 19;
 				}else if (songNum==20) {
 					song10.stop();
 					song20.start();
+					song20.loop(song20.LOOP_CONTINUOUSLY);
 					songNum = 20;
 				}else if (songNum==21) {
 					song11.stop();
 					song21.start();
+					song21.loop(song21.LOOP_CONTINUOUSLY);
 					songNum = 21;
 				}else if (songNum==22) {
 					song12.stop();
 					song22.start();
+					song22.loop(song22.LOOP_CONTINUOUSLY);
 					songNum = 22;
 				}else if (songNum==23) {
 					song13.stop();
 					song23.start();
+					song23.loop(song23.LOOP_CONTINUOUSLY);
 					songNum = 23;
 				}else if (songNum==24) {
 					song14.stop();
 					song24.start();
+					song24.loop(song24.LOOP_CONTINUOUSLY);
 					songNum = 24;
 				}
 
@@ -830,6 +854,7 @@ public class Game extends Application{
 				}
 				if(end == 1) {
 					credit.start();
+					credit.loop(credit.LOOP_CONTINUOUSLY);
 
 					if(songNum == 1) {
 						song1.stop();
@@ -871,6 +896,14 @@ public class Game extends Application{
 						song19.stop();
 					}else if (songNum == 20) {
 						song20.stop();
+					}else if (songNum == 21) {
+						song21.stop();
+					}else if (songNum == 22) {
+						song22.stop();
+					}else if (songNum == 23) {
+						song23.stop();
+					}else if (songNum == 24) {
+						song24.stop();
 					}
 
 
