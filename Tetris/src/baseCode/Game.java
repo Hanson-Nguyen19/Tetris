@@ -31,7 +31,7 @@ public class Game extends Application{
 	int shape;
 	ArrayList<Square> square = new ArrayList<Square>();
 	final int squareSize = 25;
-	int songNum = (int) (Math.random() * 19)+1;
+	int songNum = (int) (Math.random() * 20)+1;
 	int dropSpeed = 1000;
 	public static void main (String[] args) {
 		launch(args);
@@ -88,6 +88,8 @@ public class Game extends Application{
 		song18.open(AudioSystem.getAudioInputStream(new File("src/Resources/PAC-MAN.wav")));
 		Clip song19 = AudioSystem.getClip();
 		song19.open(AudioSystem.getAudioInputStream(new File("src/Resources/Excitebike Arena.wav")));
+		Clip song20 = AudioSystem.getClip();
+		song20.open(AudioSystem.getAudioInputStream(new File("src/Resources/BrinstarDepths.wav")));
 		Clip credit = AudioSystem.getClip();
 		credit.open(AudioSystem.getAudioInputStream(new File("src/Resources/AssassinsCreed III.wav")));
 
@@ -113,74 +115,97 @@ public class Game extends Application{
 		//			}
 		//		}while(startPressed == false);	
 		//		title.stop();
-//		gc.setFill( Color.WHITE );
-//		gc.setStroke( Color.WHITE );
-//		gc.setLineWidth(2);
-//		Font theFont = Font.font( "", FontWeight.BOLD, 50 );
-//		Font buttonFont = Font.font( "", FontWeight.BOLD, 20 );
-//		gc.setFont( theFont );
-//		gc.fillText( "Welcome To Fruit Dungeon!", 100, 200 );//this is the text that will be printed to the screen
-//		gc.strokeText( "Welcome To Fruit Dungeon!", 100, 200 );
-//		Button start = new Button("START");//this button will lead to the game mode selection screen
-//		//Button highscores = new Button("HIGHSCORES");//this button will prompt the high scores menu to appear
-//		Button instructions = new Button ("Instructions");// this button will display the controls and objective of the game.
-//		start.setLayoutX(200);
-//		start.setLayoutY(270);
-//		instructions.setLayoutX(200);
-//		instructions.setLayoutY(295);
-//		group.getChildren().add(start);
-//		group.getChildren().add(instructions);
-//		group.getChildren().add(canvas);
-//		primaryStage.setScene(scene);
-//		start.setStyle("-fx-background-color: white; -fx-text-fill: black;"); 
-//		//highscores.setStyle("-fx-background-color: white; -fx-text-fill: black;"); 
-//		instructions.setStyle("-fx-background-color: white; -fx-text-fill: black;"); 
-//		start.setFont(buttonFont);
-//		//highscores.setFont(buttonFont);
-//		instructions.setFont(buttonFont);
-//		start.setOnAction(new EventHandler<ActionEvent>() {
-//			@Override 
-//			public void handle(ActionEvent e) {
-//				gc.clearRect(0, 0, gc.getCanvas().getWidth(), gc.getCanvas().getHeight());
-//			}});
+//				gc.setFill( Color.WHITE );
+//				gc.setStroke( Color.WHITE );
+//				gc.setLineWidth(2);
+//				Font theFont = Font.font( "", FontWeight.BOLD, 50 );
+//				Font buttonFont = Font.font( "", FontWeight.BOLD, 20 );
+//				gc.setFont( theFont );
+//				gc.fillText( "Welcome To Tetris", 100, 200 );//this is the text that will be printed to the screen
+//				gc.strokeText( "Welcome To Tetris", 100, 200 );
+//				Button start = new Button("START");//this button will lead to the game mode selection screen
+//				//Button highscores = new Button("HIGHSCORES");//this button will prompt the high scores menu to appear
+//				Button instructions = new Button ("Instructions");// this button will display the controls and objective of the game.
+//				start.setLayoutX(200);
+//				start.setLayoutY(270);
+//				instructions.setLayoutX(200);
+//				instructions.setLayoutY(295);
+//				start.setStyle("-fx-background-color: white; -fx-text-fill: black;"); 
+//				//highscores.setStyle("-fx-background-color: white; -fx-text-fill: black;"); 
+//				instructions.setStyle("-fx-background-color: white; -fx-text-fill: black;"); 
+//				start.setFont(buttonFont);
+//				//highscores.setFont(buttonFont);
+//				instructions.setFont(buttonFont);
+//				group.getChildren().add(start);
+//				group.getChildren().add(instructions);
+//				group.getChildren().add(canvas);
+//				primaryStage.setScene(scene);
+//				start.setOnAction(new EventHandler<ActionEvent>() {
+//					@Override 
+//					public void handle(ActionEvent e) {
+//						gc.clearRect(0, 0, gc.getCanvas().getWidth(), gc.getCanvas().getHeight());
+//					}});
+				
 		if(songNum == 1) {
 			song1.start();
+			song1.loop(song1.LOOP_CONTINUOUSLY);
 		}else if (songNum ==2) {
 			song2.start();
+			song2.loop(song2.LOOP_CONTINUOUSLY);
 		}else if (songNum ==3) {
 			song3.start();
+			song3.loop(song3.LOOP_CONTINUOUSLY);
 		}else if (songNum ==4) {
 			song4.start();
+			song4.loop(song4.LOOP_CONTINUOUSLY);
 		}else if (songNum ==5) {
 			song5.start();
+			song5.loop(song5.LOOP_CONTINUOUSLY);
 		}else if (songNum ==6) {
 			song6.start();
+			song6.loop(song6.LOOP_CONTINUOUSLY);
 		}else if (songNum ==7) {
 			song7.start();
+			song7.loop(song7.LOOP_CONTINUOUSLY);
 		}else if (songNum ==8) {
 			song8.start();
+			song8.loop(song8.LOOP_CONTINUOUSLY);
 		}else if (songNum ==9) {
 			song9.start();
+			song9.loop(song9.LOOP_CONTINUOUSLY);
 		}else if (songNum ==10) {
 			song10.start();
+			song10.loop(song10.LOOP_CONTINUOUSLY);
 		}else if (songNum ==11) {
 			song11.start();
+			song11.loop(song11.LOOP_CONTINUOUSLY);
 		}else if (songNum ==12) {
 			song12.start();
+			song12.loop(song12.LOOP_CONTINUOUSLY);
 		}else if (songNum ==13) {
 			song13.start();
+			song13.loop(song13.LOOP_CONTINUOUSLY);
 		}else if (songNum ==14) {
 			song14.start();
+			song14.loop(song14.LOOP_CONTINUOUSLY);
 		}else if (songNum ==15) {
 			song15.start();
+			song15.loop(song15.LOOP_CONTINUOUSLY);
 		}else if (songNum ==16) {
 			song16.start();
+			song16.loop(song16.LOOP_CONTINUOUSLY);
 		}else if (songNum ==17) {
 			song17.start();
+			song17.loop(song17.LOOP_CONTINUOUSLY);
 		}else if (songNum ==18) {
 			song18.start();
+			song18.loop(song18.LOOP_CONTINUOUSLY);
 		}else if (songNum == 19) {
 			song19.start();
+			song19.loop(song19.LOOP_CONTINUOUSLY);
+		}else if (songNum == 20) {
+			song20.start();
+			song20.loop(song20.LOOP_CONTINUOUSLY);
 		}
 		canvas.setOnKeyPressed(event -> {
 			String direction = " " ;
@@ -262,6 +287,8 @@ public class Game extends Application{
 						song18.stop();
 					}else if (songNum == 19) {
 						song19.stop();
+					}else if (songNum == 20) {
+						song20.stop();
 					}
 
 
@@ -277,7 +304,7 @@ public class Game extends Application{
 			public void run() {
 				rowCheck(count);
 			}
-		}, 0,10);
+		}, 0,70);
 		//TODO fix multiplying bug when spawning blocks on hit
 		canvas.setFocusTraversable(true);
 		Thread game = new Thread(new Runnable() {
@@ -514,24 +541,38 @@ public class Game extends Application{
 		}
 	}
 	/**
-	 * Generates one of the random shapes in Tetris
+	 * Checks each row to see if it is completed. If completed it then calls the removeRow method.
 	 * @return
 	 */
 	public void rowCheck(int count) {
 		for(int y=0; y<=575;y=y+squareSize) {
-			for (int x = 0; x<450;x=x+squareSize) {
+			for (int x = 0; x<=425;x=x+squareSize) {
 				for(int i =0;i <square.size();i ++) {
-					if((int)square.get(i).getX() == x && y == (int)square.get(i).getY()) {
+					if(((int)square.get(i).getX()) == x && y == ((int)square.get(i).getY())) {
 						count ++;
 					}
 				}
 			}
-			//System.out.println(y);
+			System.out.println(count);
 			if(count == 18) {
 				System.out.println(y);
 				removeRows(y);
 			}
 			count = 0;
+		}
+	}
+	/**
+	 * Removes One full row when it has been completed
+	 * @param y
+	 */
+	public void removeRows(int y) {	
+		for (int x = 0; x<425;x=x+25) {
+			for(int i =0;i <square.size();i ++) {
+				if(((int)square.get(i).getX()) == x && y == ((int)square.get(i).getY())) {
+					square.remove(i);
+					//dropAllBlocks();
+				}
+			}
 		}
 	}
 	/**
@@ -543,20 +584,7 @@ public class Game extends Application{
 		shape =	(int) (Math.random() * 7);
 		return shape;
 	}
-	/**
-	 * Removes One full row when it has been completed
-	 * @param y
-	 */
-	public void removeRows(int y) {	
-		for (int x = 0; x<425;x=x+25) {
-			for(int i =0;i <square.size();i ++) {
-				if(square.get(i).getX() == x && y == square.get(i).getY()) {
-					square.remove(i);
-					//					dropAllBlocks();
-				}
-			}
-		}
-	}
+
 	/**
 	 * Drops the blocks
 	 */
