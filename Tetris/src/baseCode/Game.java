@@ -37,9 +37,9 @@ public class Game extends Application{
 		launch(args);
 	}
 	Image buffer;
+	@SuppressWarnings("static-access")
 	@Override
 	public void start(Stage primaryStage) throws Exception {
-		int count = 0;
 		Group group = new Group();
 		Scene scene = new Scene(group, 450, 600);
 		primaryStage.setTitle("Tetris");
@@ -853,9 +853,7 @@ public class Game extends Application{
 					time.cancel();
 				}
 				if(end == 1) {
-					credit.start();
-					credit.loop(credit.LOOP_CONTINUOUSLY);
-
+		
 					if(songNum == 1) {
 						song1.stop();
 					}else if (songNum ==2) {
@@ -906,7 +904,8 @@ public class Game extends Application{
 						song24.stop();
 					}
 
-
+					credit.start();
+					credit.loop(credit.LOOP_CONTINUOUSLY);
 				}
 				if(isHit() == true) {
 					shape = randomShape(shape);
@@ -917,9 +916,9 @@ public class Game extends Application{
 		time.schedule(new TimerTask() {
 			@Override
 			public void run() {
-				rowCheck(count);
+				rowCheck();
 			}
-		}, 0,70);
+		}, 0,200);
 		//TODO fix multiplying bug when spawning blocks on hit
 		canvas.setFocusTraversable(true);
 		Thread game = new Thread(new Runnable() {
@@ -1159,19 +1158,20 @@ public class Game extends Application{
 	 * Checks each row to see if it is completed. If completed it then calls the removeRow method.
 	 * @return
 	 */
-	public void rowCheck(int count) {
-		for(int y=0; y<=575;y=y+25) {
-			for (int x = 0; x<=425;x=x+25) {
+	public void rowCheck() {
+		int count =0;
+		for(int y=0; y<=600;y=y+25) {
+			for (int x = 0; x<=450;x=x+25) {
 				for(int i =0;i <square.size();i ++) {
 					if(((int)square.get(i).getX()) == x && y == ((int)square.get(i).getY())) {
 						count ++;
 					}
 				}
-			}
-			System.out.println(count);
-			if(count == 18) {
-				System.out.println(y);
-				removeRows(y);
+				System.out.println(count);
+				if(count == 17) {
+					removeRows(y);
+					
+				}
 			}
 			count = 0;
 		}
@@ -1181,14 +1181,14 @@ public class Game extends Application{
 	 * @param y
 	 */
 	public void removeRows(int y) {	
-		for (int x = 0; x<425;x=x+25) {
+		for (int x = 0; x<=450;x=x+25) {
 			for(int i =0;i <square.size();i ++) {
 				if(((int)square.get(i).getX()) == x && y == ((int)square.get(i).getY())) {
 					square.remove(i);
-					//dropAllBlocks();
 				}
 			}
 		}
+		dropAllBlocks();
 	}
 	/**
 	 * Generates a random shape from Square.java
@@ -1213,7 +1213,7 @@ public class Game extends Application{
 	 */
 	public void dropAllBlocks() {
 		for(int i = 0; i <square.size();i ++) {
-			square.get(i).setY((int)(square.get(i).getY()+ squareSize));
+			square.get(i).setY((int)square.get(i).getY()+ squareSize);
 		}
 	}
 	/**
