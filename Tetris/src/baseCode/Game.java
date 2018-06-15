@@ -37,112 +37,112 @@ public class Game extends Application{
 		launch(args);
 	}
 	
-	@Override
-	public void init() {
-		/**
-		 * All the songs in the code
-		 */
-		Clip s1ong1 = AudioSystem.getClip();
-		s1ong1.open(AudioSystem.getAudioInputStream(new File("src/Resources/Castle Rock.wav")));
-		
-		
-		Clip s2ong2 = AudioSystem.getClip();
-		s2ong2.open(AudioSystem.getAudioInputStream(new File("src/Resources/TetrisDance.wav")));
-		
-		
-		Clip s3ong3 = AudioSystem.getClip();
-		s3ong3.open(AudioSystem.getAudioInputStream(new File("src/Resources/Fever Dr. Mario.wav")));
-		
-		
-		Clip s4ong4 = AudioSystem.getClip();
-		s4ong4.open(AudioSystem.getAudioInputStream(new File("src/Resources/Paper Mario.wav")));
-		
-		
-		Clip s5ong5 = AudioSystem.getClip();
-		s5ong5.open(AudioSystem.getAudioInputStream(new File("src/Resources/Snow Bros.wav")));
-		
-		
-		Clip s6ong6 = AudioSystem.getClip();
-		s6ong6.open(AudioSystem.getAudioInputStream(new File("src/Resources/Super Mario Bros.wav")));
-		
-		
-		Clip s7ong7 = AudioSystem.getClip();
-		s7ong7.open(AudioSystem.getAudioInputStream(new File("src/Resources/Battletoads.wav")));
-		
-		
-		Clip s8ong8 = AudioSystem.getClip();
-		s8ong8.open(AudioSystem.getAudioInputStream(new File("src/Resources/FlashManStage.wav")));
-		
-		
-		Clip s9ong9 = AudioSystem.getClip();
-		s9ong9.open(AudioSystem.getAudioInputStream(new File("src/Resources/TheManWithTheMachineGun.wav")));
-		
-		
-		Clip s0ong10 = AudioSystem.getClip();
-		s0ong10.open(AudioSystem.getAudioInputStream(new File("src/Resources/Balrog.wav")));
-		
-		
-		Clip s1ong11 = AudioSystem.getClip();
-		s1ong11.open(AudioSystem.getAudioInputStream(new File("src/Resources/DuckTales.wav")));
-		
-		
-		Clip song12 = AudioSystem.getClip();
-		song12.open(AudioSystem.getAudioInputStream(new File("src/Resources/BubbleBobble.wav")));
-		
-		
-		Clip song13 = AudioSystem.getClip();
-		song13.open(AudioSystem.getAudioInputStream(new File("src/Resources/SuperMarioBrosUnderground.wav")));
-		
-		
-		Clip song14 = AudioSystem.getClip();
-		song14.open(AudioSystem.getAudioInputStream(new File("src/Resources/Super Mario Bros. 3.wav")));
-		
-		
-		Clip song15 = AudioSystem.getClip();
-		song15.open(AudioSystem.getAudioInputStream(new File("src/Resources/Dudley.wav")));
-		
-		
-		Clip song16 = AudioSystem.getClip();
-		song16.open(AudioSystem.getAudioInputStream(new File("src/Resources/Spider Dance.wav")));
-		
-		
-		Clip song17 = AudioSystem.getClip();
-		song17.open(AudioSystem.getAudioInputStream(new File("src/Resources/Spaceball.wav")));
-		
-		
-		Clip song18 = AudioSystem.getClip();
-		song18.open(AudioSystem.getAudioInputStream(new File("src/Resources/PAC-MAN.wav")));
-		
-		
-		Clip song19 = AudioSystem.getClip();
-		song19.open(AudioSystem.getAudioInputStream(new File("src/Resources/Excitebike Arena.wav")));
-		
-		
-		Clip song20 = AudioSystem.getClip();
-		song20.open(AudioSystem.getAudioInputStream(new File("src/Resources/BrinstarDepths.wav")));
-		
-		
-		Clip song21 = AudioSystem.getClip();
-		song21.open(AudioSystem.getAudioInputStream(new File("src/Resources/LuigisMansion.wav")));
-		
-		
-		Clip song22 = AudioSystem.getClip();
-		song22.open(AudioSystem.getAudioInputStream(new File("src/Resources/BloodyPurity.wav")));
-		
-		
-		Clip song23 = AudioSystem.getClip();
-		song23.open(AudioSystem.getAudioInputStream(new File("src/Resources/MaloMart.wav")));
-		
-		
-		Clip song24 = AudioSystem.getClip();
-		song24.open(AudioSystem.getAudioInputStream(new File("src/Resources/TheBlocksWeLoved.wav")));
-		
-		
-		Clip credit = AudioSystem.getClip();
-		credit.open(AudioSystem.getAudioInputStream(new File("src/Resources/AssassinsCreed III.wav")));
-
-		
-	}
+//	@Override
+//	public void init() {
+//		/**
+//		 * All the songs in the code
+//		 */
+//		Clip s1ong1 = AudioSystem.getClip();
+//		s1ong1.open(AudioSystem.getAudioInputStream(new File("src/Resources/Castle Rock.wav")));
+//		
+//		
+//		Clip s2ong2 = AudioSystem.getClip();
+//		s2ong2.open(AudioSystem.getAudioInputStream(new File("src/Resources/TetrisDance.wav")));
+//		
+//		
+//		Clip s3ong3 = AudioSystem.getClip();
+//		s3ong3.open(AudioSystem.getAudioInputStream(new File("src/Resources/Fever Dr. Mario.wav")));
+//		
+//		
+//		Clip s4ong4 = AudioSystem.getClip();
+//		s4ong4.open(AudioSystem.getAudioInputStream(new File("src/Resources/Paper Mario.wav")));
+//		
+//		
+//		Clip s5ong5 = AudioSystem.getClip();
+//		s5ong5.open(AudioSystem.getAudioInputStream(new File("src/Resources/Snow Bros.wav")));
+//		
+//		
+//		Clip s6ong6 = AudioSystem.getClip();
+//		s6ong6.open(AudioSystem.getAudioInputStream(new File("src/Resources/Super Mario Bros.wav")));
+//		
+//		
+//		Clip s7ong7 = AudioSystem.getClip();
+//		s7ong7.open(AudioSystem.getAudioInputStream(new File("src/Resources/Battletoads.wav")));
+//		
+//		
+//		Clip s8ong8 = AudioSystem.getClip();
+//		s8ong8.open(AudioSystem.getAudioInputStream(new File("src/Resources/FlashManStage.wav")));
+//		
+//		
+//		Clip s9ong9 = AudioSystem.getClip();
+//		s9ong9.open(AudioSystem.getAudioInputStream(new File("src/Resources/TheManWithTheMachineGun.wav")));
+//		
+//		
+//		Clip s0ong10 = AudioSystem.getClip();
+//		s0ong10.open(AudioSystem.getAudioInputStream(new File("src/Resources/Balrog.wav")));
+//		
+//		
+//		Clip s1ong11 = AudioSystem.getClip();
+//		s1ong11.open(AudioSystem.getAudioInputStream(new File("src/Resources/DuckTales.wav")));
+//		
+//		
+//		Clip song12 = AudioSystem.getClip();
+//		song12.open(AudioSystem.getAudioInputStream(new File("src/Resources/BubbleBobble.wav")));
+//		
+//		
+//		Clip song13 = AudioSystem.getClip();
+//		song13.open(AudioSystem.getAudioInputStream(new File("src/Resources/SuperMarioBrosUnderground.wav")));
+//		
+//		
+//		Clip song14 = AudioSystem.getClip();
+//		song14.open(AudioSystem.getAudioInputStream(new File("src/Resources/Super Mario Bros. 3.wav")));
+//		
+//		
+//		Clip song15 = AudioSystem.getClip();
+//		song15.open(AudioSystem.getAudioInputStream(new File("src/Resources/Dudley.wav")));
+//		
+//		
+//		Clip song16 = AudioSystem.getClip();
+//		song16.open(AudioSystem.getAudioInputStream(new File("src/Resources/Spider Dance.wav")));
+//		
+//		
+//		Clip song17 = AudioSystem.getClip();
+//		song17.open(AudioSystem.getAudioInputStream(new File("src/Resources/Spaceball.wav")));
+//		
+//		
+//		Clip song18 = AudioSystem.getClip();
+//		song18.open(AudioSystem.getAudioInputStream(new File("src/Resources/PAC-MAN.wav")));
+//		
+//		
+//		Clip song19 = AudioSystem.getClip();
+//		song19.open(AudioSystem.getAudioInputStream(new File("src/Resources/Excitebike Arena.wav")));
+//		
+//		
+//		Clip song20 = AudioSystem.getClip();
+//		song20.open(AudioSystem.getAudioInputStream(new File("src/Resources/BrinstarDepths.wav")));
+//		
+//		
+//		Clip song21 = AudioSystem.getClip();
+//		song21.open(AudioSystem.getAudioInputStream(new File("src/Resources/LuigisMansion.wav")));
+//		
+//		
+//		Clip song22 = AudioSystem.getClip();
+//		song22.open(AudioSystem.getAudioInputStream(new File("src/Resources/BloodyPurity.wav")));
+//		
+//		
+//		Clip song23 = AudioSystem.getClip();
+//		song23.open(AudioSystem.getAudioInputStream(new File("src/Resources/MaloMart.wav")));
+//		
+//		
+//		Clip song24 = AudioSystem.getClip();
+//		song24.open(AudioSystem.getAudioInputStream(new File("src/Resources/TheBlocksWeLoved.wav")));
+//		
+//		
+//		Clip credit = AudioSystem.getClip();
+//		credit.open(AudioSystem.getAudioInputStream(new File("src/Resources/AssassinsCreed III.wav")));
+//
+//		
+//	}
 	
 	Image buffer;
 	@SuppressWarnings("static-access")
@@ -209,58 +209,58 @@ public class Game extends Application{
 		Clip credit = AudioSystem.getClip();
 		credit.open(AudioSystem.getAudioInputStream(new File("src/Resources/AssassinsCreed III.wav")));
 
-				boolean startPressed= true;
-				title.start();
-				Button start = new Button("Start");
-				Button instructions= new Button("Rules");
-				start.setLayoutX(200);
-				start.setLayoutY(270);
-				instructions.setLayoutX(200);
-				instructions.setLayoutY(295);
-				group.getChildren().add(start);
-				group.getChildren().add(instructions);
-				group.getChildren().add(canvas);
-				primaryStage.setScene(scene);
-				primaryStage.show();
-				do {
-					if(start.isPressed()) {
-						startPressed = true;
-					}else if(instructions.isPressed()) {
-						System.out.println("Rotate Blocks with a mouse click, move left or right with the 'A' and 'D' keys,");
-						System.out.println("Ad");
-					}
-				}while(startPressed == false);	
-				title.stop();
-						gc.setFill( Color.WHITE );
-						gc.setStroke( Color.WHITE );
-						gc.setLineWidth(2);
-						Font theFont = Font.font( "", FontWeight.BOLD, 50 );
-						Font buttonFont = Font.font( "", FontWeight.BOLD, 20 );
-						gc.setFont( theFont );
-						gc.fillText( "Welcome To Tetris", 100, 200 );//this is the text that will be printed to the screen
-						gc.strokeText( "Welcome To Tetris", 100, 200 );
-						Button start = new Button("START");//this button will lead to the game mode selection screen
-						//Button highscores = new Button("HIGHSCORES");//this button will prompt the high scores menu to appear
-						Button instructions = new Button ("Instructions");// this button will display the controls and objective of the game.
-						start.setLayoutX(200);
-						start.setLayoutY(270);
-						instructions.setLayoutX(200);
-						instructions.setLayoutY(295);
-						start.setStyle("-fx-background-color: white; -fx-text-fill: black;"); 
-						//highscores.setStyle("-fx-background-color: white; -fx-text-fill: black;"); 
-						instructions.setStyle("-fx-background-color: white; -fx-text-fill: black;"); 
-						start.setFont(buttonFont);
-						//highscores.setFont(buttonFont);
-						instructions.setFont(buttonFont);
-						group.getChildren().add(start);
-						group.getChildren().add(instructions);
-						group.getChildren().add(canvas);
-						primaryStage.setScene(scene);
-						start.setOnAction(new EventHandler<ActionEvent>() {
-							@Override 
-							public void handle(ActionEvent e) {
-								gc.clearRect(0, 0, gc.getCanvas().getWidth(), gc.getCanvas().getHeight());
-							}});
+//				boolean startPressed= true;
+//				title.start();
+//				Button start = new Button("Start");
+//				Button instructions= new Button("Rules");
+//				start.setLayoutX(200);
+//				start.setLayoutY(270);
+//				instructions.setLayoutX(200);
+//				instructions.setLayoutY(295);
+//				group.getChildren().add(start);
+//				group.getChildren().add(instructions);
+//				group.getChildren().add(canvas);
+//				primaryStage.setScene(scene);
+//				primaryStage.show();
+//				do {
+//					if(start.isPressed()) {
+//						startPressed = true;
+//					}else if(instructions.isPressed()) {
+//						System.out.println("Rotate Blocks with a mouse click, move left or right with the 'A' and 'D' keys,");
+//						System.out.println("Ad");
+//					}
+//				}while(startPressed == false);	
+//				title.stop();
+//						gc.setFill( Color.WHITE );
+//						gc.setStroke( Color.WHITE );
+//						gc.setLineWidth(2);
+//						Font theFont = Font.font( "", FontWeight.BOLD, 50 );
+//						Font buttonFont = Font.font( "", FontWeight.BOLD, 20 );
+//						gc.setFont( theFont );
+//						gc.fillText( "Welcome To Tetris", 100, 200 );//this is the text that will be printed to the screen
+//						gc.strokeText( "Welcome To Tetris", 100, 200 );
+//						Button start = new Button("START");//this button will lead to the game mode selection screen
+//						//Button highscores = new Button("HIGHSCORES");//this button will prompt the high scores menu to appear
+//						Button instructions = new Button ("Instructions");// this button will display the controls and objective of the game.
+//						start.setLayoutX(200);
+//						start.setLayoutY(270);
+//						instructions.setLayoutX(200);
+//						instructions.setLayoutY(295);
+//						start.setStyle("-fx-background-color: white; -fx-text-fill: black;"); 
+//						//highscores.setStyle("-fx-background-color: white; -fx-text-fill: black;"); 
+//						instructions.setStyle("-fx-background-color: white; -fx-text-fill: black;"); 
+//						start.setFont(buttonFont);
+//						//highscores.setFont(buttonFont);
+//						instructions.setFont(buttonFont);
+//						group.getChildren().add(start);
+//						group.getChildren().add(instructions);
+//						group.getChildren().add(canvas);
+//						primaryStage.setScene(scene);
+//						start.setOnAction(new EventHandler<ActionEvent>() {
+//							@Override 
+//							public void handle(ActionEvent e) {
+//								gc.clearRect(0, 0, gc.getCanvas().getWidth(), gc.getCanvas().getHeight());
+//							}});
 
 		if(songNum == 1) {
 			song1.start();
