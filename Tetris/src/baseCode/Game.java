@@ -157,61 +157,7 @@ public class Game extends Application{
 		final GraphicsContext gc = canvas.getGraphicsContext2D();
 
 
-		/**
-		 * All the songs in the code
-		 */
-		Clip song1 = AudioSystem.getClip();
-		song1.open(AudioSystem.getAudioInputStream(new File("src/Resources/Castle Rock.wav")));
-		Clip song2 = AudioSystem.getClip();
-		song2.open(AudioSystem.getAudioInputStream(new File("src/Resources/TetrisDance.wav")));
-		Clip song3 = AudioSystem.getClip();
-		song3.open(AudioSystem.getAudioInputStream(new File("src/Resources/Fever Dr. Mario.wav")));
-		Clip song4 = AudioSystem.getClip();
-		song4.open(AudioSystem.getAudioInputStream(new File("src/Resources/Paper Mario.wav")));
-		Clip song5 = AudioSystem.getClip();
-		song5.open(AudioSystem.getAudioInputStream(new File("src/Resources/Snow Bros.wav")));
-		Clip song6 = AudioSystem.getClip();
-		song6.open(AudioSystem.getAudioInputStream(new File("src/Resources/Super Mario Bros.wav")));
-		Clip song7 = AudioSystem.getClip();
-		song7.open(AudioSystem.getAudioInputStream(new File("src/Resources/Battletoads.wav")));
-		Clip song8 = AudioSystem.getClip();
-		song8.open(AudioSystem.getAudioInputStream(new File("src/Resources/FlashManStage.wav")));
-		Clip song9 = AudioSystem.getClip();
-		song9.open(AudioSystem.getAudioInputStream(new File("src/Resources/TheManWithTheMachineGun.wav")));
-		Clip song10 = AudioSystem.getClip();
-		song10.open(AudioSystem.getAudioInputStream(new File("src/Resources/Balrog.wav")));
-		Clip song11 = AudioSystem.getClip();
-		song11.open(AudioSystem.getAudioInputStream(new File("src/Resources/DuckTales.wav")));
-		Clip song12 = AudioSystem.getClip();
-		song12.open(AudioSystem.getAudioInputStream(new File("src/Resources/BubbleBobble.wav")));
-		Clip song13 = AudioSystem.getClip();
-		song13.open(AudioSystem.getAudioInputStream(new File("src/Resources/SuperMarioBrosUnderground.wav")));
-		Clip song14 = AudioSystem.getClip();
-		song14.open(AudioSystem.getAudioInputStream(new File("src/Resources/Super Mario Bros. 3.wav")));
-		Clip song15 = AudioSystem.getClip();
-		song15.open(AudioSystem.getAudioInputStream(new File("src/Resources/Dudley.wav")));
-		Clip song16 = AudioSystem.getClip();
-		song16.open(AudioSystem.getAudioInputStream(new File("src/Resources/Spider Dance.wav")));
-		Clip song17 = AudioSystem.getClip();
-		song17.open(AudioSystem.getAudioInputStream(new File("src/Resources/Spaceball.wav")));
-		Clip song18 = AudioSystem.getClip();
-		song18.open(AudioSystem.getAudioInputStream(new File("src/Resources/PAC-MAN.wav")));
-		Clip song19 = AudioSystem.getClip();
-		song19.open(AudioSystem.getAudioInputStream(new File("src/Resources/Excitebike Arena.wav")));
-		Clip song20 = AudioSystem.getClip();
-		song20.open(AudioSystem.getAudioInputStream(new File("src/Resources/BrinstarDepths.wav")));
-		Clip song21 = AudioSystem.getClip();
-		song21.open(AudioSystem.getAudioInputStream(new File("src/Resources/LuigisMansion.wav")));
-		Clip song22 = AudioSystem.getClip();
-		song22.open(AudioSystem.getAudioInputStream(new File("src/Resources/BloodyPurity.wav")));
-		Clip song23 = AudioSystem.getClip();
-		song23.open(AudioSystem.getAudioInputStream(new File("src/Resources/MaloMart.wav")));
-		Clip song24 = AudioSystem.getClip();
-		song24.open(AudioSystem.getAudioInputStream(new File("src/Resources/TheBlocksWeLoved.wav")));
-		Clip song25 = AudioSystem.getClip();
-		song25.open(AudioSystem.getAudioInputStream(new File("src/Resources/MechanicalRhythm.wav")));
-		Clip credit = AudioSystem.getClip();
-		credit.open(AudioSystem.getAudioInputStream(new File("src/Resources/AssassinsCreed III.wav")));
+		
 
 //				boolean startPressed= true;
 //				title.start();
@@ -266,82 +212,9 @@ public class Game extends Application{
 //								gc.clearRect(0, 0, gc.getCanvas().getWidth(), gc.getCanvas().getHeight());
 //							}});
 
-		if(songNum == 1) {
-			song1.start();
-			song1.loop(song1.LOOP_CONTINUOUSLY);
-		}else if (songNum ==2) {
-			song2.start();
-			song2.loop(song2.LOOP_CONTINUOUSLY);
-		}else if (songNum ==3) {
-			song3.start();
-			song3.loop(song3.LOOP_CONTINUOUSLY);
-		}else if (songNum ==4) {
-			song4.start();
-			song4.loop(song4.LOOP_CONTINUOUSLY);
-		}else if (songNum ==5) {
-			song5.start();
-			song5.loop(song5.LOOP_CONTINUOUSLY);
-		}else if (songNum ==6) {
-			song6.start();
-			song6.loop(song6.LOOP_CONTINUOUSLY);
-		}else if (songNum ==7) {
-			song7.start();
-			song7.loop(song7.LOOP_CONTINUOUSLY);
-		}else if (songNum ==8) {
-			song8.start();
-			song8.loop(song8.LOOP_CONTINUOUSLY);
-		}else if (songNum ==9) {
-			song9.start();
-			song9.loop(song9.LOOP_CONTINUOUSLY);
-		}else if (songNum ==10) {
-			song10.start();
-			song10.loop(song10.LOOP_CONTINUOUSLY);
-		}else if (songNum ==11) {
-			song11.start();
-			song11.loop(song11.LOOP_CONTINUOUSLY);
-		}else if (songNum ==12) {
-			song12.start();
-			song12.loop(song12.LOOP_CONTINUOUSLY);
-		}else if (songNum ==13) {
-			song13.start();
-			song13.loop(song13.LOOP_CONTINUOUSLY);
-		}else if (songNum ==14) {
-			song14.start();
-			song14.loop(song14.LOOP_CONTINUOUSLY);
-		}else if (songNum ==15) {
-			song15.start();
-			song15.loop(song15.LOOP_CONTINUOUSLY);
-		}else if (songNum ==16) {
-			song16.start();
-			song16.loop(song16.LOOP_CONTINUOUSLY);
-		}else if (songNum ==17) {
-			song17.start();
-			song17.loop(song17.LOOP_CONTINUOUSLY);
-		}else if (songNum ==18) {
-			song18.start();
-			song18.loop(song18.LOOP_CONTINUOUSLY);
-		}else if (songNum == 19) {
-			song19.start();
-			song19.loop(song19.LOOP_CONTINUOUSLY);
-		}else if (songNum == 20) {
-			song20.start();
-			song20.loop(song20.LOOP_CONTINUOUSLY);
-		}else if (songNum == 21) {
-			song21.start();
-			song21.loop(song21.LOOP_CONTINUOUSLY);
-		}else if (songNum == 22) {
-			song22.start();
-			song22.loop(song22.LOOP_CONTINUOUSLY);
-		}else if (songNum == 23) {
-			song23.start();
-			song23.loop(song23.LOOP_CONTINUOUSLY);
-		}else if (songNum == 24) {
-			song24.start();
-			song24.loop(song24.LOOP_CONTINUOUSLY);
-		}else if (songNum == 25) {
-			song25.start();
-			song25.loop(song25.LOOP_CONTINUOUSLY);
-		}
+		
+		MusicPlayer.play(SongENum.songClip(songNum));
+		
 		canvas.setOnKeyPressed(event -> {
 			String direction = " " ;
 			if(event.getCode() == KeyCode.A) {
@@ -354,111 +227,14 @@ public class Game extends Application{
 				direction = "Down";
 				moveBlocks(direction);
 			}else if(event.getCode() == KeyCode.DIGIT1) {
-				if (songNum ==2) {
-					song2.stop();
-				}else if (songNum ==3) {
-					song3.stop();
-				}else if (songNum ==4) {
-					song4.stop();
-				}else if (songNum ==5) {
-					song5.stop();
-				}else if (songNum ==6) {
-					song6.stop();
-				}else if (songNum ==7) {
-					song7.stop();
-				}else if (songNum ==8) {
-					song8.stop();
-				}else if (songNum ==9) {
-					song9.stop();
-				}else if (songNum ==10) {
-					song10.stop();
-				}else if (songNum ==11) {
-					song11.stop();
-				}else if (songNum ==12) {
-					song12.stop();
-				}else if (songNum ==13) {
-					song13.stop();
-				}else if (songNum ==14) {
-					song14.stop();
-				}else if (songNum ==15) {
-					song15.stop();
-				}else if (songNum ==16) {
-					song16.stop();
-				}else if (songNum ==17) {
-					song17.stop();
-				}else if (songNum ==18) {
-					song18.stop();
-				}else if (songNum == 19) {
-					song19.stop();
-				}else if (songNum == 20) {
-					song20.stop();
-				}else if (songNum == 21) {
-					song21.stop();
-				}else if (songNum == 22) {
-					song22.stop();
-				}else if (songNum == 23) {
-					song23.stop();
-				}else if (songNum == 24) {
-					song24.stop();
-				}else if (songNum == 25) {
-					song25.stop();
-				}
-				song1.start();
-				song1.loop(song1.LOOP_CONTINUOUSLY);
+				
+				MusicPlayer.stop();
 				songNum = 1;
+				MusicPlayer.play(SongENum.songClip(songNum));
 			}else if(event.getCode() == KeyCode.DIGIT2) {
-				if(songNum == 1) {
-					song1.stop();
-				}else if (songNum ==3) {
-					song3.stop();
-				}else if (songNum ==4) {
-					song4.stop();
-				}else if (songNum ==5) {
-					song5.stop();
-				}else if (songNum ==6) {
-					song6.stop();
-				}else if (songNum ==7) {
-					song7.stop();
-				}else if (songNum ==8) {
-					song8.stop();
-				}else if (songNum ==9) {
-					song9.stop();
-				}else if (songNum ==10) {
-					song10.stop();
-				}else if (songNum ==11) {
-					song11.stop();
-				}else if (songNum ==12) {
-					song12.stop();
-				}else if (songNum ==13) {
-					song13.stop();
-				}else if (songNum ==14) {
-					song14.stop();
-				}else if (songNum ==15) {
-					song15.stop();
-				}else if (songNum ==16) {
-					song16.stop();
-				}else if (songNum ==17) {
-					song17.stop();
-				}else if (songNum ==18) {
-					song18.stop();
-				}else if (songNum == 19) {
-					song19.stop();
-				}else if (songNum == 20) {
-					song20.stop();
-				}else if (songNum == 21) {
-					song21.stop();
-				}else if (songNum == 22) {
-					song22.stop();
-				}else if (songNum == 23) {
-					song23.stop();
-				}else if (songNum == 24) {
-					song24.stop();
-				}else if (songNum == 25) {
-					song25.stop();
-				}
-				song2.start();
-				song2.loop(song2.LOOP_CONTINUOUSLY);
-				songNum = 2;
+				MusicPlayer.stop();
+				songNum = 1;
+				MusicPlayer.play(SongENum.songClip(songNum));
 			}else if(event.getCode() == KeyCode.DIGIT3) {
 				if(songNum == 1) {
 					song1.stop();
