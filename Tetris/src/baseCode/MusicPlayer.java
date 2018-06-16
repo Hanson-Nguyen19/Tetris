@@ -9,11 +9,11 @@ import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 
 public class MusicPlayer {
-	
+
 	static Clip song;
-	
+
 	public static void play(String name) {
-		
+
 		try {
 			song = AudioSystem.getClip();
 			song.open(AudioSystem.getAudioInputStream(new File(name)));
@@ -25,9 +25,9 @@ public class MusicPlayer {
 		} catch (UnsupportedAudioFileException e) {
 			e.printStackTrace();
 		}
-		
+
 	}
-	
+
 	public static void stop() {
 		song.stop();
 		song = null;
