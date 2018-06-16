@@ -29,8 +29,8 @@ public class Game extends Application{
 	Timer time = new Timer();
 	int delay = 0;
 	int shape;
-	ArrayList<Square> square = new ArrayList<Square>();
-	final int squareSize = 25;
+	static ArrayList<Square> square = new ArrayList<Square>();
+	final static int squareSize = 25;
 	int songNum = (int) (Math.random() * 25)+1;
 	int dropSpeed = 1000;
 	public static void main (String[] args) {
@@ -114,13 +114,13 @@ public class Game extends Application{
 			String direction = " " ;
 			if(event.getCode() == KeyCode.A) {
 				direction = "Left";
-				moveBlocks(direction);
+				Movement.moveBlocks(direction, square, squareSize);
 			}else if(event.getCode() == KeyCode.D) {
 				direction = "Right";
-				moveBlocks(direction);
+				Movement.moveBlocks(direction, square, squareSize);
 			}else if(event.getCode() == KeyCode.S) {
 				direction = "Down";
-				moveBlocks(direction);
+				Movement.moveBlocks(direction, square, squareSize);
 			}else if(event.getCode() == KeyCode.DIGIT1) {
 				
 				MusicPlayer.stop();
@@ -237,6 +237,7 @@ public class Game extends Application{
 			rotateBlock(shape);
 		});
 		//Makes block drop one row every second.
+		
 		time.schedule(new TimerTask() {
 			@Override
 			public void run() {
@@ -244,6 +245,7 @@ public class Game extends Application{
 				dropBlocks();
 			}	
 		}, dropSpeed, dropSpeed);
+		
 		//TODO fix multiplying bug when spawning blocks on hit
 		time.schedule(new TimerTask() {
 			@Override
@@ -268,14 +270,17 @@ public class Game extends Application{
 				}
 			}
 		}, 0, 1);
+		
 		time.schedule(new TimerTask() {
 			@Override
 			public void run() {
 				rowCheck();
 			}
 		}, 0,200);
+		
 		//TODO fix multiplying bug when spawning blocks on hit
 		canvas.setFocusTraversable(true);
+		
 		Thread game = new Thread(new Runnable() {
 			/**
 			 * Repaints the canvas periodically.
@@ -291,6 +296,7 @@ public class Game extends Application{
 				}
 			}
 		});
+		
 		group.getChildren().add(canvas);
 		primaryStage.setScene(scene);
 		primaryStage.show();
@@ -303,33 +309,7 @@ public class Game extends Application{
 			square.get(i).draw(gc);
 		}
 	}
-	/**
-	 * Allows the Tetris objects to move around
-	 * @param direction
-	 */
-	public void moveBlocks(String direction) {
-		if (direction =="Left"){
-			for(int i = square.size()-4; i <square.size();i ++) {
-				square.get(i).setX((int)(square.get(i).getX()- squareSize));
-			}
-			if(isHit()) {
-				for(int i = square.size()-4; i <square.size();i ++) {
-					square.get(i).setX((int)(square.get(i).getX()+ squareSize));
-				}
-			}
-		}else if (direction == "Right") {
-			for(int i = square.size()-4; i <square.size();i ++) {
-				square.get(i).setX((int)(square.get(i).getX()+ squareSize));
-			}
-			if(isHit()) {
-				for(int i = square.size()-4; i <square.size();i ++) {
-					square.get(i).setX((int)(square.get(i).getX()- squareSize));
-				}	
-			}
-		}else if (direction == "Down") {
-			dropBlocks();
-		}
-	}
+
 	/**
 	 * Creates the different types of Tetris blocks in the game
 	 * @param shape
@@ -520,7 +500,7 @@ public class Game extends Application{
 	/**
 	 * Drops the blocks
 	 */
-	public void dropBlocks() {
+	public static void dropBlocks() {
 		for(int i = square.size()-4; i <square.size();i ++) {
 			square.get(i).setY((int)(square.get(i).getY()+ squareSize));
 		}
@@ -763,7 +743,7 @@ public class Game extends Application{
 	 * Hit Detection to determine if the random blocks can stack on top of each other
 	 * @return
 	 */
-	public boolean isHit() {
+	public static boolean isHit() {
 		if(square.get(square.size()-4).getY()+squareSize == 625 || square.get(square.size()-3).getY()+squareSize == 625 || square.get(square.size()-2).getY()+squareSize == 625 || square.get(square.size()-1).getY()+squareSize == 625) {
 			return true;
 		}
