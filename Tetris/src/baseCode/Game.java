@@ -8,7 +8,12 @@
 package baseCode;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.PrintStream;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Scanner;
 import java.util.Timer;
 import java.util.TimerTask;
 import javafx.application.Application;
@@ -28,7 +33,10 @@ import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 
 public class Game extends Application{
+
 	
+	long score;
+	long[] highScore = new long[5];
 	Timer time = new Timer();
 	int delay = 0;
 	int shape;
@@ -39,78 +47,23 @@ public class Game extends Application{
 	public static void main (String[] args) {
 		launch(args);
 	}
-	
+
 	@Override
 	public void init() {
 		MusicPlayer.play(SongENum.songClip(songNum));
+
 	}
-	
+
 	Image buffer;
 	@Override
 	public void start(Stage primaryStage) throws Exception {
+		Canvas canvas = new Canvas(450, 600);
 		Group group = new Group();
 		Scene scene = new Scene(group, 450, 600);
 		primaryStage.setTitle("Tetris");
-		Canvas canvas = new Canvas(450, 600);
+		group.getChildren().add(canvas);
 		final GraphicsContext gc = canvas.getGraphicsContext2D();
-
-
-		
-
-//				boolean startPressed= true;
-//				title.start();
-//				Button start = new Button("Start");
-//				Button instructions= new Button("Rules");
-//				start.setLayoutX(200);
-//				start.setLayoutY(270);
-//				instructions.setLayoutX(200);
-//				instructions.setLayoutY(295);
-//				group.getChildren().add(start);
-//				group.getChildren().add(instructions);
-//				group.getChildren().add(canvas);
-//				primaryStage.setScene(scene);
-//				primaryStage.show();
-//				do {
-//					if(start.isPressed()) {
-//						startPressed = true;
-//					}else if(instructions.isPressed()) {
-//						System.out.println("Rotate Blocks with a mouse click, move left or right with the 'A' and 'D' keys,");
-//						System.out.println("Ad");
-//					}
-//				}while(startPressed == false);	
-//				title.stop();
-//						gc.setFill( Color.WHITE );
-//						gc.setStroke( Color.WHITE );
-//						gc.setLineWidth(2);
-//						Font theFont = Font.font( "", FontWeight.BOLD, 50 );
-//						Font buttonFont = Font.font( "", FontWeight.BOLD, 20 );
-//						gc.setFont( theFont );
-//						gc.fillText( "Welcome To Tetris", 100, 200 );//this is the text that will be printed to the screen
-//						gc.strokeText( "Welcome To Tetris", 100, 200 );
-//						Button start = new Button("START");//this button will lead to the game mode selection screen
-//						//Button highscores = new Button("HIGHSCORES");//this button will prompt the high scores menu to appear
-//						Button instructions = new Button ("Instructions");// this button will display the controls and objective of the game.
-//						start.setLayoutX(200);
-//						start.setLayoutY(270);
-//						instructions.setLayoutX(200);
-//						instructions.setLayoutY(295);
-//						start.setStyle("-fx-background-color: white; -fx-text-fill: black;"); 
-//						//highscores.setStyle("-fx-background-color: white; -fx-text-fill: black;"); 
-//						instructions.setStyle("-fx-background-color: white; -fx-text-fill: black;"); 
-//						start.setFont(buttonFont);
-//						//highscores.setFont(buttonFont);
-//						instructions.setFont(buttonFont);
-//						group.getChildren().add(start);
-//						group.getChildren().add(instructions);
-//						group.getChildren().add(canvas);
-//						primaryStage.setScene(scene);
-//						start.setOnAction(new EventHandler<ActionEvent>() {
-//							@Override 
-//							public void handle(ActionEvent e) {
-//								gc.clearRect(0, 0, gc.getCanvas().getWidth(), gc.getCanvas().getHeight());
-//							}});
-
-		
+			
 		/**
 		 * basic keyboard controls
 		 */
@@ -126,7 +79,7 @@ public class Game extends Application{
 				direction = "Down";
 				Movement.moveBlocks(direction, square, squareSize);
 			}else if(event.getCode() == KeyCode.DIGIT1) {
-				
+
 				MusicPlayer.stop();
 				songNum = 1;
 				MusicPlayer.play(SongENum.songClip(songNum));
@@ -234,14 +187,14 @@ public class Game extends Application{
 
 			}
 		});
-		
+
 		/**
 		 * On click your block will rotate blocks
 		 */
 		canvas.setOnMouseClicked(event ->{
 			Movement.rotateBlock(shape, square, squareSize);
 		});
-		
+
 		/**
 		 * drops the blocks periodically
 		 */
@@ -249,9 +202,10 @@ public class Game extends Application{
 			@Override
 			public void run() {
 				Movement.dropBlocks(square, squareSize);
+				score += 1;
 			}	
 		}, dropSpeed, dropSpeed);
-		
+
 		/**
 		 * Timer for all things related to hit detection
 		 */
@@ -259,14 +213,14 @@ public class Game extends Application{
 			@Override
 			public void run() {
 				int end = -1;
-				
+
 				/**
 				 * checks if there are any blocks made (to prevent errors)
 				 */
 				if(square.size() == 0) {
 					CreateTetr.createBlocks(shape, square, squareSize);
 				}
-				
+
 				/**
 				 * checks if the block has not moved and it has collided
 				 */
@@ -274,42 +228,115 @@ public class Game extends Application{
 					end = 1;
 					time.cancel();
 				}
-				
+
 				/**
 				 * plays the credit song if the game has ended
 				 */
 				if(end == 1) {
-		
+
 					MusicPlayer.stop();
 					songNum = 25;
 					MusicPlayer.play(SongENum.songClip(songNum));
+					File records = new File("Records.txt");
+
+					if(!records.exists()) {
+						try {
+							records.createNewFile();
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
+					}
+					PrintStream fps = null;
+					try {
+						fps = new PrintStream(records);
+					} catch (FileNotFoundException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					Scanner fscan = null;
+					try {
+						fscan = new Scanner(records);
+					} catch (FileNotFoundException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					
+					if(records.exists()) {
+						highScore[0] = score;
+					}
+					else {
+						highScore[0] = fscan.nextLong();
+						highScore[1] = fscan.nextLong();
+						highScore[2] = fscan.nextLong();
+						highScore[3] = fscan.nextLong();
+						highScore[4] = fscan.nextLong();	
+						
+						if(score > highScore[0]) {
+							highScore[4] = highScore[3];
+							highScore[3] = highScore[2];
+							highScore[2] = highScore[1];
+							highScore[1] = highScore[0];
+							highScore[0] = score;
+						}
+						else if(score > highScore[1]) {
+							highScore[4] = highScore[3];
+							highScore[3] = highScore[2];
+							highScore[2] = highScore[1];
+							highScore[1] = score;
+						}
+						else if(score > highScore[2]) {
+							highScore[4] = highScore[3];
+							highScore[3] = highScore[2];
+							highScore[2] = score;
+						}
+						else if(score > highScore[3]) {
+							highScore[4] = highScore[3];
+							highScore[3] = score;
+						}
+						else if(score > highScore[4]) {
+							highScore[4] = score;
+						}
+					}
+					for(int i = 0; i < highScore.length; i++) {
+						System.out.println("Place " + (i+1) + "High Score: " + highScore[i]);
+					}
+					System.out.println("Your Score: " + score);
+					
+					fps.println(highScore[0]);
+					fps.println(highScore[1]);
+					fps.println(highScore[2]);
+					fps.println(highScore[3]);
+					fps.println(highScore[4]);
+					
+					fps.close();
 				}
-				
+
 				/**
 				 * detects if the block collides anything
 				 */
 				if(Hit.isHit(square, squareSize) == true) {
 					shape = CreateTetr.randomShape(shape);
 					CreateTetr.createBlocks(shape, square, squareSize);
+					score += 40;
 				}
 			}
 		}, 0, 1);
-		
+
 		/**
 		 * checks for a completed row every 200 milliseconds
 		 */
 		time.schedule(new TimerTask() {
 			@Override
 			public void run() {
-				Grid.rowCheck(square);
+				score = Grid.rowCheck(square, score);
 			}
 		}, 0,200);
-		
+
 		//TODO fix multiplying bug when spawning blocks on hit
 		canvas.setFocusTraversable(true);
-		
+
 		Thread game = new Thread(new Runnable() {
-			
+
 			/**
 			 * Repaints the canvas periodically.
 			 */
@@ -324,13 +351,12 @@ public class Game extends Application{
 				}
 			}
 		});
-		
-		group.getChildren().add(canvas);
 		primaryStage.setScene(scene);
 		primaryStage.show();
-		game.start();
+			game.start();
+		
 	}
-	
+
 	/**
 	 * Paints canvas white then draws all blocks
 	 * @param gc
@@ -338,9 +364,11 @@ public class Game extends Application{
 	public void draw(GraphicsContext gc) {
 		gc.setFill(Color.WHITE);
 		gc.fillRect(0, 0, gc.getCanvas().getWidth(), gc.getCanvas().getHeight());
+		gc.fillText(("High Score: " + highScore[0]), 25, 0);
+		gc.fillText(("your score: " + score), 25, 25);
 		for (int i = 0; i < square.size(); i++) {
 			square.get(i).draw(gc);
 		}
 	}
-	
+
 }
