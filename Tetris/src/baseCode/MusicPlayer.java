@@ -1,3 +1,6 @@
+/**
+ * @authorHansonNguyen, @authorNavtejGhataure, @authorSimonCadieux
+ */
 package baseCode;
 
 import java.io.File;
@@ -11,7 +14,11 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 public class MusicPlayer {
 
 	static Clip song;
-
+	/**
+	 * Plays a song based on the name input.
+	 * @param name
+	 */
+	@SuppressWarnings("static-access")
 	public static void play(String name) {
 
 		try {
@@ -28,6 +35,9 @@ public class MusicPlayer {
 
 	}
 
+	/**
+	 * Stops the currently playing song.
+	 */
 	public static void stop() {
 		song.stop();
 		song = null;

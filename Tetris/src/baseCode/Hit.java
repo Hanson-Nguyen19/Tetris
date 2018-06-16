@@ -1,10 +1,18 @@
+/**
+ * @authorHansonNguyen, @authorNavtejGhataure, @authorSimonCadieux
+ */
 package baseCode;
 
 import java.util.ArrayList;
 
 public class Hit {
 
-
+	/**
+	 * checks if the block that is currently moving has collided with anything
+	 * @param square
+	 * @param squareSize
+	 * @return
+	 */
 	public static boolean isHit(ArrayList<Square> square, int squareSize) {
 		if(square.get(square.size()-4).getY()+squareSize == 625 || square.get(square.size()-3).getY()+squareSize == 625 || square.get(square.size()-2).getY()+squareSize == 625 || square.get(square.size()-1).getY()+squareSize == 625) {
 			return true;

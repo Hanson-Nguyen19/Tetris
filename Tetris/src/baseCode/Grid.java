@@ -1,9 +1,16 @@
+/**
+ * @authorHansonNguyen, @authorNavtejGhataure, @authorSimonCadieux
+ */
 package baseCode;
 
 import java.util.ArrayList;
 
 public class Grid {
 
+	/**
+	 * checks every row for a completed row.
+	 * @param square
+	 */
 	public static void rowCheck(ArrayList<Square> square) {
 		int count =0;
 		for(int y=0; y<=600;y=y+25) {
@@ -22,8 +29,9 @@ public class Grid {
 			count = 0;
 		}
 	}
+	
 	/**
-	 * Removes One full row when it has been completed
+	 * Removes one full row when it has been completed
 	 * @param y
 	 */
 	public static void removeRows(int y, ArrayList<Square> square) {	

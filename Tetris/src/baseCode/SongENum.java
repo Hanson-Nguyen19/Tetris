@@ -1,8 +1,15 @@
+/**
+ * @authorHansonNguyen, @authorNavtejGhataure, @authorSimonCadieux
+ */
 package baseCode;
 
 public class SongENum {
 
-
+	/**
+	 * Returns the name and path of a song based on the selec input.
+	 * @param selec
+	 * @return
+	 */
 	public static String songClip(int selec) {
 
 		switch(selec) {

@@ -1,11 +1,16 @@
+/**
+ * @projectTetris
+ * @createdMay252018 - @createdjune182018
+ * @authorSimon, @authorHanson, @authorNavtej
+ * Basic controls and display commands
+ */
+
 package baseCode;
 
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
-import javax.sound.sampled.AudioSystem;
-import javax.sound.sampled.Clip;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -17,15 +22,13 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.RowConstraints;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 
 public class Game extends Application{
+	
 	Timer time = new Timer();
 	int delay = 0;
 	int shape;
@@ -43,7 +46,6 @@ public class Game extends Application{
 	}
 	
 	Image buffer;
-	@SuppressWarnings("static-access")
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		Group group = new Group();
@@ -109,7 +111,9 @@ public class Game extends Application{
 //							}});
 
 		
-		
+		/**
+		 * basic keyboard controls
+		 */
 		canvas.setOnKeyPressed(event -> {
 			String direction = " " ;
 			if(event.getCode() == KeyCode.A) {
@@ -230,14 +234,17 @@ public class Game extends Application{
 
 			}
 		});
+		
 		/**
-		 * On click your block will rotate except the square no rotations for square
+		 * On click your block will rotate blocks
 		 */
 		canvas.setOnMouseClicked(event ->{
 			Movement.rotateBlock(shape, square, squareSize);
 		});
 		
-		//Makes block drop one row every second.
+		/**
+		 * drops the blocks periodically
+		 */
 		time.schedule(new TimerTask() {
 			@Override
 			public void run() {
@@ -245,23 +252,42 @@ public class Game extends Application{
 			}	
 		}, dropSpeed, dropSpeed);
 		
+		/**
+		 * Timer for all things related to hit detection
+		 */
 		time.schedule(new TimerTask() {
 			@Override
 			public void run() {
 				int end = -1;
+				
+				/**
+				 * checks if there are any blocks made (to prevent errors)
+				 */
 				if(square.size() == 0) {
 					CreateTetr.createBlocks(shape, square, squareSize);
 				}
+				
+				/**
+				 * checks if the block has not moved and it has collided
+				 */
 				if(Hit.isHit(square, squareSize) && square.get(square.size()-4).getY() <= 75) {
 					end = 1;
 					time.cancel();
 				}
+				
+				/**
+				 * plays the credit song if the game has ended
+				 */
 				if(end == 1) {
 		
 					MusicPlayer.stop();
 					songNum = 25;
 					MusicPlayer.play(SongENum.songClip(songNum));
 				}
+				
+				/**
+				 * detects if the block collides anything
+				 */
 				if(Hit.isHit(square, squareSize) == true) {
 					shape = CreateTetr.randomShape(shape);
 					CreateTetr.createBlocks(shape, square, squareSize);
@@ -269,6 +295,9 @@ public class Game extends Application{
 			}
 		}, 0, 1);
 		
+		/**
+		 * checks for a completed row every 200 milliseconds
+		 */
 		time.schedule(new TimerTask() {
 			@Override
 			public void run() {
@@ -280,6 +309,7 @@ public class Game extends Application{
 		canvas.setFocusTraversable(true);
 		
 		Thread game = new Thread(new Runnable() {
+			
 			/**
 			 * Repaints the canvas periodically.
 			 */
@@ -300,6 +330,11 @@ public class Game extends Application{
 		primaryStage.show();
 		game.start();
 	}
+	
+	/**
+	 * Paints canvas white then draws all blocks
+	 * @param gc
+	 */
 	public void draw(GraphicsContext gc) {
 		gc.setFill(Color.WHITE);
 		gc.fillRect(0, 0, gc.getCanvas().getWidth(), gc.getCanvas().getHeight());
