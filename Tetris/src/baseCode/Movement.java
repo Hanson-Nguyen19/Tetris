@@ -36,7 +36,7 @@ public class Movement {
 			dropBlocks(square, squareSize);
 		}
 	}
-	
+
 	/**
 	 * Rotates the currently falling block based on the shape and current rotation.
 	 * @param shape
@@ -265,7 +265,7 @@ public class Movement {
 			}
 		}
 	}
-	
+
 	/**
 	 * Drops the currently falling block.
 	 * @param square
@@ -276,7 +276,7 @@ public class Movement {
 			square.get(i).setY((int)(square.get(i).getY()+ squareSize));
 		}
 	}
-	
+
 	/**
 	 * Drops every block on the screen.
 	 * @param square
@@ -284,7 +284,9 @@ public class Movement {
 	 */
 	public static void dropAllBlocks(ArrayList<Square> square, int squareSize) {
 		for(int i = 0; i <square.size();i ++) {
-			square.get(i).setY((int)square.get(i).getY()+ squareSize);
+			if(!Hit.isHit(square, squareSize)) {
+				square.get(i).setY((int)square.get(i).getY()+ squareSize);
+			}
 		}
 	}
 }
