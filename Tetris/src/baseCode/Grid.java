@@ -11,7 +11,7 @@ public class Grid {
 	 * checks every row for a completed row.
 	 * @param square
 	 */
-	public static long rowCheck(ArrayList<Square> square, long score) {
+	public static void rowCheck(ArrayList<Square> square) {
 		int count =0;
 		for(int y=0; y<=600;y=y+25) {
 			for (int x = 0; x<=450;x=x+25) {
@@ -21,20 +21,20 @@ public class Grid {
 					}
 				}
 				if(count == 18) {
-					return removeRows(y, square, score);
+					removeRows(y, square);
 					
 				}
 			}
 			count = 0;
 		}
-		return score;
+		return;
 	}
 	
 	/**
 	 * Removes one full row when it has been completed
 	 * @param y
 	 */
-	public static long removeRows(int y, ArrayList<Square> square, long score) {	
+	public static void removeRows(int y, ArrayList<Square> square) {	
 		for (int x = 0; x<=450;x=x+25) {
 			for(int i =0;i <square.size();i ++) {
 				if(((int)square.get(i).getX()) == x && y == ((int)square.get(i).getY())) {
@@ -43,6 +43,6 @@ public class Grid {
 			}
 		}
 		Movement.dropAllBlocks(square, 25);
-		return score += 180;
+		Game.score += 180;
 	}
 }
