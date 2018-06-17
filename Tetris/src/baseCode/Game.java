@@ -7,6 +7,7 @@
 
 package baseCode;
 
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -27,6 +28,7 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
@@ -45,8 +47,9 @@ public class Game extends Application{
 	static ArrayList<Square> square = new ArrayList<Square>();
 	final static int squareSize = 25;
 	int songNum = (int) (Math.random() * 25)+1;
+	static int backNum = (int)(Math.random()*6)+1;
 	int dropSpeed = 1000;
-
+	
 	public static void main (String[] args) {
 		launch(args);
 	}
@@ -127,7 +130,15 @@ public class Game extends Application{
 		primaryStage.setTitle("Tetris");
 		group.getChildren().add(canvas);
 		final GraphicsContext gc = canvas.getGraphicsContext2D();
-
+		
+//		ImageView iv = new ImageView();
+//		iv.setImage(BackgroundENum.eNum(backNum));
+//		iv.setFitWidth(450);
+//		iv.setFitHeight(600);
+//		iv.setPreserveRatio(true);
+//		iv.setSmooth(true);
+//        iv.setCache(true);
+//		group.getChildren().add(iv);
 		/**
 		 * drops the blocks periodically
 		 */
