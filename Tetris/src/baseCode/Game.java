@@ -276,7 +276,9 @@ public class Game extends Application{
 		});
 		
 		Controller.keyEvent(canvas, songNum, square, squareSize);
-		Controller.mouseEvent(canvas, shape, square, squareSize);
+		canvas.setOnMouseClicked(event ->{
+			Movement.rotateBlock(shape, square, squareSize);
+		});
 		primaryStage.setScene(scene);
 		primaryStage.show();
 		game.start();
