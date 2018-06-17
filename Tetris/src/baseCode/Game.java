@@ -60,8 +60,7 @@ public class Game extends Application{
 
 	}
 
-	Scene scene1, scene2, scene3;
-
+//	Scene scene1, scene2, scene3;
 	//	public void titleScreen(Stage primaryStage) {
 	//		
 	//		primaryStage.setTitle("Tetris Title Screen");
