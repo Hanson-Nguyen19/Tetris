@@ -1,3 +1,6 @@
+/**
+ * @authorHansonNguyen, @authorNavtejGhataure, @authorSimonCadieux
+ */
 package baseCode;
 
 import java.util.ArrayList;

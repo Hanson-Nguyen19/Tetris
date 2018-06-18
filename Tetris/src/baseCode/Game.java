@@ -43,7 +43,7 @@ public class Game extends Application{
 	long[] highScore = new long[5];
 	Timer time = new Timer();
 	int delay = 0;
-	int shape;
+	static int shape;
 	static ArrayList<Square> square = new ArrayList<Square>();
 	final static int squareSize = 25;
 	int songNum = (int) (Math.random() * 25)+1;

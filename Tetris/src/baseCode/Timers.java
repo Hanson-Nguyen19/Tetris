@@ -1,3 +1,6 @@
+/**
+ * @authorHansonNguyen, @authorNavtejGhataure, @authorSimonCadieux
+ */
 package baseCode;
 
 import java.io.File;
@@ -148,7 +151,7 @@ public class Timers {
 		time.schedule(new TimerTask() {
 			@Override
 			public void run() {
-				score = Grid.rowCheck(square, score);
+				Grid.rowCheck(square);
 			}
 		}, 0,200);
 	}
