@@ -1,3 +1,6 @@
+/**
+ * @authorHansonNguyen, @authorNavtejGhataure, @authorSimonCadieux
+ */
 package baseCode;
 
 import java.util.ArrayList;
@@ -6,9 +9,16 @@ import javafx.scene.paint.Color;
 
 public class CreateTetr {
 
+	/**
+	 * generates squares based on the number generated below.
+	 * @param shape
+	 * @param square
+	 * @param squareSize
+	 */
 	public static void createBlocks(int shape, ArrayList<Square> square, int squareSize) {
 		double x = 250;
 		double y = 25;
+		
 		if(shape == 0) {
 			//2x2 square
 			for(int i = 0; i < 4; i ++) {
@@ -144,6 +154,11 @@ public class CreateTetr {
 		}
 	}
 	
+	/**
+	 * generates a random number to determine the shape of the new block.
+	 * @param shape
+	 * @return
+	 */
 	public static int randomShape(int shape) {
 		shape =	(int) (Math.random() * 7);
 		return shape;

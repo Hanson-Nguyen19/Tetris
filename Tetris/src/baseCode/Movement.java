@@ -1,9 +1,18 @@
+/**
+ * @authorHansonNguyen, @authorNavtejGhataure, @authorSimonCadieux
+ */
 package baseCode;
 
 import java.util.ArrayList;
 
 public class Movement {
 
+	/**
+	 * Moves the currently falling block based on the input detected in Game.java.
+	 * @param direction
+	 * @param square
+	 * @param squareSize
+	 */
 	public static void moveBlocks(String direction, ArrayList<Square> square, int squareSize) {
 		if (direction =="Left"){
 			for(int i = square.size()-4; i <square.size();i ++) {
@@ -27,8 +36,13 @@ public class Movement {
 			dropBlocks(square, squareSize);
 		}
 	}
-	
-	
+
+	/**
+	 * Rotates the currently falling block based on the shape and current rotation.
+	 * @param shape
+	 * @param square
+	 * @param squareSize
+	 */
 	public static void rotateBlock(int shape, ArrayList<Square> square, int squareSize) {
 
 		if (shape == 1) {
@@ -251,16 +265,28 @@ public class Movement {
 			}
 		}
 	}
-	
+
+	/**
+	 * Drops the currently falling block.
+	 * @param square
+	 * @param squareSize
+	 */
 	public static void dropBlocks(ArrayList<Square> square, int squareSize) {
 		for(int i = square.size()-4; i <square.size();i ++) {
 			square.get(i).setY((int)(square.get(i).getY()+ squareSize));
 		}
 	}
-	
+
+	/**
+	 * Drops every block on the screen.
+	 * @param square
+	 * @param squareSize
+	 */
 	public static void dropAllBlocks(ArrayList<Square> square, int squareSize) {
 		for(int i = 0; i <square.size();i ++) {
-			square.get(i).setY((int)square.get(i).getY()+ squareSize);
+			if(!Hit.isHit(square, squareSize)) {
+				square.get(i).setY((int)square.get(i).getY()+ squareSize);
+			}
 		}
 	}
 }

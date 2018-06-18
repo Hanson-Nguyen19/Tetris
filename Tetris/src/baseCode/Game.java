@@ -1,11 +1,22 @@
+/**
+ * @projectTetris
+ * @createdMay252018 - @createdjune182018
+ * @authorSimon, @authorHanson, @authorNavtej
+ * Basic controls and display commands
+ */
+
 package baseCode;
 
+import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.PrintStream;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Scanner;
 import java.util.Timer;
 import java.util.TimerTask;
-import javax.sound.sampled.AudioSystem;
-import javax.sound.sampled.Clip;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -15,270 +26,250 @@ import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.RowConstraints;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 
 public class Game extends Application{
+
+
+	static long score;
+	long[] highScore = new long[5];
 	Timer time = new Timer();
 	int delay = 0;
-	int shape;
+	static int shape;
 	static ArrayList<Square> square = new ArrayList<Square>();
 	final static int squareSize = 25;
 	int songNum = (int) (Math.random() * 25)+1;
+	static int backNum = (int)(Math.random()*6)+1;
 	int dropSpeed = 1000;
+	
 	public static void main (String[] args) {
 		launch(args);
 	}
-	
+
 	@Override
 	public void init() {
 		MusicPlayer.play(SongENum.songClip(songNum));
+
 	}
-	
+
+//	Scene scene1, scene2, scene3;
+	//	public void titleScreen(Stage primaryStage) {
+	//		
+	//		primaryStage.setTitle("Tetris Title Screen");
+	//
+	//		//Scene 1
+	//		Button start = new Button("Start");
+	//		Button instr = new Button("Instructions");
+	//		Button quit = new Button("Quit");
+	//		start.setOnAction(e -> primaryStage.setScene(scene2));  
+	//		instr.setOnAction(e -> primaryStage.setScene(scene3));
+	//		VBox layout1 = new VBox(30);     
+	//		layout1.getChildren().addAll(start, instr, quit);
+	//		scene1= new Scene(layout1, 450, 600);
+	//
+	//		//Scene 2
+	//		Button regu = new Button("Regular");
+	//		Button chal = new Button("Chalange");
+	//		Button retu= new Button("Return");
+	//		retu.setOnAction(e -> primaryStage.setScene(scene1));
+	//		regu.setOnAction(e -> {
+	//			try {
+	//				start(primaryStage);
+	//			} catch (Exception e1) {
+	//				// TODO Auto-generated catch block
+	//				e1.printStackTrace();
+	//			}
+	//		});
+	//		chal.setOnAction(e -> {
+	//			try {
+	//				start(primaryStage);
+	//			} catch (Exception e1) {
+	//				// TODO Auto-generated catch block
+	//				e1.printStackTrace();
+	//			}
+	//		});
+	//		VBox layout2= new VBox(30);
+	//		layout2.getChildren().addAll(regu, chal, retu);
+	//		scene2= new Scene(layout2, 450, 600);
+	//d
+	//		//Scene 3
+	//		Label instrlbl = new Label("Controlls:\n\n\n\nA: Move Block Left.\nD: Move Block Right.\nS: Move Block Down.\n\nAudio Controlls:\n\n\n\n1-0: Selects Song Number1-10.\nP: Add 10 To The Currently Selected Song Number(up to 25)");
+	//		instrlbl.setLayoutX(150);
+	//		instrlbl.setLayoutY(25);
+	//		VBox layout3= new VBox(30);
+	//		layout3.getChildren().addAll(retu);
+	//		scene3= new Scene(layout3, 450, 600);
+	//		
+	//
+	//		primaryStage.setScene(scene1);
+	//		primaryStage.show();
+	//	}
+
 	Image buffer;
 	@Override
 	public void start(Stage primaryStage) throws Exception {
+		//		int initial = 0;
+		//		
+		//		if(initial == 0) {
+		//			initial++;
+		//			titleScreen(primaryStage);
+		//		}
+
+		Canvas canvas = new Canvas(450, 600);
 		Group group = new Group();
 		Scene scene = new Scene(group, 450, 600);
 		primaryStage.setTitle("Tetris");
-		Canvas canvas = new Canvas(450, 600);
+		group.getChildren().add(canvas);
 		final GraphicsContext gc = canvas.getGraphicsContext2D();
-
-
 		
-
-//				boolean startPressed= true;
-//				title.start();
-//				Button start = new Button("Start");
-//				Button instructions= new Button("Rules");
-//				start.setLayoutX(200);
-//				start.setLayoutY(270);
-//				instructions.setLayoutX(200);
-//				instructions.setLayoutY(295);
-//				group.getChildren().add(start);
-//				group.getChildren().add(instructions);
-//				group.getChildren().add(canvas);
-//				primaryStage.setScene(scene);
-//				primaryStage.show();
-//				do {
-//					if(start.isPressed()) {
-//						startPressed = true;
-//					}else if(instructions.isPressed()) {
-//						System.out.println("Rotate Blocks with a mouse click, move left or right with the 'A' and 'D' keys,");
-//						System.out.println("Ad");
-//					}
-//				}while(startPressed == false);	
-//				title.stop();
-//						gc.setFill( Color.WHITE );
-//						gc.setStroke( Color.WHITE );
-//						gc.setLineWidth(2);
-//						Font theFont = Font.font( "", FontWeight.BOLD, 50 );
-//						Font buttonFont = Font.font( "", FontWeight.BOLD, 20 );
-//						gc.setFont( theFont );
-//						gc.fillText( "Welcome To Tetris", 100, 200 );//this is the text that will be printed to the screen
-//						gc.strokeText( "Welcome To Tetris", 100, 200 );
-//						Button start = new Button("START");//this button will lead to the game mode selection screen
-//						//Button highscores = new Button("HIGHSCORES");//this button will prompt the high scores menu to appear
-//						Button instructions = new Button ("Instructions");// this button will display the controls and objective of the game.
-//						start.setLayoutX(200);
-//						start.setLayoutY(270);
-//						instructions.setLayoutX(200);
-//						instructions.setLayoutY(295);
-//						start.setStyle("-fx-background-color: white; -fx-text-fill: black;"); 
-//						//highscores.setStyle("-fx-background-color: white; -fx-text-fill: black;"); 
-//						instructions.setStyle("-fx-background-color: white; -fx-text-fill: black;"); 
-//						start.setFont(buttonFont);
-//						//highscores.setFont(buttonFont);
-//						instructions.setFont(buttonFont);
-//						group.getChildren().add(start);
-//						group.getChildren().add(instructions);
-//						group.getChildren().add(canvas);
-//						primaryStage.setScene(scene);
-//						start.setOnAction(new EventHandler<ActionEvent>() {
-//							@Override 
-//							public void handle(ActionEvent e) {
-//								gc.clearRect(0, 0, gc.getCanvas().getWidth(), gc.getCanvas().getHeight());
-//							}});
-
-		
-		
-		canvas.setOnKeyPressed(event -> {
-			String direction = " " ;
-			if(event.getCode() == KeyCode.A) {
-				direction = "Left";
-				Movement.moveBlocks(direction, square, squareSize);
-			}else if(event.getCode() == KeyCode.D) {
-				direction = "Right";
-				Movement.moveBlocks(direction, square, squareSize);
-			}else if(event.getCode() == KeyCode.S) {
-				direction = "Down";
-				Movement.moveBlocks(direction, square, squareSize);
-			}else if(event.getCode() == KeyCode.DIGIT1) {
-				
-				MusicPlayer.stop();
-				songNum = 1;
-				MusicPlayer.play(SongENum.songClip(songNum));
-			}else if(event.getCode() == KeyCode.DIGIT2) {
-				MusicPlayer.stop();
-				songNum = 2;
-				MusicPlayer.play(SongENum.songClip(songNum));
-			}else if(event.getCode() == KeyCode.DIGIT3) {
-				MusicPlayer.stop();
-				songNum = 3;
-				MusicPlayer.play(SongENum.songClip(songNum));
-			}else if(event.getCode() == KeyCode.DIGIT4) {
-				MusicPlayer.stop();
-				songNum = 4;
-				MusicPlayer.play(SongENum.songClip(songNum));
-			}else if(event.getCode() == KeyCode.DIGIT5) {
-				MusicPlayer.stop();
-				songNum = 5;
-				MusicPlayer.play(SongENum.songClip(songNum));
-			}else if(event.getCode() == KeyCode.DIGIT6) {
-				MusicPlayer.stop();
-				songNum = 6;
-				MusicPlayer.play(SongENum.songClip(songNum));
-			}else if(event.getCode() == KeyCode.DIGIT7) {
-				MusicPlayer.stop();
-				songNum = 7;
-				MusicPlayer.play(SongENum.songClip(songNum));
-			}else if(event.getCode() == KeyCode.DIGIT8) {
-				MusicPlayer.stop();
-				songNum = 8;
-				MusicPlayer.play(SongENum.songClip(songNum));
-			}else if(event.getCode() == KeyCode.DIGIT9) {
-				MusicPlayer.stop();
-				songNum = 9;
-				MusicPlayer.play(SongENum.songClip(songNum));
-			}else if(event.getCode() == KeyCode.DIGIT0) {
-				MusicPlayer.stop();
-				songNum = 10;
-				MusicPlayer.play(SongENum.songClip(songNum));
-			}else if (event.getCode() == KeyCode.P) {
-				if(songNum <=15) {
-					songNum = songNum + 10;
-				}
-				if(songNum== 11){
-					MusicPlayer.stop();
-					songNum = 11;
-					MusicPlayer.play(SongENum.songClip(songNum));
-				}else if (songNum==12) {
-					MusicPlayer.stop();
-					songNum = 12;
-					MusicPlayer.play(SongENum.songClip(songNum));
-				}else if (songNum==13) {
-					MusicPlayer.stop();
-					songNum = 13;
-					MusicPlayer.play(SongENum.songClip(songNum));
-				}else if (songNum ==14) {
-					MusicPlayer.stop();
-					songNum = 14;
-					MusicPlayer.play(SongENum.songClip(songNum));
-				}else if (songNum ==15) {
-					MusicPlayer.stop();
-					songNum = 15;
-					MusicPlayer.play(SongENum.songClip(songNum));
-				}else if (songNum ==16) {
-					MusicPlayer.stop();
-					songNum = 16;
-					MusicPlayer.play(SongENum.songClip(songNum));
-				}else if (songNum ==17) {
-					MusicPlayer.stop();
-					songNum = 17;
-					MusicPlayer.play(SongENum.songClip(songNum));
-				}else if (songNum==18) {
-					MusicPlayer.stop();
-					songNum = 18;
-					MusicPlayer.play(SongENum.songClip(songNum));
-				}else if (songNum==19) {
-					MusicPlayer.stop();
-					songNum = 19;
-					MusicPlayer.play(SongENum.songClip(songNum));
-				}else if (songNum==20) {
-					MusicPlayer.stop();
-					songNum = 20;
-					MusicPlayer.play(SongENum.songClip(songNum));
-				}else if (songNum==21) {
-					MusicPlayer.stop();
-					songNum = 21;
-					MusicPlayer.play(SongENum.songClip(songNum));
-				}else if (songNum==22) {
-					MusicPlayer.stop();
-					songNum = 22;
-					MusicPlayer.play(SongENum.songClip(songNum));
-				}else if (songNum==23) {
-					MusicPlayer.stop();
-					songNum = 23;
-					MusicPlayer.play(SongENum.songClip(songNum));
-				}else if (songNum==24) {
-					MusicPlayer.stop();
-					songNum = 24;
-					MusicPlayer.play(SongENum.songClip(songNum));
-				}else if (songNum==25) {
-					MusicPlayer.stop();
-					songNum = 25;
-					MusicPlayer.play(SongENum.songClip(songNum));
-				}
-
-			}
-		});
+//		ImageView iv = new ImageView();
+//		iv.setImage(BackgroundENum.eNum(backNum));
+//		iv.setFitWidth(450);
+//		iv.setFitHeight(600);
+//		iv.setPreserveRatio(true);
+//		iv.setSmooth(true);
+//        iv.setCache(true);
+//		group.getChildren().add(iv);
 		/**
-		 * On click your block will rotate except the square no rotations for square
+		 * drops the blocks periodically
 		 */
-		canvas.setOnMouseClicked(event ->{
-			Movement.rotateBlock(shape, square, squareSize);
-		});
-		
-		//Makes block drop one row every second.
 		time.schedule(new TimerTask() {
 			@Override
 			public void run() {
 				Movement.dropBlocks(square, squareSize);
+				score += 1;
 			}	
 		}, dropSpeed, dropSpeed);
-		
+
+		/**
+		 * Timer for all things related to hit detection
+		 */
 		time.schedule(new TimerTask() {
 			@Override
 			public void run() {
 				int end = -1;
+
+				/**
+				 * checks if there are any blocks made (to prevent errors)
+				 */
 				if(square.size() == 0) {
 					CreateTetr.createBlocks(shape, square, squareSize);
 				}
+
+				/**
+				 * checks if the block has not moved and it has collided
+				 */
 				if(Hit.isHit(square, squareSize) && square.get(square.size()-4).getY() <= 75) {
 					end = 1;
 					time.cancel();
 				}
+
+				/**
+				 * plays the credit song if the game has ended
+				 */
 				if(end == 1) {
-		
+
 					MusicPlayer.stop();
 					songNum = 26;
 					MusicPlayer.play(SongENum.songClip(songNum));
+					File records = new File("Records.txt");
+
+					if(!records.exists()) {
+						try {
+							records.createNewFile();
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
+					}
+					PrintStream fps = null;
+					try {
+						fps = new PrintStream(records);
+					} catch (FileNotFoundException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					Scanner fscan = null;
+					try {
+						fscan = new Scanner(records);
+					} catch (FileNotFoundException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+
+					if(records.exists()) {
+						highScore[0] = score;
+					}
+					else {
+						highScore[0] = fscan.nextLong();
+						highScore[1] = fscan.nextLong();
+						highScore[2] = fscan.nextLong();
+						highScore[3] = fscan.nextLong();
+						highScore[4] = fscan.nextLong();	
+
+						if(score > highScore[0]) {
+							highScore[4] = highScore[3];
+							highScore[3] = highScore[2];
+							highScore[2] = highScore[1];
+							highScore[1] = highScore[0];
+							highScore[0] = score;
+						}
+						else if(score > highScore[1]) {
+							highScore[4] = highScore[3];
+							highScore[3] = highScore[2];
+							highScore[2] = highScore[1];
+							highScore[1] = score;
+						}
+						else if(score > highScore[2]) {
+							highScore[4] = highScore[3];
+							highScore[3] = highScore[2];
+							highScore[2] = score;
+						}
+						else if(score > highScore[3]) {
+							highScore[4] = highScore[3];
+							highScore[3] = score;
+						}
+						else if(score > highScore[4]) {
+							highScore[4] = score;
+						}
+					}
+					for(int i = 0; i < highScore.length; i++) {
+						System.out.println("Place " + (i+1) + " High Score: " + highScore[i]);
+					}
+					System.out.println("Your Score: " + score);
+
+					fps.println(highScore[0]);
+					fps.println(highScore[1]);
+					fps.println(highScore[2]);
+					fps.println(highScore[3]);
+					fps.println(highScore[4]);
+
+					fps.close();
 				}
+
+				/**
+				 * detects if the block collides anything
+				 */
 				if(Hit.isHit(square, squareSize) == true) {
 					shape = CreateTetr.randomShape(shape);
 					CreateTetr.createBlocks(shape, square, squareSize);
+					score += 40;
 				}
 			}
 		}, 0, 1);
-		
-		time.schedule(new TimerTask() {
-			@Override
-			public void run() {
-				Grid.rowCheck(square);
-			}
-		}, 0,200);
-		
+
 		//TODO fix multiplying bug when spawning blocks on hit
 		canvas.setFocusTraversable(true);
-		
+
 		Thread game = new Thread(new Runnable() {
+
 			/**
 			 * Repaints the canvas periodically.
 			 */
@@ -294,17 +285,28 @@ public class Game extends Application{
 			}
 		});
 		
-		group.getChildren().add(canvas);
+		Controller.keyEvent(canvas, songNum, square, squareSize);
+		canvas.setOnMouseClicked(event ->{
+			Movement.rotateBlock(shape, square, squareSize);
+		});
 		primaryStage.setScene(scene);
 		primaryStage.show();
 		game.start();
+
 	}
+
+	/**
+	 * Paints canvas white then draws all blocks
+	 * @param gc
+	 */
 	public void draw(GraphicsContext gc) {
 		gc.setFill(Color.WHITE);
 		gc.fillRect(0, 0, gc.getCanvas().getWidth(), gc.getCanvas().getHeight());
+		gc.fillText(("High Score: " + highScore[0]), 25, 0);
+		gc.fillText(("your score: " + score), 25, 25);
 		for (int i = 0; i < square.size(); i++) {
 			square.get(i).draw(gc);
 		}
 	}
-	
+
 }

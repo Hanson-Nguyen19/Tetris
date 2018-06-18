@@ -1,27 +1,26 @@
-package baseCode;
-import javafx.scene.paint.Color;
-import javafx.scene.canvas.GraphicsContext;
 /**
- * This class implements a flashing ball. Feel free to change this, implement a
- * new object, change the animation, etc. <br><br>December 9, 2007.
+ * This class implements a square into the game class.
  * @authorNavtejGhataure, @authorHansonNguyen, @authorSimonCadieux, @authorUmmu
  */
+package baseCode;
+
+import javafx.scene.paint.Color;
+import javafx.scene.canvas.GraphicsContext;
+
 public class Square extends MovingObject {
+	
 	/**
-	 * The radius of the ball.
+	 * The size of the square.
 	 */
 	int size;
+	
 	/**
-	 * Counts the frames between flash on/off.
+	 * The color of the square.
 	 */
-	int counter;
-	/**
-	 * The number of frames to wait before toggling the flash.
-	 */
-	int flashSpeed;
 	Color tcolor;
+	
 	/**
-	 * Calls the superclass constructor, plus sets radius, and flash parameters.
+	 * Calls the superclass constructor, plus sets size and color.
 	 * @param x
 	 * The x location.
 	 * @param y
@@ -39,22 +38,11 @@ public class Square extends MovingObject {
 		super(x, y, left + 10, right - 10, top + 10, bottom - 10);
 		// numbers above must match the radius
 		size = 25;
-		counter = 0;
-		flashSpeed = (int) (Math.random() * 5 + 5);
 		tcolor = ncolor;
 	}
+
 	/**
-	 * Controls the animation parameters. (Called once every time the ball
-	 * position is updated.)
-	 */
-	public void animateOneStep() {
-		counter++;
-		if (counter == flashSpeed) {
-			counter = 0;
-		}
-	}
-	/**
-	 * Draws the Squares
+	 * Draws the Squares.
 	 * @param g
 	 * The graphics context.
 	 */
@@ -64,13 +52,28 @@ public class Square extends MovingObject {
 		gc.setFill(tcolor);
 		gc.fillRect(drawX, drawY, size, size);
 	}
+	
+	/**
+	 * gets the x value of the square.
+	 * @return
+	 */
 	public double getX() {
 		return x;
 	}
+	
+	/**
+	 * gets the y value of the square.
+	 * @return
+	 */
 	public double getY() {
 		return y;
 	}
-	public double getRadius() {
+	
+	/**
+	 * gets the size of the square.
+	 * @return
+	 */
+	public double getSize() {
 		return size;
 	}
 }
