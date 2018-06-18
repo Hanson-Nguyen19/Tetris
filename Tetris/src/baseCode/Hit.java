@@ -30,7 +30,6 @@ public class Hit {
 				if(square.get(l).getY()+squareSize == square.get(t).getY()) {
 					if(square.get(l).getX() == square.get(t).getX()) {
 						System.out.println("Block: " + l + " is coliding with Block: " + t);
-						Grid.rowCheck(square);
 						return true;
 					}
 				} 	

@@ -268,6 +268,13 @@ public class Game extends Application{
 		//TODO fix multiplying bug when spawning blocks on hit
 		canvas.setFocusTraversable(true);
 
+		time.schedule(new TimerTask() {
+			@Override
+			public void run() {
+				Grid.rowCheck(square);
+			}
+		}, 0,200);
+		
 		Thread game = new Thread(new Runnable() {
 
 			/**
