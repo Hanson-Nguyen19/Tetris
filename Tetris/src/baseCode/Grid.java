@@ -14,7 +14,7 @@ public class Grid {
 					}
 				}
 				System.out.println(count);
-				if(count == 17) {
+				if(count == 18) {
 					removeRows(y, square);
 					
 				}

@@ -43,7 +43,6 @@ public class Game extends Application{
 	}
 	
 	Image buffer;
-	@SuppressWarnings("static-access")
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		Group group = new Group();
@@ -259,7 +258,7 @@ public class Game extends Application{
 				if(end == 1) {
 		
 					MusicPlayer.stop();
-					songNum = 25;
+					songNum = 26;
 					MusicPlayer.play(SongENum.songClip(songNum));
 				}
 				if(Hit.isHit(square, squareSize) == true) {
